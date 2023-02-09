@@ -4,6 +4,8 @@ import Media from '../../interfaces/Media';
 import './MediaNewPage.scss';
 import {setMedia} from "../../repository/MediaRepository";
 import {useNavigate} from "react-router-dom";
+import { v4 as uuidv4 } from 'uuid';
+
 
 const MediaNewPage = () => {
   const { register, handleSubmit, formState: { errors } } = useForm<Media>();
@@ -11,7 +13,7 @@ const MediaNewPage = () => {
   const options = ['book', 'videogame', 'boardgame'];
 
   const onSubmit: SubmitHandler<Media> = async media => {
-    media.id = Date.now().toString();
+    media.id = uuidv4();
     media.lend = false;
     try {
       await setMedia(media);
