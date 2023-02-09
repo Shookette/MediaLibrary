@@ -30,6 +30,10 @@ const MediaNewPage = () => {
         <span className="add-media_input--error">{errors.title && "Title is required"}</span>
         <label className="add-media_label" htmlFor="description">Description</label>
         <textarea className="add-media_input" id="description" {...register("description")} />
+        <label className="add-media_label" htmlFor="release">Release Date</label>
+        <input className="add-media_input" id="release" {...register("release")} />
+        <label className="add-media_label" htmlFor="image">Image URL</label>
+        <input className="add-media_input" id="image" {...register("image")} />
         <label className="add-media_label" htmlFor="type">Media Type</label>
         <select className="add-media_input" id="type" {...register("type", { required: true })}>
           {options.map(option => (

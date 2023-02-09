@@ -2,7 +2,7 @@ export default interface Media {
   id: string;
   title: string;
   description?: string;
-  creationDate?: string;
+  release?: string;
   image?: string;
   lend: boolean;
   comment?: string;
