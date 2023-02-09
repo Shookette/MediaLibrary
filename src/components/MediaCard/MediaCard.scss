@@ -1,0 +1,52 @@
+@use "../../styles/variables" as *;
+
+.media-card {
+  position: relative;
+  width: 150px;
+  height: 250px;
+  border-radius: 15px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+
+  &--videogame {
+    background-color: $red-color;
+  }
+
+  &--boardgame {
+    background-color: $blue-color;
+  }
+
+  &--book {
+    background-color: $green-color;
+  }
+
+  &--shared {
+    opacity: 0.5;
+
+    &:after {
+      position: absolute;
+      content: 'Lend';
+      text-shadow: 2px 2px 2px $dark-color-bg;
+      font-size: 50px;
+      top: 35%;
+      left: 10%;
+      color: white;
+      transform: rotate(-45deg);
+    }
+  }
+
+  &_image {
+      height: 100%;
+      width: auto;
+      max-height: 85%;
+      object-fit: cover;
+  }
+
+  &_title {
+    min-height: 15%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}

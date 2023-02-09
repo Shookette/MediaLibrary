@@ -1,0 +1,18 @@
+@use "../../styles/variables.scss" as *;
+
+.header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+  background-color: lighten($dark-color-bg, 10);
+  padding: 10px;
+
+  &_navbar {
+    margin-top: 10px;
+    display: flex;
+    gap: 50px;
+  }
+}

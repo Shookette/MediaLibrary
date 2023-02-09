@@ -1,0 +1,9 @@
+.media-list-page {
+  &_content {
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 35px
+  }
+}
