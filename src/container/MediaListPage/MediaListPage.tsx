@@ -2,7 +2,7 @@ import React, {ChangeEvent, useEffect, useState} from 'react';
 import Media from '../../interfaces/Media';
 import './MediaListPage.scss';
 
-import MediaCard from '../../components/mediaCard/MediaCard';
+import MediaCard from '../../components/MediaCard/MediaCard';
 import SearchBar from '../../components/SearchBar/SearchBar';
 
 const mediasMock: Media[] = [
