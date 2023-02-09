@@ -1,8 +1,8 @@
 import React, { FC } from 'react';
 import { Route, Routes } from 'react-router-dom';
-import Layout from './container/Layout';
 import MediaNewPage from './container/MediaNewPage/MediaNewPage';
 import MediaListPage from './container/MediaListPage/MediaListPage';
+import Layout from './components/Layout';
 
 const App: FC = () => {
   return (

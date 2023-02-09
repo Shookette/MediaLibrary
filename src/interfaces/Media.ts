@@ -1,5 +1,5 @@
 export default interface Media {
-  id?: string;
+  id: string;
   title: string;
   description?: string;
   creationDate?: string;

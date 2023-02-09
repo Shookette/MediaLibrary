@@ -2,12 +2,24 @@ import React from 'react';
 import { SubmitHandler, useForm} from 'react-hook-form';
 import Media from '../../interfaces/Media';
 import './MediaNewPage.scss';
-
-const options = ['book', 'videogame', 'boardgame'];
-const onSubmit: SubmitHandler<Media> = data => console.log(data);
+import {setMedia} from "../../repository/MediaRepository";
+import {useNavigate} from "react-router-dom";
 
 const MediaNewPage = () => {
   const { register, handleSubmit, formState: { errors } } = useForm<Media>();
+  const navigate = useNavigate();
+  const options = ['book', 'videogame', 'boardgame'];
+
+  const onSubmit: SubmitHandler<Media> = async media => {
+    media.id = Date.now().toString();
+    media.lend = false;
+    try {
+      await setMedia(media);
+      navigate('/');
+    } catch (error: unknown) {
+      console.error(error);
+    }
+  };
 
   return (
     <article className="add-media">
@@ -27,7 +39,6 @@ const MediaNewPage = () => {
           ))}
         </select>
         <span className="add-media_input--error">{errors.type && "Title is required"}</span>
-
         <input className="add-media_submit" type="submit" />
       </form>
     </article>
