@@ -8,7 +8,7 @@ interface MediaCardProps {
 
 const MediaCard: FC<MediaCardProps> = ({ media }) => {
   return (
-    <article className={`media-card media-card--${media.type} ${media.lend ? 'media-card--shared' : ''}`}>
+    <article className={`media-card media-card--${media.type} ${media.lend ? 'media-card--lend' : ''}`}>
       {media.image && <img className="media-card_image" src={media.image} />}
       <h3 className="media-card_title">{media.title}</h3>
     </article>

@@ -12,7 +12,7 @@ const SearchBar: FC<SearchBarProp> = ({ handleOnChange }) => {
         id="search-bar"
         className="search-bar_input"
         type="text"
-        placeholder="Recherche..."
+        placeholder="Search..."
         onChange={handleOnChange}
       />
     </div>
