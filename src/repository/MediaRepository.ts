@@ -12,6 +12,7 @@ import {
   DocumentSnapshot,
   Firestore,
   DocumentData,
+  deleteDoc,
 } from 'firebase/firestore';
 import Media from '../interfaces/Media';
 
@@ -46,4 +47,8 @@ const setMedia = async (media: Media): Promise<void> => {
   await setDoc<DocumentData>(mediaDocument, media);
 };
 
-export {getMedias, getMediaByID, setMedia};
+const deleteMedia = async (id: string): Promise<void> => {
+  return await deleteDoc(getDocRef('medias', id));
+};
+
+export {getMedias, getMediaByID, setMedia, deleteMedia};

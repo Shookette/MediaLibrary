@@ -1,12 +1,12 @@
 import React from 'react';
 import {SubmitHandler, useForm} from 'react-hook-form';
 import Media from '../../interfaces/Media';
-import './MediaNewPage.scss';
+import './MediaNew.scss';
 import {setMedia} from '../../repository/MediaRepository';
 import {useNavigate} from 'react-router-dom';
 import {v4 as uuidv4} from 'uuid';
 
-const MediaNewPage = () => {
+const MediaNew = () => {
   const {
     register,
     handleSubmit,
@@ -18,12 +18,9 @@ const MediaNewPage = () => {
   const onSubmit: SubmitHandler<Media> = async (media) => {
     media.id = uuidv4();
     media.lend = false;
-    try {
-      await setMedia(media);
-      navigate('/');
-    } catch (error: unknown) {
-      console.error(error);
-    }
+    setMedia(media)
+      .then(() => navigate('/'))
+      .catch((error: unknown) => console.error(error));
   };
 
   return (
@@ -64,4 +61,4 @@ const MediaNewPage = () => {
   );
 };
 
-export default MediaNewPage;
+export default MediaNew;

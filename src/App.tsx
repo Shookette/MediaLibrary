@@ -1,15 +1,17 @@
 import React, {FC} from 'react';
 import {Route, Routes} from 'react-router-dom';
-import MediaNewPage from './container/MediaNewPage/MediaNewPage';
-import MediaListPage from './container/MediaListPage/MediaListPage';
+import MediaNew from './container/MediaNew/MediaNew';
+import MediaList from './container/MediaList/MediaList';
 import Layout from './components/Layout';
+import MediaDetail from './container/MediaDetail/MediaDetail';
 
 const App: FC = () => {
   return (
     <Routes>
       <Route path="/" element={<Layout />}>
-        <Route index element={<MediaListPage />} />
-        <Route path="add" element={<MediaNewPage />} />
+        <Route index element={<MediaList />} />
+        <Route path="add" element={<MediaNew />} />
+        <Route path=":mediaId" element={<MediaDetail />} />
       </Route>
     </Routes>
   );

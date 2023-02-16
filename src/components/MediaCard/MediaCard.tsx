@@ -4,11 +4,13 @@ import './MediaCard.scss';
 
 interface MediaCardProps {
   media: Media;
+  handleOnClick: () => void;
 }
 
-const MediaCard: FC<MediaCardProps> = ({media}) => {
+const MediaCard: FC<MediaCardProps> = ({media, handleOnClick}) => {
   return (
     <article
+      onClick={handleOnClick}
       className={`media-card media-card--${media.type} ${media.lend ? 'media-card--lend' : ''}`}>
       {media.image && (
         <img className="media-card_image" alt={`${media.title} cover`} src={media.image} />

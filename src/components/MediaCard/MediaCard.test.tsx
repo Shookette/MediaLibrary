@@ -19,36 +19,36 @@ describe('MediaCard Component', () => {
   };
 
   it('should have a title', () => {
-    render(<MediaCard media={defaultMedia} />);
+    render(<MediaCard media={defaultMedia} handleOnClick={() => null} />);
     expect(screen.getByRole('heading', {name: /Dai Dark/i})).toBeTruthy();
   });
 
   it('should have a picture', () => {
-    render(<MediaCard media={defaultMedia} />);
+    render(<MediaCard media={defaultMedia} handleOnClick={() => null} />);
     const image: HTMLImageElement = screen.getByRole<HTMLImageElement>('img', {});
     expect(image.src).toEqual(defaultMedia.image);
   });
 
   it('should have a media-card--book classname because of book type', () => {
-    const {container} = render(<MediaCard media={defaultMedia} />);
+    const {container} = render(<MediaCard media={defaultMedia} handleOnClick={() => null} />);
     expect(container.getElementsByClassName(`media-card--${defaultMedia.type}`)).toBeTruthy();
   });
 
   it('should have a media-card--book classname because of videogame type', () => {
     const media: Media = {...defaultMedia, type: 'videogame'};
-    const {container} = render(<MediaCard media={media} />);
+    const {container} = render(<MediaCard media={media} handleOnClick={() => null} />);
     expect(container.getElementsByClassName(`media-card--${defaultMedia.type}`)).toBeTruthy();
   });
 
   it('should have a media-card--book classname because of boardgame type', () => {
     const media: Media = {...defaultMedia, type: 'boardgame'};
-    const {container} = render(<MediaCard media={media} />);
+    const {container} = render(<MediaCard media={media} handleOnClick={() => null} />);
     expect(container.getElementsByClassName(`media-card--${defaultMedia.type}`)).toBeTruthy();
   });
 
   it('should have a media-card--lend classname because of book type', () => {
     const media: Media = {...defaultMedia, lend: true};
-    const {container} = render(<MediaCard media={media} />);
+    const {container} = render(<MediaCard media={media} handleOnClick={() => null} />);
     expect(container.getElementsByClassName('media-card--lend')).toBeTruthy();
   });
 });

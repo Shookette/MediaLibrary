@@ -1,0 +1,29 @@
+@use '../../styles/variables.scss' as *;
+  
+.media-detail {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: auto;
+    max-width: 380px;
+    padding: 10px;
+
+    &_title,
+    &_description {
+        margin: 10px 0;
+    }
+
+    &_image {
+        align-items: center;
+        display: flex;
+        justify-content: center;
+        margin: auto;
+    }
+
+
+    &_actions {
+        display: flex;
+        flex-direction: row;
+    }
+}
