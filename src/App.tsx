@@ -1,5 +1,5 @@
-import React, { FC } from 'react';
-import { Route, Routes } from 'react-router-dom';
+import React, {FC} from 'react';
+import {Route, Routes} from 'react-router-dom';
 import MediaNewPage from './container/MediaNewPage/MediaNewPage';
 import MediaListPage from './container/MediaListPage/MediaListPage';
 import Layout from './components/Layout';

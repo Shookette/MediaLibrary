@@ -1,7 +1,7 @@
-import {screen, render} from '@testing-library/react'
+import {screen, render} from '@testing-library/react';
 import React from 'react';
-import Header from "./Header";
-import {BrowserRouter} from "react-router-dom";
+import Header from './Header';
+import {BrowserRouter} from 'react-router-dom';
 
 describe('Header Component', () => {
   it('should have a title', () => {

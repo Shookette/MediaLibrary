@@ -1,7 +1,7 @@
 import React from 'react';
-import { ComponentStory, ComponentMeta } from '@storybook/react';
-import Header from "./Header";
-import {BrowserRouter} from "react-router-dom";
+import {ComponentStory, ComponentMeta} from '@storybook/react';
+import Header from './Header';
+import {BrowserRouter} from 'react-router-dom';
 
 export default {
   title: 'Component/Header',

@@ -1,6 +1,6 @@
 import React, {ChangeEvent} from 'react';
-import { ComponentStory, ComponentMeta } from '@storybook/react';
-import SearchBar from "./SearchBar";
+import {ComponentStory, ComponentMeta} from '@storybook/react';
+import SearchBar from './SearchBar';
 
 export default {
   title: 'Component/SearchBar',
