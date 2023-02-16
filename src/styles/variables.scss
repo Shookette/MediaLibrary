@@ -1,37 +1,40 @@
 
-$dark-color-text: #ffffff;
-$dark-color-text-reverse: #000000;
-$dark-color-text-button: #ffffff;
+$dark-color-text: #fff;
+$dark-color-text-reverse: #000;
+$dark-color-text-button: #fff;
 $dark-color-primary: #fd5351;
 $dark-color-secondary: #aeaeae;
 $dark-color-tertiary: #38373c;
 $dark-color-bg: #0f0e15;
 $dark-color-bg-section: #15141a;
-$dark-color-transparent: rgba(0, 0, 0, 0);
+$dark-color-transparent: rgb(0 0 0 / 0%);
 $dark-color-bg-fields: #201f25;
 $dark-color-bg-fields-active: lighten(#201f25, 5);
 $dark-color-error: #fd5351;
 $grey-color-text: #e6e6e6;
 
 $light-color-text: #15141a;
-$light-color-text-reverse: #ffffff;
-$light-color-text-button: #FFFFFF;
+$light-color-text-reverse: #fff;
+$light-color-text-button: #fff;
 $light-color-primary: #fd5351;
 $light-color-secondary: #5c5c5c;
 $light-color-tertiary: #38373c;
-$light-color-bg: #F3F5F4;
-$light-color-bg-section: #FFFFFF;
-$light-color-transparent: rgba(255, 255, 255, 0);
-$light-color-bg-fields: #F3F5F4;
-$light-color-bg-fields-active: darken(#F3F5F4, 5);
+$light-color-bg: #f3f5f4;
+$light-color-bg-section: #fff;
+$light-color-transparent: rgb(255 255 255 / 0%);
+$light-color-bg-fields: #f3f5f4;
+$light-color-bg-fields-active: darken(#f3f5f4, 5);
 
-$red-color: #D22B2B;
-$green-color: #355E3B;
-$blue-color: #0047AB;
+
+$color-red: #d22b2b;
+$color-green: #355e3b;
+$color-blue: #0047ab;
+$color-white: #fff;
+$color-black: #000;
 
 // Fonts
 
-$font-family: "SF Pro Text", sans-serif;
+$font-family: 'SF Pro Text', sans-serif;
 $font-size-base: 14px;
 
 $font-light: 100;
@@ -44,17 +47,15 @@ $border-radius: 5px;
 $border-radius--big: 10px;
 $border-radius--bigger: 15px;
 
-$box-shadow:  0 3px 3px rgba(0, 0, 0, 0.1),   /** Simulate Direct Light - Color is a darkened shade of blue **/
-              0 3px 20px rgba(0, 0, 0, 0.2);  /** Simulate Ambient Light - Color is a darkened shade of blue **/;
+$box-shadow: 0 3px 3px rgb(0 0 0 / 10%),        0 3px 20px rgb(0 0 0 / 20%);  /** Simulate Ambient Light - Color is a darkened shade of blue **/;
 
-              // Responsive Breakpoints
+// Responsive Breakpoints
 
-$breakpoints:
-  (xs 500),
-  (s 768),
-  (m 960),
-  (l 1240),
-  (xl 1400);
+$breakpoints: (xs 500),
+    (s 768),
+    (m 960),
+    (l 1240),
+    (xl 1400);
 
 $gutter-padding--mobile: 20px;
 $gutter-padding--desktop: 25px;

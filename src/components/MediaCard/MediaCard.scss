@@ -1,53 +1,53 @@
-@use "../../styles/variables" as *;
+@use '../../styles/variables.scss' as *;
 
 .media-card {
-  position: relative;
-  width: 150px;
-  height: 250px;
-  border-radius: 15px;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-
-  &--videogame {
-    background-color: $red-color;
-  }
-
-  &--boardgame {
-    background-color: $blue-color;
-  }
-
-  &--book {
-    background-color: $green-color;
-  }
-
-  &--lend {
-    opacity: 0.5;
-
-    &:after {
-      position: absolute;
-      content: 'Lend';
-      text-shadow: 2px 2px 2px $dark-color-bg;
-      font-size: 50px;
-      top: 35%;
-      left: 10%;
-      color: white;
-      transform: rotate(-45deg);
-    }
-  }
-
-  &_image {
-      height: 100%;
-      width: auto;
-      max-height: 85%;
-      object-fit: cover;
-  }
-
-  &_title {
-    min-height: 15%;
+    border-radius: 15px;
     display: flex;
-    justify-content: center;
-    align-items: center;
-  }
+    flex-direction: column;
+    height: 250px;
+    justify-content: flex-end;
+    overflow: hidden;
+    position: relative;
+    width: 150px;
+
+    &--videogame {
+        background-color: $color-red;
+    }
+
+    &--boardgame {
+        background-color: $color-blue;
+    }
+
+    &--book {
+        background-color: $color-green;
+    }
+
+    &--lend {
+        opacity: 0.5;
+
+        &::after {
+            color: $color-white;
+            content: 'Lend';
+            font-size: 50px;
+            left: 10%;
+            position: absolute;
+            text-shadow: 2px 2px 2px $dark-color-bg;
+            top: 35%;
+            transform: rotate(-45deg);
+        }
+    }
+
+    &_image {
+        height: 100%;
+        max-height: 85%;
+        object-fit: cover;
+        width: auto;
+    }
+
+    &_title {
+        align-items: center;
+        display: flex;
+        justify-content: center;
+        min-height: 15%;
+    }
 }

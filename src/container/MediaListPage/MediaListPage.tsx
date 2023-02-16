@@ -4,7 +4,7 @@ import './MediaListPage.scss';
 
 import MediaCard from '../../components/MediaCard/MediaCard';
 import SearchBar from '../../components/SearchBar/SearchBar';
-import {getMedias} from "../../repository/MediaRepository";
+import {getMedias} from '../../repository/MediaRepository';
 
 const MediaListPage = () => {
   const [medias, setMedias] = useState<Media[]>([]);

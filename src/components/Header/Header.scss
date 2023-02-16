@@ -1,18 +1,18 @@
-@use "../../styles/variables.scss" as *;
+@use '../../styles/variables.scss' as *;
 
 .header {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-content: center;
-  align-items: center;
-  margin-bottom: 20px;
-  background-color: lighten($dark-color-bg, 10);
-  padding: 10px;
-
-  &_navbar {
-    margin-top: 10px;
+    align-content: center;
+    align-items: center;
+    background-color: lighten($dark-color-bg, 10);
     display: flex;
-    gap: 50px;
-  }
+    flex-direction: column;
+    justify-content: center;
+    margin-bottom: 20px;
+    padding: 10px;
+
+    &_navbar {
+        display: flex;
+        gap: 50px;
+        margin-top: 10px;
+    }
 }

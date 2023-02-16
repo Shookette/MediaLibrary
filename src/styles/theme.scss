@@ -1,70 +1,71 @@
 @import './variables';
 
 :root {
-  --color-default: #{$dark-color-text};
-  --color-reverse: #{$dark-color-text-reverse};
-  --color-text-button: #{$dark-color-text-button};
-  --color-primary: #{$dark-color-primary};
-  --color-tertiary: #{$dark-color-tertiary};
-  --color-secondary: #{$dark-color-secondary};
-  --color-bg: #{$dark-color-bg};
-  --color-bg-section: #{$dark-color-bg-section};
-  --color-bg-fields: #{$dark-color-bg-fields};
-  --color-bg-fields--active: #{$dark-color-bg-fields-active};
-  --color-transparent: #{$dark-color-transparent};
-  --color-logo: #{$dark-color-text};
-  --color-grey-text: #{$grey-color-text};
-  --color-error: #{$dark-color-error};
-
-  --font-light: #{$font-light};
-  --font-regular: #{$font-regular};
-  --font-bold: #{$font-bold};
-  --font-size-base: #{$font-size-base};
+    --color-default: #{$dark-color-text};
+    --color-reverse: #{$dark-color-text-reverse};
+    --color-text-button: #{$dark-color-text-button};
+    --color-primary: #{$dark-color-primary};
+    --color-tertiary: #{$dark-color-tertiary};
+    --color-secondary: #{$dark-color-secondary};
+    --color-bg: #{$dark-color-bg};
+    --color-bg-section: #{$dark-color-bg-section};
+    --color-bg-fields: #{$dark-color-bg-fields};
+    --color-bg-fields--active: #{$dark-color-bg-fields-active};
+    --color-transparent: #{$dark-color-transparent};
+    --color-logo: #{$dark-color-text};
+    --color-grey-text: #{$grey-color-text};
+    --color-error: #{$dark-color-error};
+    --font-light: #{$font-light};
+    --font-regular: #{$font-regular};
+    --font-bold: #{$font-bold};
+    --font-size-base: #{$font-size-base};
 }
 
-[data-theme="light"] {
-  --color-default: #{$light-color-text};
-  --color-reverse: #{$light-color-text-reverse};
-  --color-text-button: #{$light-color-text-button};
-  --color-primary: #{$light-color-primary};
-  --color-tertiary: #{$light-color-tertiary};
-  --color-secondary: #{$light-color-secondary};
-  --color-bg: #{$light-color-bg};
-  --color-bg-section: #{$light-color-bg-section};
-  --color-bg-fields: #{$light-color-bg-fields};
-  --color-bg-fields--active: #{$light-color-bg-fields-active};
-  --color-transparent: #{$light-color-transparent};
-  --color-logo: rgba(0, 0, 0, .1);
-  --color-grey-text: #{$grey-color-text};
+[data-theme='light'] {
+    --color-default: #{$light-color-text};
+    --color-reverse: #{$light-color-text-reverse};
+    --color-text-button: #{$light-color-text-button};
+    --color-primary: #{$light-color-primary};
+    --color-tertiary: #{$light-color-tertiary};
+    --color-secondary: #{$light-color-secondary};
+    --color-bg: #{$light-color-bg};
+    --color-bg-section: #{$light-color-bg-section};
+    --color-bg-fields: #{$light-color-bg-fields};
+    --color-bg-fields--active: #{$light-color-bg-fields-active};
+    --color-transparent: #{$light-color-transparent};
+    --color-logo: rgb(0 0 0 / 10%);
+    --color-grey-text: #{$grey-color-text};
 }
 
 body {
-  background: var(--color-bg);
-  font-family: $font-family;
-  font-size: $font-size-base;
-  color: var(--color-default);
-  line-height: 1.2;
-  min-height: 100vh;
+    background: var(--color-bg);
+    color: var(--color-default);
+    font-family: $font-family;
+    font-size: $font-size-base;
+    line-height: 1.2;
+    min-height: 100vh;
 }
 
-button, input, select {
-  background-color: var(--color-bg-fields);
+button,
+input,
+select {
+    background-color: var(--color-bg-fields);
 }
 
 .title-1 {
-  font-size: 20px;
-  font-weight: $font-bold;
-  text-transform: uppercase;
-  color: var(--color-default);
+    color: var(--color-default);
+    font-size: 20px;
+    font-weight: $font-bold;
+    text-transform: uppercase;
 }
 
 .title-2 {
-  font-size: 16px;
-  font-weight: $font-bold;
-  text-transform: uppercase;
-  color: var(--color-default);
+    color: var(--color-default);
+    font-size: 16px;
+    font-weight: $font-bold;
+    text-transform: uppercase;
 }
 
 .tc {
-  text-align: center;
+    text-align: center;
 }
