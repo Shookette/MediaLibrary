@@ -2,7 +2,7 @@ import React, {FC, ReactNode} from 'react';
 import './Button.scss';
 
 interface ButtonProps {
-  children: ReactNode;
+  children?: ReactNode;
   type: 'button' | 'reset' | 'submit';
   handleOnClick?: () => void;
   displayType: 'primary' | 'secondary';
