@@ -7,4 +7,5 @@ export default interface Media {
   lend: boolean;
   comment?: string;
   type: 'book' | 'videogame' | 'boardgame';
+  userUID: string;
 }

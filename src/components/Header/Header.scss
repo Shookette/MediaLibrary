@@ -3,7 +3,7 @@
 .header {
     align-content: center;
     align-items: center;
-    background-color: lighten($dark-color-bg, 10);
+    border-bottom: 1px solid $color-white;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -14,5 +14,16 @@
         display: flex;
         gap: 50px;
         margin-top: 10px;
+
+        &_item {
+            font-size: 1.5rem;    
+        }
+
+        &_item:hover,
+        &_item.active {
+            border-bottom: 3px solid $color-red;
+            color: $color-red;
+        }
+            
     }
 }

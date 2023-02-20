@@ -1,0 +1,25 @@
+.login {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    max-width: 380px;
+    min-height: 100vh;
+    padding: 10px;
+
+    &_title {
+        margin-bottom: 20px;
+    }
+
+    &_content {
+        background-color: var(--color-bg-section);
+        width: 70%;
+    }
+
+    &_actions {
+        border-top: 1px solid var(--color-reverse);
+        margin-top: 20px;
+    }
+
+
+}

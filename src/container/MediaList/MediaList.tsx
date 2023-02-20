@@ -6,15 +6,17 @@ import MediaCard from '../../components/MediaCard/MediaCard';
 import SearchBar from '../../components/SearchBar/SearchBar';
 import {getMedias} from '../../repository/MediaRepository';
 import {useNavigate} from 'react-router-dom';
+import {useUserContext} from '../../hooks/UserContext';
 
 const MediaList = () => {
   const [medias, setMedias] = useState<Media[]>([]);
   const [mediasFiltered, setMediasFiltered] = useState<Media[]>(medias);
   const navigate = useNavigate();
+  const {user} = useUserContext();
 
   useEffect(() => {
-    getMedias().then((medias: Media[]) => setMedias(medias));
-  }, []);
+    getMedias(user?.uid ?? '').then((medias: Media[]) => setMedias(medias));
+  }, [user]);
 
   useEffect(() => {
     setMediasFiltered(medias);

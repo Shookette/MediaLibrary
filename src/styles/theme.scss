@@ -1,4 +1,4 @@
-@import './variables';
+@use './variables' as *;
 
 :root {
     --color-default: #{$dark-color-text};
@@ -68,4 +68,53 @@ select {
 
 .tc {
     text-align: center;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+
+    &_label {
+        margin: 15px 0 5px;
+    }
+
+    &_submit {
+        background-color: var(--color-primary);
+        border-radius: 5px;
+        color: var(--color-text-button);
+        cursor: pointer;
+        margin-top: 50px;
+        min-height: 30px;
+        padding: 0 10px;
+    }
+
+    &_input,
+    &_textarea {
+        background-color: var(--color-bg-fields);
+        border-radius: 5px;
+        color: var(--color-default);
+        cursor: pointer;
+        min-height: 30px;
+        padding: 0 10px;
+
+        &--error {
+            color: var(--color-error);
+        }
+    }
+
+    &_textarea {
+        min-height: 100px;
+        padding: 10px;
+        resize: none;
+    }
+
+    &_inline {
+        margin: 15px 0 5px;
+    }
+
+    &_checkbox {
+        appearance: auto;
+        margin-left: 15px;
+    }
 }

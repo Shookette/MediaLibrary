@@ -13,6 +13,8 @@ import {
   Firestore,
   DocumentData,
   deleteDoc,
+  query,
+  where,
 } from 'firebase/firestore';
 import Media from '../interfaces/Media';
 
@@ -26,8 +28,10 @@ const getCollectionRef = (collectionName: string): CollectionReference<DocumentD
   return collection(db, collectionName);
 };
 
-const getMedias = async (): Promise<Media[]> => {
-  const result: QuerySnapshot = await getDocs(getCollectionRef('medias'));
+const getMedias = async (userUID: string): Promise<Media[]> => {
+  const result: QuerySnapshot = await getDocs(
+    query(getCollectionRef('medias'), where('userUID', '==', userUID))
+  );
   const arrayMedia: Media[] = [];
 
   result.forEach((media: QueryDocumentSnapshot) => {
