@@ -3,8 +3,8 @@ export default {
   testEnvironment: 'jsdom',
   globals: {
     'ts-jest': {
-      diagnostics: false
-    }
+      diagnostics: false,
+    },
   },
   moduleNameMapper: {
     '\\.(css|scss)$': 'identity-obj-proxy',

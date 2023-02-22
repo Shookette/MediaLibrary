@@ -5,7 +5,7 @@ import MediaList from './container/MediaList/MediaList';
 import Layout from './components/Layout';
 import MediaDetail from './container/MediaDetail/MediaDetail';
 import MediaEdit from './container/MediaEdit/MediaEdit';
-import LoginOrRegisterContainer from './container/Login/Login';
+import LoginOrRegisterContainer from './container/LoginOrRegisterContainer/LoginOrRegisterContainer';
 import {useUserContext} from './hooks/UserContext';
 
 type ProtectedRouteProps = {children: ReactElement};

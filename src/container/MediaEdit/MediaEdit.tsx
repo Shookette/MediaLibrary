@@ -24,13 +24,15 @@ const MediaEdit = () => {
       .catch((error: unknown) => console.error(error));
   };
 
-  return (
-    media && (
-      <article className="media-edit">
-        <h2 className="media-edit_title">{media?.title}</h2>
-        <MediaForm media={media} handleOnSubmit={onSubmit} />
-      </article>
-    )
+  return media ? (
+    <article className="media-edit">
+      <h2 className="media-edit_title">{media?.title}</h2>
+      <MediaForm media={media} handleOnSubmit={onSubmit} />
+    </article>
+  ) : (
+    <article className="media-edit">
+      <span className="medit-edit_no-content">No media found</span>
+    </article>
   );
 };
 

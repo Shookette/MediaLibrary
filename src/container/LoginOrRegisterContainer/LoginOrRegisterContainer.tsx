@@ -7,7 +7,7 @@ import {FormLogin} from '../../interfaces/FormLogin';
 import {FormRegister} from '../../interfaces/FormRegister';
 import LoginForm from '../../components/LoginForm/LoginForm';
 import RegisterForm from '../../components/RegisterForm/RegisterForm';
-import './Login.scss';
+import './LoginOrRegisterContainer.scss';
 
 const LoginOrRegisterContainer = () => {
   const {login, register} = useUserContext();
