@@ -1,4 +1,4 @@
-import {screen, render, waitFor, fireEvent} from '@testing-library/react';
+import {render, waitFor, fireEvent} from '@testing-library/react';
 import React from 'react';
 import UserProvider from '../../hooks/UserContext';
 import WithFirestore from '../../components/WithFirestore';
@@ -42,7 +42,7 @@ He and his skeletal buddy Avakian will use their dark powers to fend off any mur
   });
 
   it('should have a media and show title with edit form', async () => {
-    render(
+    const {getByRole} = render(
       <WithFirestore>
         <UserProvider>
           <MemoryRouter initialEntries={['/123/update']}>
@@ -54,15 +54,15 @@ He and his skeletal buddy Avakian will use their dark powers to fend off any mur
       </WithFirestore>
     );
 
-    await waitFor(() => {
-      expect(screen.getByRole('heading', {name: defaultMedia.title})).toBeTruthy();
-      expect(screen.getByRole('textbox', {name: /Title/i})).toBeTruthy();
+    await waitFor(async () => {
+      expect(getByRole('heading', {name: defaultMedia.title})).toBeTruthy();
+      expect(getByRole('textbox', {name: /Title/i})).toBeTruthy();
       expect(spyGetMediaById).toHaveBeenCalled();
     });
   });
 
   it('should call setMedia function when sending the edit form', async () => {
-    render(
+    const {getByRole} = render(
       <WithFirestore>
         <UserProvider>
           <MemoryRouter initialEntries={['/123/update']}>
@@ -76,15 +76,17 @@ He and his skeletal buddy Avakian will use their dark powers to fend off any mur
       </WithFirestore>
     );
 
-    await waitFor(() => {
-      fireEvent.submit(screen.getByRole('button', {name: /Submit/i}));
-      expect(spySetMedia).toHaveBeenCalled();
-      expect(mockedUsedNavigate).toHaveBeenCalledWith('/');
+    await waitFor(async () => {
+      fireEvent.submit(getByRole('button', {name: /Submit/i}));
+      await waitFor(async () => {
+        expect(spySetMedia).toHaveBeenCalled();
+        expect(mockedUsedNavigate).toHaveBeenCalledWith('/');
+      });
     });
   });
 
   it('shouldnt have a media and show No Content text', async () => {
-    render(
+    const {getByText} = render(
       <WithFirestore>
         <UserProvider>
           <MemoryRouter initialEntries={['/123/update']}>
@@ -98,8 +100,8 @@ He and his skeletal buddy Avakian will use their dark powers to fend off any mur
       </WithFirestore>
     );
 
-    await waitFor(() => {
-      expect(screen.getByText(/No media found/i)).toBeTruthy();
+    await waitFor(async () => {
+      expect(getByText(/No media found/i)).toBeTruthy();
     });
   });
 });

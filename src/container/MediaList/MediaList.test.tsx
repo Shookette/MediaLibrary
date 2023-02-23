@@ -1,4 +1,4 @@
-import {screen, render, waitFor, fireEvent} from '@testing-library/react';
+import {render, waitFor, fireEvent} from '@testing-library/react';
 import React from 'react';
 import UserProvider from '../../hooks/UserContext';
 import WithFirestore from '../../components/WithFirestore';
@@ -35,11 +35,13 @@ He and his skeletal buddy Avakian will use their dark powers to fend off any mur
   beforeEach(() => {
     spyGetMedias = jest
       .spyOn(repository, 'getMedias')
-      .mockReturnValue(Promise.resolve([defaultMedia, {...defaultMedia, id: '5678'}]));
+      .mockReturnValue(
+        Promise.resolve([defaultMedia, {...defaultMedia, id: '5678', title: 'Dai Dark 2'}])
+      );
   });
 
   it('should have two media showed', async () => {
-    render(
+    const {getAllByText} = render(
       <WithFirestore>
         <UserProvider>
           <MemoryRouter initialEntries={['/']}>
@@ -53,12 +55,12 @@ He and his skeletal buddy Avakian will use their dark powers to fend off any mur
 
     await waitFor(() => {
       expect(spyGetMedias).toHaveBeenCalled();
-      expect(screen.getAllByText('Dai Dark').length).toEqual(2);
+      expect(getAllByText(/Dai Dark/i).length).toEqual(2);
     });
   });
 
   it('should redirect to media detail on click on a media card', async () => {
-    render(
+    const {findByText} = render(
       <WithFirestore>
         <UserProvider>
           <MemoryRouter initialEntries={['/']}>
@@ -70,9 +72,11 @@ He and his skeletal buddy Avakian will use their dark powers to fend off any mur
       </WithFirestore>
     );
 
-    await waitFor(() => {
-      fireEvent.click(screen.getAllByText('Dai Dark')[0]);
-      expect(mockedUsedNavigate).toHaveBeenCalledWith(`/${defaultMedia.id}`);
+    await waitFor(async () => {
+      fireEvent.click(await findByText('Dai Dark'));
+      await waitFor(async () => {
+        expect(mockedUsedNavigate).toHaveBeenCalledWith(`/${defaultMedia.id}`);
+      });
     });
   });
 });

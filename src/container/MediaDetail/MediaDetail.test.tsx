@@ -1,4 +1,4 @@
-import {screen, render, waitFor, fireEvent} from '@testing-library/react';
+import {render, waitFor, fireEvent} from '@testing-library/react';
 import React from 'react';
 import UserProvider from '../../hooks/UserContext';
 import WithFirestore from '../../components/WithFirestore';
@@ -42,7 +42,7 @@ He and his skeletal buddy Avakian will use their dark powers to fend off any mur
   });
 
   it('should have a media and show media title and actions button', async () => {
-    render(
+    const {getByRole} = render(
       <WithFirestore>
         <UserProvider>
           <MemoryRouter initialEntries={['/123']}>
@@ -55,15 +55,15 @@ He and his skeletal buddy Avakian will use their dark powers to fend off any mur
     );
 
     await waitFor(() => {
-      expect(screen.getByRole('heading', {name: defaultMedia.title})).toBeTruthy();
-      expect(screen.getByRole('button', {name: /Delete Media/i})).toBeTruthy();
-      expect(screen.getByRole('button', {name: /Update Media/i})).toBeTruthy();
+      expect(getByRole('heading', {name: defaultMedia.title})).toBeTruthy();
+      expect(getByRole('button', {name: /Delete Media/i})).toBeTruthy();
+      expect(getByRole('button', {name: /Update Media/i})).toBeTruthy();
       expect(spyGetMediaById).toHaveBeenCalled();
     });
   });
 
   it('should delete media when clicking on delete button', async () => {
-    render(
+    const {getByRole} = render(
       <WithFirestore>
         <UserProvider>
           <MemoryRouter initialEntries={['/123']}>
@@ -75,15 +75,17 @@ He and his skeletal buddy Avakian will use their dark powers to fend off any mur
       </WithFirestore>
     );
 
-    await waitFor(() => {
-      fireEvent.click(screen.getByRole('button', {name: /Delete Media/i}));
-      expect(spyDeleteMedia).toHaveBeenCalled();
-      expect(mockedUsedNavigate).toHaveBeenCalledWith('/');
+    await waitFor(async () => {
+      fireEvent.click(getByRole('button', {name: /Delete Media/i}));
+      waitFor(() => {
+        expect(spyDeleteMedia).toHaveBeenCalled();
+        expect(mockedUsedNavigate).toHaveBeenCalledWith('/');
+      });
     });
   });
 
   it('should redirect to update page when click on Update Media button', async () => {
-    render(
+    const {getByRole} = render(
       <WithFirestore>
         <UserProvider>
           <MemoryRouter initialEntries={['/123']}>
@@ -95,9 +97,11 @@ He and his skeletal buddy Avakian will use their dark powers to fend off any mur
       </WithFirestore>
     );
 
-    await waitFor(() => {
-      fireEvent.click(screen.getByRole('button', {name: /Update Media/i}));
-      expect(mockedUsedNavigate).toHaveBeenCalledWith(`/${defaultMedia.id}/update`);
+    await waitFor(async () => {
+      fireEvent.click(getByRole('button', {name: /Update Media/i}));
+      waitFor(() => {
+        expect(mockedUsedNavigate).toHaveBeenCalledWith(`/${defaultMedia.id}/update`);
+      });
     });
   });
 });

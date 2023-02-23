@@ -1,4 +1,4 @@
-import {screen, render, fireEvent, waitFor} from '@testing-library/react';
+import {render, fireEvent, waitFor} from '@testing-library/react';
 import React from 'react';
 import UserProvider from '../../hooks/UserContext';
 import WithFirestore from '../../components/WithFirestore';
@@ -20,7 +20,7 @@ describe('MediaNew Component', () => {
   });
 
   it('should have all input without data', () => {
-    render(
+    const {getByRole} = render(
       <WithFirestore>
         <UserProvider>
           <BrowserRouter>
@@ -30,11 +30,11 @@ describe('MediaNew Component', () => {
       </WithFirestore>
     );
 
-    expect(screen.getByRole('heading', {name: /Add new media/i})).toBeTruthy();
+    expect(getByRole('heading', {name: /Add new media/i})).toBeTruthy();
   });
 
   it('should save the media when submitting the form', async () => {
-    render(
+    const {getByRole} = render(
       <WithFirestore>
         <UserProvider>
           <BrowserRouter>
@@ -44,14 +44,16 @@ describe('MediaNew Component', () => {
       </WithFirestore>
     );
 
-    fireEvent.change(screen.getByRole('textbox', {name: /Title/i}), {
+    fireEvent.change(getByRole('textbox', {name: /Title/i}), {
       target: {value: 'new title'},
     });
 
-    await waitFor(() => {
-      fireEvent.submit(screen.getByRole('button', {name: /Submit/i}));
-      expect(spySetMedia).toHaveBeenCalled();
-      expect(mockedUsedNavigate).toHaveBeenCalledWith('/');
+    await waitFor(async () => {
+      fireEvent.submit(getByRole('button', {name: /Submit/i}));
+      await waitFor(async () => {
+        expect(spySetMedia).toHaveBeenCalled();
+        expect(mockedUsedNavigate).toHaveBeenCalledWith('/');
+      });
     });
   });
 });
