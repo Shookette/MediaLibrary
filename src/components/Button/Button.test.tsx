@@ -24,6 +24,16 @@ describe('Button Component', () => {
     expect(container.getElementsByClassName('button--secondary')).toBeTruthy();
   });
 
+  it('should render with a label as children with tertiary display type', () => {
+    const {container} = render(
+      <Button displayType="tertiary" type="button">
+        label
+      </Button>
+    );
+    expect(screen.getByRole('button', {name: /label/i})).toBeTruthy();
+    expect(container.getElementsByClassName('button--tertiary')).toBeTruthy();
+  });
+
   it('should render with submit type', () => {
     const {container} = render(
       <Button displayType="secondary" type="submit">

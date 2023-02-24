@@ -5,7 +5,7 @@ interface ButtonProps {
   children?: ReactNode;
   type: 'button' | 'reset' | 'submit';
   handleOnClick?: () => void;
-  displayType: 'primary' | 'secondary';
+  displayType: 'primary' | 'secondary' | 'tertiary';
 }
 
 const Button: FC<ButtonProps> = ({children, type, displayType, handleOnClick}) => {

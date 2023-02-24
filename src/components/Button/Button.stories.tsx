@@ -24,3 +24,11 @@ Secondary.args = {
   displayType: 'secondary',
   handleOnClick: () => console.log('click'),
 };
+
+export const Tertiary = Template.bind({});
+Tertiary.args = {
+  children: 'Tertiary',
+  type: 'button',
+  displayType: 'tertiary',
+  handleOnClick: () => console.log('click'),
+};

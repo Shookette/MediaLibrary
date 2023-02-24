@@ -1,36 +1,15 @@
-
-$dark-color-text: #fff;
-$dark-color-text-reverse: #000;
-$dark-color-text-button: #fff;
-$dark-color-primary: #fd5351;
-$dark-color-secondary: #aeaeae;
-$dark-color-tertiary: #38373c;
-$dark-color-bg: #0f0e15;
-$dark-color-bg-section: #15141a;
-$dark-color-transparent: rgb(0 0 0 / 0%);
-$dark-color-bg-fields: #201f25;
-$dark-color-bg-fields-active: lighten(#201f25, 5);
-$dark-color-error: #fd5351;
-$grey-color-text: #e6e6e6;
-
-$light-color-text: #15141a;
-$light-color-text-reverse: #fff;
-$light-color-text-button: #fff;
-$light-color-primary: #fd5351;
-$light-color-secondary: #5c5c5c;
-$light-color-tertiary: #38373c;
-$light-color-bg: #f3f5f4;
-$light-color-bg-section: #fff;
-$light-color-transparent: rgb(255 255 255 / 0%);
-$light-color-bg-fields: #f3f5f4;
-$light-color-bg-fields-active: darken(#f3f5f4, 5);
-
-
+$color-black: #0f0e17;
+$color-charcoal: #2e2f3e;
+$color-white: #fffffe;
+$color-grey: #a7a9be;
+$color-orange: #ff8906;
+$color-carnation: #f25f4c;
+$color-pink: #e53170;
+$color-black-transparent: rgb(0 0 0 / 0%);
+$color-white-transparent: rgb(255 255 255 / 0%);
 $color-red: #d22b2b;
 $color-green: #355e3b;
 $color-blue: #0047ab;
-$color-white: #fff;
-$color-black: #000;
 
 // Fonts
 
@@ -47,7 +26,7 @@ $border-radius: 5px;
 $border-radius--big: 10px;
 $border-radius--bigger: 15px;
 
-$box-shadow: 0 3px 3px rgb(0 0 0 / 10%),        0 3px 20px rgb(0 0 0 / 20%);  /** Simulate Ambient Light - Color is a darkened shade of blue **/;
+$box-shadow: 0 3px 3px rgb(0 0 0 / 10%), 0 3px 20px rgb(0 0 0 / 20%);  /** Simulate Ambient Light - Color is a darkened shade of blue **/;
 
 // Responsive Breakpoints
 

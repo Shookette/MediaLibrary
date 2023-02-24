@@ -1,20 +1,21 @@
 @use './variables' as *;
 
 :root {
-    --color-default: #{$dark-color-text};
-    --color-reverse: #{$dark-color-text-reverse};
-    --color-text-button: #{$dark-color-text-button};
-    --color-primary: #{$dark-color-primary};
-    --color-tertiary: #{$dark-color-tertiary};
-    --color-secondary: #{$dark-color-secondary};
-    --color-bg: #{$dark-color-bg};
-    --color-bg-section: #{$dark-color-bg-section};
-    --color-bg-fields: #{$dark-color-bg-fields};
-    --color-bg-fields--active: #{$dark-color-bg-fields-active};
-    --color-transparent: #{$dark-color-transparent};
-    --color-logo: #{$dark-color-text};
-    --color-grey-text: #{$grey-color-text};
-    --color-error: #{$dark-color-error};
+    --color-bg: #{$color-black};
+    --color-title: #{$color-white};
+    --color-text: #{$color-grey};
+    --color-stroke: #{$color-white};
+    --color-active: #{$color-orange};
+    --color-text-button: #{$color-white};
+    --color-primary: #{$color-orange};
+    --color-secondary: #{$color-carnation};
+    --color-tertiary: #{$color-pink};
+    --color-bg-section: #{$color-charcoal};
+    --color-bg-input: #{$color-white};
+    --color-text-input: #{$color-black};
+    --color-transparent: #{$color-black-transparent};
+    --color-error: #{$color-red};
+    --font-family: #{$font-family};
     --font-light: #{$font-light};
     --font-regular: #{$font-regular};
     --font-bold: #{$font-bold};
@@ -22,26 +23,26 @@
 }
 
 [data-theme='light'] {
-    --color-default: #{$light-color-text};
-    --color-reverse: #{$light-color-text-reverse};
-    --color-text-button: #{$light-color-text-button};
-    --color-primary: #{$light-color-primary};
-    --color-tertiary: #{$light-color-tertiary};
-    --color-secondary: #{$light-color-secondary};
-    --color-bg: #{$light-color-bg};
-    --color-bg-section: #{$light-color-bg-section};
-    --color-bg-fields: #{$light-color-bg-fields};
-    --color-bg-fields--active: #{$light-color-bg-fields-active};
-    --color-transparent: #{$light-color-transparent};
-    --color-logo: rgb(0 0 0 / 10%);
-    --color-grey-text: #{$grey-color-text};
+    --color-bg: #{$color-white};
+    --color-title: #{$color-black};
+    --color-text: #{$color-grey};
+    --color-stroke: #{$color-black};
+    --color-active: #{$color-orange};
+    --color-text-button: #{$color-black};
+    --color-primary: #{$color-orange};
+    --color-secondary: #{$color-carnation};
+    --color-tertiary: #{$color-pink};
+    --color-bg-section: #{$color-charcoal};
+    --color-bg-input: #{$color-black};
+    --color-text-input: #{$color-white};
+    --color-transparent: #{$color-white-transparent};
 }
 
 body {
     background: var(--color-bg);
-    color: var(--color-default);
-    font-family: $font-family;
-    font-size: $font-size-base;
+    color: var(--color-text);
+    font-family: var(--font-family);
+    font-size: var(--font-size-base);
     line-height: 1.2;
     min-height: 100vh;
 }
@@ -52,22 +53,23 @@ select {
     background-color: var(--color-bg-fields);
 }
 
-.title-1 {
-    color: var(--color-default);
-    font-size: 20px;
-    font-weight: $font-bold;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: var(--color-title);
+    font-weight: var(--font-bold);
     text-transform: uppercase;
 }
 
-.title-2 {
-    color: var(--color-default);
-    font-size: 16px;
-    font-weight: $font-bold;
-    text-transform: uppercase;
+h1 {
+    font-size: 2rem;
 }
 
-.tc {
-    text-align: center;
+h2 {
+    font-size: 1.5rem;
 }
 
 .form {
@@ -91,9 +93,9 @@ select {
 
     &_input,
     &_textarea {
-        background-color: var(--color-bg-fields);
+        background-color: var(--color-bg-input);
         border-radius: 5px;
-        color: var(--color-default);
+        color: var(--color-text-input);
         cursor: pointer;
         min-height: 30px;
         padding: 0 10px;

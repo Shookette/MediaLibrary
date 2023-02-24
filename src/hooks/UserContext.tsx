@@ -1,9 +1,10 @@
-import React, {FC, ReactElement, createContext, useContext, useState} from 'react';
+import React, {FC, ReactElement, createContext, useContext, useEffect, useState} from 'react';
 import {
   User,
   createUserWithEmailAndPassword,
   deleteUser,
   getAuth,
+  onAuthStateChanged,
   sendEmailVerification,
   sendPasswordResetEmail,
   signInWithEmailAndPassword,
@@ -32,6 +33,15 @@ const UserContext = createContext<UserProvider | null>(null);
 const UserProvider: FC<UserProviderProps> = ({children}) => {
   const [user, setUser] = useState<User | null>(null);
   const auth = getAuth();
+
+  useEffect(() => {
+    // @TODO add session storage ? handle better reconnect for user
+    onAuthStateChanged(auth, (user) => {
+      if (user && user.emailVerified) {
+        setUser(user);
+      }
+    });
+  }, []);
 
   const login = (email: string, password: string) => {
     return signInWithEmailAndPassword(auth, email, password)

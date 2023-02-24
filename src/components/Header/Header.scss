@@ -1,9 +1,7 @@
-@use '../../styles/variables.scss' as *;
-
 .header {
     align-content: center;
     align-items: center;
-    border-bottom: 1px solid $color-white;
+    border-bottom: 1px solid var(--color-stroke);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -15,14 +13,15 @@
         gap: 50px;
         margin-top: 10px;
 
-        &_item {
-            font-size: 1.5rem;    
+        &_item {    
+            color: var(--color-title);
+            font-size: 1rem;
         }
 
         &_item:hover,
         &_item.active {
-            border-bottom: 3px solid $color-red;
-            color: $color-red;
+            border-bottom: 3px solid var(--color-active);
+            color: var(--color-active);
         }
             
     }

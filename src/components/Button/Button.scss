@@ -1,10 +1,8 @@
-@use '../../styles/variables.scss' as *;
-
 .button {
     align-items: center;
-    background-color: $color-white;
+    background-color: var(--color-primary);
     border-radius: 5px;
-    color: $color-black;
+    color: var(--color-text-button);
     cursor: pointer;
     display: flex;
     font-size: 1rem;
@@ -15,12 +13,14 @@
     padding: 5px;
 
     &--primary {
-        background-color: $color-white;
-        color: $color-black;
+        background-color: var(--color-primary);
     }
 
     &--secondary {
-        background-color: $color-blue;
-        color: $color-white;
+        background-color: var(--color-secondary);
+    }
+
+    &--tertiary {
+        background-color: var(--color-tertiary);
     }
 }

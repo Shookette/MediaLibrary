@@ -1,9 +1,7 @@
-@use '../../styles/variables.scss' as *;
-    
 .search-bar {
-    background-color: $color-white;
+    background-color: var(--color-bg-input);
     border-radius: 5px;
-    color: $color-black;
+    color: var(--color-text-input);
     margin: 0 10px;
     padding: 10px;
 

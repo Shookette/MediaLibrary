@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {useUserContext} from '../../hooks/UserContext';
 import Button from '../../components/Button/Button';
 import {SubmitHandler} from 'react-hook-form';
@@ -10,7 +10,7 @@ import RegisterForm from '../../components/RegisterForm/RegisterForm';
 import './LoginOrRegisterContainer.scss';
 
 const LoginOrRegisterContainer = () => {
-  const {login, register} = useUserContext();
+  const {login, register, user} = useUserContext();
   const [isRegisterMode, setIsRegisterMode] = useState(false);
   const navigate = useNavigate();
 
@@ -24,23 +24,29 @@ const LoginOrRegisterContainer = () => {
     register(data.email, data.password, data.username);
   };
 
+  useEffect(() => {
+    if (user) {
+      navigate('/');
+    }
+  }, [user]);
+
   return (
     <article className="login">
-      <h1 className="login_title">{!isRegisterMode ? 'Login' : 'Register'}</h1>
       <div className="login_content">
+        <h1 className="login_title">{!isRegisterMode ? 'Login' : 'Register'}</h1>
         {isRegisterMode ? (
           <RegisterForm handleOnSubmit={registerWithEmailAndPassword} />
         ) : (
           <LoginForm handleOnSubmit={loginWithEmailAndPassword} />
         )}
-      </div>
-      <div className="login_actions">
-        <Button
-          type="button"
-          displayType="primary"
-          handleOnClick={() => setIsRegisterMode(!isRegisterMode)}>
-          <span>{isRegisterMode ? 'Login' : 'Register'}</span>
-        </Button>
+        <div className="login_actions">
+          <Button
+            type="button"
+            displayType="secondary"
+            handleOnClick={() => setIsRegisterMode(!isRegisterMode)}>
+            <span>{isRegisterMode ? 'Login' : 'Register'}</span>
+          </Button>
+        </div>
       </div>
     </article>
   );

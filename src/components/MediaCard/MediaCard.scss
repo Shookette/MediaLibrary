@@ -2,6 +2,7 @@
 
 .media-card {
     border-radius: 15px;
+    cursor: pointer;
     display: flex;
     flex-direction: column;
     height: 250px;
@@ -31,7 +32,7 @@
             font-size: 50px;
             left: 10%;
             position: absolute;
-            text-shadow: 2px 2px 2px $dark-color-bg;
+            text-shadow: 2px 2px 2px var(--color-bg);
             top: 35%;
             transform: rotate(-45deg);
         }
