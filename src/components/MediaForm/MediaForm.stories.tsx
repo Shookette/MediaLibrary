@@ -1,6 +1,6 @@
 import React from 'react';
 import {ComponentStory, ComponentMeta} from '@storybook/react';
-import Media from '../../interfaces/Media';
+import {Media} from '../../interfaces/Media';
 import MediaForm from './MediaForm';
 import {SubmitHandler} from 'react-hook-form';
 

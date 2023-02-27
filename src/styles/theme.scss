@@ -15,6 +15,8 @@
     --color-text-input: #{$color-black};
     --color-transparent: #{$color-black-transparent};
     --color-error: #{$color-red};
+    --color-library-bg: #{$color-white};
+    --color-box-bg: #{$color-white};
     --font-family: #{$font-family};
     --font-light: #{$font-light};
     --font-regular: #{$font-regular};
@@ -96,7 +98,6 @@ h2 {
         background-color: var(--color-bg-input);
         border-radius: 5px;
         color: var(--color-text-input);
-        cursor: pointer;
         min-height: 30px;
         padding: 0 10px;
 

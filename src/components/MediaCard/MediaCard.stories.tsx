@@ -1,6 +1,6 @@
 import React from 'react';
 import {ComponentStory, ComponentMeta} from '@storybook/react';
-import Media from '../../interfaces/Media';
+import {Media} from '../../interfaces/Media';
 import MediaCard from './MediaCard';
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export

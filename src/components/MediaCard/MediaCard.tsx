@@ -1,5 +1,5 @@
 import React, {FC} from 'react';
-import Media from '../../interfaces/Media';
+import {Media} from '../../interfaces/Media';
 import './MediaCard.scss';
 
 interface MediaCardProps {

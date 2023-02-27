@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import Media from '../../interfaces/Media';
+import {Media} from '../../interfaces/Media';
 import {deleteMedia, getMediaByID} from '../../repository/MediaRepository';
 import {useNavigate, useParams} from 'react-router-dom';
 import Button from '../../components/Button/Button';

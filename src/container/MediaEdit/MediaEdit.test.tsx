@@ -5,7 +5,7 @@ import WithFirestore from '../../components/WithFirestore';
 import {MemoryRouter, Route, Routes} from 'react-router-dom';
 import * as repository from '../../repository/MediaRepository';
 import MediaEdit from './MediaEdit';
-import Media from '../../interfaces/Media';
+import {Media} from '../../interfaces/Media';
 
 const mockedUsedNavigate = jest.fn();
 

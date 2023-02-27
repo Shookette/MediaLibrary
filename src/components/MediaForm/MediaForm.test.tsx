@@ -1,6 +1,6 @@
 import {screen, render, fireEvent, waitFor} from '@testing-library/react';
 import React from 'react';
-import Media from '../../interfaces/Media';
+import {Media} from '../../interfaces/Media';
 import MediaForm from './MediaForm';
 
 describe('MediaForm Component', () => {

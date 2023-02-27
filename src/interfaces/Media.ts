@@ -1,4 +1,6 @@
-export default interface Media {
+export type MediaType = 'book' | 'videogame' | 'boardgame' | 'vinyl' | 'manga' | 'comics';
+
+export type Media = {
   id: string;
   title: string;
   description?: string;
@@ -6,6 +8,6 @@ export default interface Media {
   image?: string;
   lend: boolean;
   comment?: string;
-  type: 'book' | 'videogame' | 'boardgame';
+  type: MediaType;
   userUID: string;
-}
+};

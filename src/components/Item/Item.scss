@@ -1,0 +1,20 @@
+.item {
+    display: flex;
+    justify-content: center;
+
+    &--videogame {  
+        background-color: green;
+        height: 100px;
+        width: 30px;
+    }
+
+    &_title { 
+        font-size: 0.7rem;
+        line-height: 0;
+        overflow: hidden;
+        padding: 5px;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        writing-mode: vertical-rl;
+    }
+}

@@ -16,7 +16,7 @@ import {
   query,
   where,
 } from 'firebase/firestore';
-import Media from '../interfaces/Media';
+import {Media} from '../interfaces/Media';
 
 const getDocRef = (collectionName: string, id: string): DocumentReference => {
   const db = getFirestore();

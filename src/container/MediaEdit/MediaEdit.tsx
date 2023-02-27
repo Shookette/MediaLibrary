@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {SubmitHandler} from 'react-hook-form';
-import Media from '../../interfaces/Media';
+import {Media} from '../../interfaces/Media';
 import './MediaEdit.scss';
 import * as repository from '../../repository/MediaRepository';
 import {useNavigate, useParams} from 'react-router-dom';

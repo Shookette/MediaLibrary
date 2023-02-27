@@ -3,7 +3,7 @@ import React from 'react';
 import UserProvider from '../../hooks/UserContext';
 import WithFirestore from '../../components/WithFirestore';
 import * as repository from '../../repository/MediaRepository';
-import Media from '../../interfaces/Media';
+import {Media} from '../../interfaces/Media';
 import MediaDetail from './MediaDetail';
 import {MemoryRouter, Route, Routes} from 'react-router-dom';
 

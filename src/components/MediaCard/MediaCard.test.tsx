@@ -1,7 +1,7 @@
 import {screen, render} from '@testing-library/react';
 import React from 'react';
 import MediaCard from './MediaCard';
-import Media from '../../interfaces/Media';
+import {Media} from '../../interfaces/Media';
 
 describe('MediaCard Component', () => {
   const defaultMedia: Media = {

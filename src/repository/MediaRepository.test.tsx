@@ -1,5 +1,5 @@
 import {getMediaByID, getMedias} from './MediaRepository';
-import Media from '../interfaces/Media';
+import {Media} from '../interfaces/Media';
 import initFirebase from '../firebaseLoader';
 
 const mockedGetDoc = jest.fn();

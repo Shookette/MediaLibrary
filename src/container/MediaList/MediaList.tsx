@@ -1,5 +1,5 @@
 import React, {ChangeEvent, useEffect, useState} from 'react';
-import Media from '../../interfaces/Media';
+import {Media} from '../../interfaces/Media';
 import './MediaList.scss';
 
 import MediaCard from '../../components/MediaCard/MediaCard';
@@ -7,6 +7,7 @@ import SearchBar from '../../components/SearchBar/SearchBar';
 import {getMedias} from '../../repository/MediaRepository';
 import {useNavigate} from 'react-router-dom';
 import {useUserContext} from '../../hooks/UserContext';
+import Library from '../../components/Library/Library';
 
 const MediaList = () => {
   const [medias, setMedias] = useState<Media[]>([]);

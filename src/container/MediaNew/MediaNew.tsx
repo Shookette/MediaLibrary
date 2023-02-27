@@ -1,6 +1,6 @@
 import React from 'react';
 import {SubmitHandler} from 'react-hook-form';
-import Media from '../../interfaces/Media';
+import {Media} from '../../interfaces/Media';
 import './MediaNew.scss';
 import {setMedia} from '../../repository/MediaRepository';
 import {useNavigate} from 'react-router-dom';
