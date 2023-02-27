@@ -7,11 +7,11 @@ import MediaDetail from './container/MediaDetail/MediaDetail';
 import MediaEdit from './container/MediaEdit/MediaEdit';
 import LoginOrRegisterContainer from './container/LoginOrRegisterContainer/LoginOrRegisterContainer';
 import {useUserContext} from './hooks/UserContext';
+import useTheme from './hooks/UseTheme';
 
 type ProtectedRouteProps = {children: ReactElement};
 const ProtectedRoute: FC<ProtectedRouteProps> = ({children}) => {
   const {user} = useUserContext();
-
   if (!user) {
     return <Navigate to="/login" replace />;
   }
@@ -20,6 +20,8 @@ const ProtectedRoute: FC<ProtectedRouteProps> = ({children}) => {
 };
 
 const App: FC = () => {
+  useTheme();
+
   return (
     <Routes>
       <Route path="/" element={<Layout />}>
