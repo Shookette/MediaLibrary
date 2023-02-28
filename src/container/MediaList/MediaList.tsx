@@ -42,6 +42,9 @@ const MediaList = () => {
           />
         ))}
       </div>
+      <div className="media-list-page_content">
+        <Library medias={mediasFiltered} handleOnClick={handleMediaCardOnClick} />
+      </div>
     </article>
   );
 };

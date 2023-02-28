@@ -14,7 +14,7 @@ const MediaForm: FC<MediaFormProps> = ({media, handleOnSubmit}) => {
     formState: {errors},
   } = useForm<Media>({defaultValues: media});
 
-  const options = ['book', 'videogame', 'boardgame'];
+  const options = ['book', 'videogame', 'boardgame', 'vinyl', 'manga', 'comics'];
 
   return (
     <form className="form" onSubmit={handleSubmit(handleOnSubmit)}>

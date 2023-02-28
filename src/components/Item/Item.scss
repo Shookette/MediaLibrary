@@ -1,20 +1,150 @@
 .item {
+    border-right: 1px solid black;
+    cursor: pointer;
     display: flex;
     justify-content: center;
-
-    &--videogame {  
-        background-color: green;
-        height: 100px;
-        width: 30px;
-    }
+    margin-bottom: 5px;
+    position: relative;
 
     &_title { 
-        font-size: 0.7rem;
+        font-size: 0.6rem;
         line-height: 0;
         overflow: hidden;
         padding: 5px;
         text-overflow: ellipsis;
         white-space: nowrap;
         writing-mode: vertical-rl;
+    }
+
+    &--book {  
+        background-color: green;
+        height: 150px;
+        width: 20px;
+
+        &--2 {
+            left: 62px;
+            position: absolute;
+            transform: rotate(-10deg);
+        }
+
+        &--3 {
+            position: absolute;
+            right: 42px;
+            transform: rotate(10deg);
+        }
+
+        &--4 {
+            position: absolute;
+            right: 10px;
+        }
+    }
+
+    &--comics {  
+        background-color: pink;
+        height: 150px;
+        width: 20px;
+
+        &--0 {
+            width: 40px;
+        }
+
+        &--3 {
+            width: 15px;
+        }
+
+        &--4 {
+            width: 30px;
+        }
+    }
+
+    &--manga {  
+        background-color: orange;
+        height: 100px;
+        width: 25px;
+
+        &--0 {
+            height: 120px;
+            width: 30px;
+        }
+
+        &--3 {
+            height: 80px;
+            width: 15px;
+        }
+
+        &--4 {
+            height: 150px;
+            width: 40px;
+        }
+    }
+
+    &--videogame {  
+        background-color: red;
+        border-radius: 5px;
+        height: 100px;
+        width: 20px;
+
+        &--4 {
+            height: 20px;
+            width: 100px;
+        }
+
+        &--4 .item_title {
+            margin: auto 0;
+            writing-mode: horizontal-tb;
+        }
+    }
+
+    &--boardgame {  
+        background-color: blue;
+        border-top: 1px solid black;
+        height: 30px;
+        margin-bottom: 0;
+        margin-left: 10px;
+        width: 170px;
+
+        &--1 {
+            height: 20px;
+            width: 60px;
+        }
+
+        &--3 {
+            height: 40px;
+            width: 180px;
+        }
+
+        &--4 {
+            width: 100px;
+        }
+    }
+
+    &--boardgame &_title {
+        margin: auto 0;
+        writing-mode: horizontal-tb;
+    }
+
+    &--boardgame:first-child {
+        margin-bottom: 5px;
+    }
+
+    &--vinyl {  
+        background-color: teal;
+        height: 170px;
+        width: 10px;
+
+        &--2,
+        &--4 {
+            width: 30px;
+        }
+    }
+
+    &--vinyl:last-child {
+        left: 35px;
+        position: absolute;
+        transform: rotate(-10deg);
+    }
+
+    &:first-child {
+        margin-left: 10px;
     }
 }

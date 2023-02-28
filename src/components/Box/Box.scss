@@ -1,9 +1,7 @@
 .box {
     background-color: var(--color-box-bg);
-    border: 1px solid #ccc;
     height: 200px;
-    margin: 80px;
-    perspective: 400px;
+    perspective: 1000px;
     width: 200px;
 
     &_cube {
@@ -27,34 +25,54 @@
             width: 200px;
 
             &--front { 
-                background: hsl(0deg 100% 50% / 70%);
+                background: none;
                 transform: rotateY(0deg) translateZ(100px); 
             }
 
             &--right { 
-                background: hsl(60deg 100% 50% / 70%);
+                // background: linear-gradient(270deg, rgb(160 160 160 / 100%) 0%, rgb(255 255 255 / 100%) 100%);
+                background: #a0a0a0;
+                background-image: var(--texture-library);
                 transform: rotateY(90deg) translateZ(100px);
             }
 
             &--back { 
-                background: hsl(120deg 100% 50% / 70%);
+                background: #a0a0a0;
+                background-image: var(--texture-library);
                 transform: rotateY(180deg) translateZ(100px);
             }
 
             &--left { 
-                background: hsl(180deg 100% 50% / 70%);
+                // background-color: linear-gradient(90deg, rgb(160 160 160 / 100%) 0%, rgb(255 255 255 / 100%) 100%);
+                background: #a0a0a0;
+                background-image: var(--texture-library);
                 transform: rotateY(-90deg) translateZ(100px); 
             }
 
             &--top { 
-                background: hsl(240deg 100% 50% / 70%);
+                // background: linear-gradient(180deg, rgb(160 160 160 / 100%) 0%, rgb(255 255 255 / 100%) 100%);
+                background: #a0a0a0;
+                background-image: var(--texture-library);
                 transform: rotateX(90deg) translateZ(100px);
             }
 
             &--bottom { 
-                background: hsl(300deg 100% 50% / 70%);
+                // background: linear-gradient(0deg, rgb(160 160 160 / 100%) 0%, rgb(255 255 255 / 100%) 100%);
+                background: #a0a0a0;
+                background-image: var(--texture-library);
                 transform: rotateX(-90deg) translateZ(100px);
             }
+        }
+    }
+
+    &--boardgame {
+        display: flex;
+    }
+
+    &--boardgame &_cube {
+        &_face {
+            align-items: flex-start;
+            flex-direction: column-reverse;
         }
     }
 }

@@ -5,13 +5,18 @@ import './Item.scss';
 type ItemProps = {
   media: Media;
   index: number;
+  handleOnClick: (media: Media) => void;
+  handleOnHover: (media: Media) => void;
 };
 
-const Item: FC<ItemProps> = ({media, index}) => {
+const Item: FC<ItemProps> = ({media, index, handleOnClick, handleOnHover}) => {
   const className: string[] = ['item', `item--${media.type}`, `item--${media.type}--${index}`];
 
   return (
-    <article className={className.join(' ')}>
+    <article
+      className={className.join(' ')}
+      onClick={() => handleOnClick(media)}
+      onMouseOver={() => handleOnHover(media)}>
       <h2 className="item_title">{media.title}</h2>
     </article>
   );
