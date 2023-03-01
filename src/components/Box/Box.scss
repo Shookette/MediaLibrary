@@ -1,28 +1,24 @@
 .box {
     background-color: var(--color-box-bg);
-    height: 200px;
+    height: var(--box-square-size);
     perspective: 1000px;
-    width: 200px;
+    width: var(--box-square-size);
 
     &_cube {
-        height: 200px;
+        height: var(--box-square-size);
         position: relative;
         transform: translateZ(-100px);
         transform-style: preserve-3d;
-        transition: transform 1s;
-        width: 200px;
+        width: var(--box-square-size);
 
         &_face {
             align-items: flex-end;
-            color: white;
+            background: #a0a0a0;
+            background-image: var(--texture-library);
             display: flex;
-            font-size: 40px;
-            font-weight: bold;
-            height: 200px;
-            line-height: 200px;
+            height: var(--box-square-size);
             position: absolute;
-            text-align: center;
-            width: 200px;
+            width: var(--box-square-size);
 
             &--front { 
                 background: none;
@@ -30,36 +26,24 @@
             }
 
             &--right { 
-                // background: linear-gradient(270deg, rgb(160 160 160 / 100%) 0%, rgb(255 255 255 / 100%) 100%);
-                background: #a0a0a0;
-                background-image: var(--texture-library);
                 transform: rotateY(90deg) translateZ(100px);
             }
 
             &--back { 
-                background: #a0a0a0;
+                background: #727272;
                 background-image: var(--texture-library);
                 transform: rotateY(180deg) translateZ(100px);
             }
 
             &--left { 
-                // background-color: linear-gradient(90deg, rgb(160 160 160 / 100%) 0%, rgb(255 255 255 / 100%) 100%);
-                background: #a0a0a0;
-                background-image: var(--texture-library);
                 transform: rotateY(-90deg) translateZ(100px); 
             }
 
             &--top { 
-                // background: linear-gradient(180deg, rgb(160 160 160 / 100%) 0%, rgb(255 255 255 / 100%) 100%);
-                background: #a0a0a0;
-                background-image: var(--texture-library);
                 transform: rotateX(90deg) translateZ(100px);
             }
 
             &--bottom { 
-                // background: linear-gradient(0deg, rgb(160 160 160 / 100%) 0%, rgb(255 255 255 / 100%) 100%);
-                background: #a0a0a0;
-                background-image: var(--texture-library);
                 transform: rotateX(-90deg) translateZ(100px);
             }
         }
@@ -67,6 +51,11 @@
 
     &--boardgame {
         display: flex;
+
+        .item-filler {
+            margin-bottom: 0;
+            margin-left: 10px;
+        }
     }
 
     &--boardgame &_cube {
@@ -74,5 +63,11 @@
             align-items: flex-start;
             flex-direction: column-reverse;
         }
+    }
+}
+
+.image {
+    &--filler {
+        height: 100px;
     }
 }

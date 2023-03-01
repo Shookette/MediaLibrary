@@ -1,8 +1,9 @@
-import React, {FC} from 'react';
+import React, {FC, useMemo} from 'react';
 import {BoxType} from '../../interfaces/Box';
 import './Box.scss';
 import Item from '../Item/Item';
 import {Media} from '../../interfaces/Media';
+import ItemFiller from '../ItemFiller/ItemFiller';
 
 type BoxProps = {
   box: BoxType;
@@ -13,6 +14,7 @@ type BoxProps = {
 const Box: FC<BoxProps> = ({box, handleOnClick, handleOnHover}) => {
   const className: string[] = ['box', `box--${box.type}`];
 
+  const fillerRandom = useMemo(() => Math.floor(Math.random() * 7), []);
   return (
     <section className={className.join(' ')}>
       <div className="box_cube">
@@ -26,6 +28,7 @@ const Box: FC<BoxProps> = ({box, handleOnClick, handleOnHover}) => {
               handleOnHover={handleOnHover}
             />
           ))}
+          {box.medias.length < 5 && <ItemFiller index={fillerRandom} />}
         </div>
         <div className="box_cube_face box_cube_face--back"></div>
         <div className="box_cube_face box_cube_face--right"></div>

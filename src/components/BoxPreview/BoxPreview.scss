@@ -2,24 +2,26 @@
     background-color: var(--color-box-bg);
     display: flex;
     flex-direction: column;
-    height: 200px;
+    height: var(--box-square-size);
     justify-content: flex-end;
     overflow: hidden;
     position: relative;
-    width: 200px;
+    width: var(--box-square-size);
 
     &_image {
+        border: 15px solid #a0a0a0;
         height: 100%;
-        max-height: 85%;
         object-fit: cover;
         width: auto;
+
     }
 
     &_title {
-        align-items: center;
-        color: black;
-        display: flex;
-        justify-content: center;
-        min-height: 15%;
+        bottom: 5px;
+        color: white;
+        position: absolute;
+        text-align: center;
+        text-shadow: 1px 1px 2px black;
+        width: 100%;
     }
 }

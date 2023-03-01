@@ -7,7 +7,6 @@ import {
   collection,
   DocumentReference,
   CollectionReference,
-  QueryDocumentSnapshot,
   QuerySnapshot,
   DocumentSnapshot,
   Firestore,
@@ -17,6 +16,7 @@ import {
   where,
 } from 'firebase/firestore';
 import {Media} from '../interfaces/Media';
+import {sortList, transformCollectionToArray} from './utils';
 
 const getDocRef = (collectionName: string, id: string): DocumentReference => {
   const db = getFirestore();
@@ -32,12 +32,11 @@ const getMedias = async (userUID: string): Promise<Media[]> => {
   const result: QuerySnapshot = await getDocs(
     query(getCollectionRef('medias'), where('userUID', '==', userUID))
   );
-  const arrayMedia: Media[] = [];
 
-  result.forEach((media: QueryDocumentSnapshot) => {
-    arrayMedia.push(media.data() as Media);
-  });
-  return arrayMedia;
+  const resultArray = transformCollectionToArray<Media>(result);
+  sortList(resultArray, 'title');
+
+  return resultArray;
 };
 
 const getMediaByID = async (id: string): Promise<Media | null> => {

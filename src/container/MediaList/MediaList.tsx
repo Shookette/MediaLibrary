@@ -2,7 +2,6 @@ import React, {ChangeEvent, useEffect, useState} from 'react';
 import {Media} from '../../interfaces/Media';
 import './MediaList.scss';
 
-import MediaCard from '../../components/MediaCard/MediaCard';
 import SearchBar from '../../components/SearchBar/SearchBar';
 import {getMedias} from '../../repository/MediaRepository';
 import {useNavigate} from 'react-router-dom';
@@ -16,12 +15,11 @@ const MediaList = () => {
   const {user} = useUserContext();
 
   useEffect(() => {
-    getMedias(user?.uid ?? '').then((medias: Media[]) => setMedias(medias));
+    getMedias(user?.uid ?? '').then((medias: Media[]) => {
+      setMedias(medias);
+      setMediasFiltered(medias);
+    });
   }, [user]);
-
-  useEffect(() => {
-    setMediasFiltered(medias);
-  }, [medias]);
 
   const handleOnSearch = (event: ChangeEvent<HTMLInputElement>) => {
     const searchString = event.target.value.toLowerCase();
@@ -33,15 +31,6 @@ const MediaList = () => {
   return (
     <article className="media-list-page">
       <SearchBar handleOnChange={handleOnSearch} />
-      <div className="media-list-page_content">
-        {mediasFiltered.map((media: Media) => (
-          <MediaCard
-            media={media}
-            key={media.id}
-            handleOnClick={() => handleMediaCardOnClick(media)}
-          />
-        ))}
-      </div>
       <div className="media-list-page_content">
         <Library medias={mediasFiltered} handleOnClick={handleMediaCardOnClick} />
       </div>

@@ -19,14 +19,20 @@ describe('Library Component', () => {
     userUID: '123',
   };
 
+  const handleOnClick = () => null;
+
   it('should not have box when 0 media is pass in props', () => {
-    const {getByText, container} = render(<Library medias={[]}></Library>);
+    const {getByText, container} = render(
+      <Library medias={[]} handleOnClick={handleOnClick}></Library>
+    );
     expect(getByText('No Content')).toBeTruthy();
     expect(container.querySelectorAll('.library').length).toEqual(1);
   });
 
   it('should have one box', () => {
-    const {container} = render(<Library medias={[defaultMedia]}></Library>);
+    const {container} = render(
+      <Library medias={[defaultMedia]} handleOnClick={handleOnClick}></Library>
+    );
     expect(container.querySelectorAll('.box').length).toEqual(1);
   });
 
@@ -44,7 +50,9 @@ describe('Library Component', () => {
       {...defaultMedia, id: '10'},
     ];
 
-    const {container} = render(<Library medias={tenMedias}></Library>);
+    const {container} = render(
+      <Library medias={tenMedias} handleOnClick={handleOnClick}></Library>
+    );
     expect(container.querySelectorAll('.box').length).toEqual(2);
   });
 
@@ -62,7 +70,9 @@ describe('Library Component', () => {
       {...defaultMedia, id: '10'},
     ];
 
-    const {container} = render(<Library medias={tenMedias}></Library>);
+    const {container} = render(
+      <Library medias={tenMedias} handleOnClick={handleOnClick}></Library>
+    );
     expect(container.querySelectorAll('.box').length).toEqual(3);
   });
 
@@ -76,7 +86,9 @@ describe('Library Component', () => {
       {...defaultMedia, type: 'vinyl', id: '6'},
     ];
 
-    const {container} = render(<Library medias={tenMedias}></Library>);
+    const {container} = render(
+      <Library medias={tenMedias} handleOnClick={handleOnClick}></Library>
+    );
     expect(container.querySelectorAll('.box').length).toEqual(6);
   });
 });

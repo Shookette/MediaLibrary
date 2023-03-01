@@ -20,13 +20,18 @@ describe('Box Component', () => {
     userUID: '123',
   };
 
+  const handleOnClick = () => null;
+  const handleOnHover = () => null;
+
   it('should render with box type as class', () => {
     const box: BoxType = {
       type: 'book',
       medias: [],
     };
 
-    const {container} = render(<Box box={box}></Box>);
+    const {container} = render(
+      <Box box={box} handleOnClick={handleOnClick} handleOnHover={handleOnHover}></Box>
+    );
     expect(container.querySelectorAll('.box').length).toEqual(1);
     expect(container.querySelectorAll(`.box--${box.type}`).length).toEqual(1);
   });
@@ -43,7 +48,9 @@ describe('Box Component', () => {
       ],
     };
 
-    const {container} = render(<Box box={box}></Box>);
+    const {container} = render(
+      <Box box={box} handleOnClick={handleOnClick} handleOnHover={handleOnHover}></Box>
+    );
     expect(container.querySelectorAll('.box').length).toEqual(1);
     expect(container.querySelectorAll('.item').length).toEqual(5);
   });
