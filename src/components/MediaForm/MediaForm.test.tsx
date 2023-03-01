@@ -8,7 +8,7 @@ describe('MediaForm Component', () => {
     id: '1234',
     title: 'Dai Dark',
     type: 'book',
-    lend: false,
+    status: 'owned',
     image: 'https://m.media-amazon.com/images/I/81eN2lF9MmL.jpg',
     release: '',
     description: `Necromancy, space action, and dark humor collide in this wildly creative new series from the creator of Dorohedoro!
@@ -28,7 +28,7 @@ describe('MediaForm Component', () => {
     expect(screen.getByRole('textbox', {name: /Release Date/i})).toBeTruthy();
     expect(screen.getByRole('textbox', {name: /Image URL/i})).toBeTruthy();
     expect(screen.getByRole('combobox', {name: /Media Type/i})).toBeTruthy();
-    expect(screen.getByRole('checkbox', {name: /Lend/i})).toBeTruthy();
+    expect(screen.getByRole('combobox', {name: /Status/i})).toBeTruthy();
     expect(screen.getByRole('button', {name: /Submit/i})).toBeTruthy();
   });
 
@@ -38,6 +38,14 @@ describe('MediaForm Component', () => {
     expect(screen.getByRole('option', {name: /book/i})).toBeTruthy();
     expect(screen.getByRole('option', {name: /videogame/i})).toBeTruthy();
     expect(screen.getByRole('option', {name: /boardgame/i})).toBeTruthy();
+  });
+
+  it('should have all media status as option', () => {
+    render(<MediaForm handleOnSubmit={mockHandleOnSubmit} />);
+    expect(screen.getByRole('combobox', {name: /Status/i})).toBeTruthy();
+    expect(screen.getByRole('option', {name: /owned/i})).toBeTruthy();
+    expect(screen.getByRole('option', {name: /lend/i})).toBeTruthy();
+    expect(screen.getByRole('option', {name: /borrowed/i})).toBeTruthy();
   });
 
   it('should have all input with data', () => {
@@ -55,6 +63,11 @@ describe('MediaForm Component', () => {
     expect((screen.getByRole('textbox', {name: /Image URL/i}) as HTMLInputElement).value).toEqual(
       defaultMedia.image
     );
+
+    expect((screen.getByRole('combobox', {name: /Status/i}) as HTMLInputElement).value).toEqual(
+      defaultMedia.status
+    );
+
     expect((screen.getByRole('combobox', {name: /Media Type/i}) as HTMLInputElement).value).toEqual(
       defaultMedia.type
     );

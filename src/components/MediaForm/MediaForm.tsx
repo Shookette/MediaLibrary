@@ -14,7 +14,8 @@ const MediaForm: FC<MediaFormProps> = ({media, handleOnSubmit}) => {
     formState: {errors},
   } = useForm<Media>({defaultValues: media});
 
-  const options = ['book', 'videogame', 'boardgame', 'vinyl', 'manga', 'comics'];
+  const typeOptions = ['book', 'videogame', 'boardgame', 'vinyl', 'manga', 'comics'];
+  const statusOptions = ['owned', 'lend', 'borrowed'];
 
   return (
     <form className="form" onSubmit={handleSubmit(handleOnSubmit)}>
@@ -35,19 +36,23 @@ const MediaForm: FC<MediaFormProps> = ({media, handleOnSubmit}) => {
         Image URL
       </label>
       <input className="form_input" id="image" {...register('image')} />
-      <div className="form_inline">
-        <label className="form_label" htmlFor="lend">
-          Lend
-        </label>
-        <input className="form_checkbox" type="checkbox" id="lend" {...register('lend')} />
-      </div>
+      <label className="form_label" htmlFor="status">
+        Status
+      </label>
+      <select className="form_input" id="status" {...register('status', {required: true})}>
+        {statusOptions.map((statusOption) => (
+          <option key={statusOption} value={statusOption}>
+            {statusOption}
+          </option>
+        ))}
+      </select>
       <label className="form_label" htmlFor="type">
         Media Type
       </label>
       <select className="form_input" id="type" {...register('type', {required: true})}>
-        {options.map((option) => (
-          <option key={option} value={option}>
-            {option}
+        {typeOptions.map((typeOption) => (
+          <option key={typeOption} value={typeOption}>
+            {typeOption}
           </option>
         ))}
       </select>

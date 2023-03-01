@@ -8,7 +8,7 @@ describe('BoxPreview Component', () => {
     id: '1234',
     title: 'Dai Dark',
     type: 'book',
-    lend: false,
+    status: 'owned',
     image: 'https://m.media-amazon.com/images/I/81eN2lF9MmL.jpg',
     release: '',
     description: `Necromancy, space action, and dark humor collide in this wildly creative new series from the creator of Dorohedoro!
@@ -20,11 +20,21 @@ describe('BoxPreview Component', () => {
   };
 
   it('should display the cover of the media when it pass in props', () => {
-    const {getByRole} = render(<BoxPreview media={defaultMedia} />);
+    render(<BoxPreview media={defaultMedia} />);
 
     const image: HTMLImageElement = screen.getByRole<HTMLImageElement>('img', {});
 
-    expect(getByRole('heading', {name: /Dai Dark/i})).toBeTruthy();
     expect(image.src).toEqual(defaultMedia.image);
+  });
+
+  it('should display the title of the media', () => {
+    const {getByRole} = render(<BoxPreview media={defaultMedia} />);
+
+    expect(getByRole('heading', {name: /Dai Dark/i})).toBeTruthy();
+  });
+
+  it('should display the media status owned', () => {
+    const {getByRole} = render(<BoxPreview media={defaultMedia} />);
+    expect(getByRole('heading', {name: /owned/i})).toBeTruthy();
   });
 });

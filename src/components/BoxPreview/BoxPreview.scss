@@ -25,4 +25,22 @@
         text-align: center;
         width: 100%;
     }
+
+    &_status {
+        @include title-with-shadow();
+
+        align-items: center;
+        background-color: var(--color-semi-transparent);
+        border-bottom-left-radius: 5px;
+        border-bottom-right-radius: 5px;
+        display: flex;
+        height: 100px;
+        justify-content: center;
+        left: 5px;
+        padding: 5px;
+        position: absolute;
+        top: 0;
+        width: 30px;
+        writing-mode: vertical-lr;
+    }
 }

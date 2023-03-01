@@ -8,7 +8,7 @@ describe('MediaCard Component', () => {
     id: '1234',
     title: 'Dai Dark',
     type: 'book',
-    lend: false,
+    status: 'owned',
     image: 'https://m.media-amazon.com/images/I/81eN2lF9MmL.jpg',
     release: '',
     description: `Necromancy, space action, and dark humor collide in this wildly creative new series from the creator of Dorohedoro!
@@ -48,7 +48,7 @@ describe('MediaCard Component', () => {
   });
 
   it('should have a media-card--lend classname because of book type', () => {
-    const media: Media = {...defaultMedia, lend: true};
+    const media: Media = {...defaultMedia, status: 'lend'};
     const {container} = render(<MediaCard media={media} handleOnClick={() => null} />);
     expect(container.getElementsByClassName('media-card--lend')).toBeTruthy();
   });

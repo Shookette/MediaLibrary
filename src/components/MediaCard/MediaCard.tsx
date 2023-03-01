@@ -11,7 +11,7 @@ const MediaCard: FC<MediaCardProps> = ({media, handleOnClick}) => {
   return (
     <article
       onClick={handleOnClick}
-      className={`media-card media-card--${media.type} ${media.lend ? 'media-card--lend' : ''}`}>
+      className={`media-card media-card--${media.type} media-card--${media.status}`}>
       {media.image && (
         <img className="media-card_image" alt={`${media.title} cover`} src={media.image} />
       )}

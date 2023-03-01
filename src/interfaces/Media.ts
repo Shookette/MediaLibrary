@@ -1,4 +1,5 @@
 export type MediaType = 'book' | 'videogame' | 'boardgame' | 'vinyl' | 'manga' | 'comics';
+export type MediaStatus = 'owned' | 'lend' | 'borrowed';
 
 export type Media = {
   id: string;
@@ -6,7 +7,7 @@ export type Media = {
   description?: string;
   release?: string;
   image?: string;
-  lend: boolean;
+  status: MediaStatus;
   comment?: string;
   type: MediaType;
   userUID: string;

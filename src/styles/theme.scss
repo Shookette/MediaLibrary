@@ -14,6 +14,7 @@
     --color-bg-input: #{$color-white};
     --color-text-input: #{$color-black};
     --color-transparent: #{$color-black-transparent};
+    --color-semi-transparent: #{$color-black-semi-transparent};
     --color-error: #{$color-red};
     --color-library-bg: #{$color-white};
     --color-library-side-bg: #{$color-grey};
@@ -43,6 +44,8 @@
     --color-bg-input: #{$color-black};
     --color-text-input: #{$color-white};
     --color-transparent: #{$color-white-transparent};
+    --color-semi-transparent: #{$color-white-semi-transparent};
+
 }
 
 body {

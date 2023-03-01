@@ -34,7 +34,7 @@ const MediaDetail = () => {
       <div className="media-detail_content">
         <img className="media-detail_image" alt={`${media?.title} cover`} src={media?.image} />
         <p className="media-detail_description">{media?.description}</p>
-        <p className="media-detail_lend">{media?.lend}</p>
+        <p className="media-detail_status">{media?.status}</p>
       </div>
 
       <div className="media-detail_actions">
