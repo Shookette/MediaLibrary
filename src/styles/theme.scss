@@ -16,6 +16,8 @@
     --color-transparent: #{$color-black-transparent};
     --color-error: #{$color-red};
     --color-library-bg: #{$color-white};
+    --color-library-side-bg: #{$color-grey};
+    --color-library-back-bg: #{$color-grey-dark};
     --color-box-bg: #{$color-white};
     --texture-library: url('https://www.transparenttextures.com/patterns/diamond-upholstery.png');
     --font-family: #{$font-family};
@@ -24,6 +26,7 @@
     --font-bold: #{$font-bold};
     --font-size-base: #{$font-size-base};
     --box-square-size: 200px;
+    --shadow-color: #{$color-black};
 }
 
 [data-theme='light'] {

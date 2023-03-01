@@ -1,7 +1,7 @@
 .box {
     background-color: var(--color-box-bg);
     height: var(--box-square-size);
-    perspective: 1000px;
+    perspective: 700px;
     width: var(--box-square-size);
 
     &_cube {
@@ -12,16 +12,16 @@
         width: var(--box-square-size);
 
         &_face {
-            align-items: flex-end;
-            background: #a0a0a0;
+            background: var(--color-library-side-bg);
             background-image: var(--texture-library);
-            display: flex;
             height: var(--box-square-size);
             position: absolute;
             width: var(--box-square-size);
 
-            &--front { 
+            &--front {
+                align-items: flex-end;
                 background: none;
+                display: flex;
                 transform: rotateY(0deg) translateZ(100px); 
             }
 
@@ -30,7 +30,7 @@
             }
 
             &--back { 
-                background: #727272;
+                background: var(--color-library-back-bg);
                 background-image: var(--texture-library);
                 transform: rotateY(180deg) translateZ(100px);
             }
@@ -63,11 +63,5 @@
             align-items: flex-start;
             flex-direction: column-reverse;
         }
-    }
-}
-
-.image {
-    &--filler {
-        height: 100px;
     }
 }

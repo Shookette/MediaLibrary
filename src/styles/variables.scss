@@ -1,7 +1,10 @@
+// Colors
 $color-black: #0f0e17;
 $color-charcoal: #2e2f3e;
 $color-white: #fffffe;
-$color-grey: #a7a9be;
+$color-grey-light: #a7a9be;
+$color-grey: #a0a0a0;
+$color-grey-dark: #727272;
 $color-orange: #ff8906;
 $color-carnation: #f25f4c;
 $color-pink: #e53170;
@@ -12,7 +15,6 @@ $color-green: #355e3b;
 $color-blue: #0047ab;
 
 // Fonts
-
 $font-family: 'SF Pro Text', sans-serif;
 $font-size-base: 14px;
 
@@ -21,7 +23,6 @@ $font-regular: normal;
 $font-bold: bold;
 
 // Styles
-
 $border-radius: 5px;
 $border-radius--big: 10px;
 $border-radius--bigger: 15px;
@@ -29,7 +30,6 @@ $border-radius--bigger: 15px;
 $box-shadow: 0 3px 3px rgb(0 0 0 / 10%), 0 3px 20px rgb(0 0 0 / 20%);  /** Simulate Ambient Light - Color is a darkened shade of blue **/;
 
 // Responsive Breakpoints
-
 $breakpoints: (xs 500),
     (s 768),
     (m 960),
@@ -38,3 +38,12 @@ $breakpoints: (xs 500),
 
 $gutter-padding--mobile: 20px;
 $gutter-padding--desktop: 25px;
+
+@mixin random-background() {
+    background: rgb(random(255) random(255) random(255));
+}
+
+@mixin title-with-shadow() {
+    color: var(--color-title);
+    text-shadow: 1px 1px 2px var(--shadow-color);
+}
