@@ -19,9 +19,17 @@ describe('Item component', () => {
     userUID: '123',
   };
 
+  const handleOnClick = () => null;
+  const handleOnHover = () => null;
+
   it('should display media title and have media type as class', () => {
     const {getByRole, container} = render(
-      <Item media={defaultMedia} key={defaultMedia.id} index={1}></Item>
+      <Item
+        media={defaultMedia}
+        key={defaultMedia.id}
+        index={1}
+        handleOnClick={handleOnClick}
+        handleOnHover={handleOnHover}></Item>
     );
     expect(getByRole('heading', {name: defaultMedia.title})).toBeTruthy();
     expect(container.querySelectorAll('.item').length).toEqual(1);
