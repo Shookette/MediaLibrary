@@ -22,11 +22,9 @@ describe('Library Component', () => {
   const handleOnClick = () => null;
 
   it('should not have box when 0 media is pass in props', () => {
-    const {getByText, container} = render(
-      <Library medias={[]} handleOnClick={handleOnClick}></Library>
-    );
-    expect(getByText('No Content')).toBeTruthy();
+    const {container} = render(<Library medias={[]} handleOnClick={handleOnClick}></Library>);
     expect(container.querySelectorAll('.library').length).toEqual(1);
+    expect(container.querySelectorAll('.box').length).toEqual(0);
   });
 
   it('should have one box', () => {
@@ -90,5 +88,54 @@ describe('Library Component', () => {
       <Library medias={tenMedias} handleOnClick={handleOnClick}></Library>
     );
     expect(container.querySelectorAll('.box').length).toEqual(6);
+  });
+
+  it('should have 1 box preview for 6 boxes', () => {
+    const tenMedias: Media[] = [
+      {...defaultMedia, type: 'boardgame', id: '1'},
+      {...defaultMedia, type: 'book', id: '2'},
+      {...defaultMedia, type: 'comics', id: '3'},
+      {...defaultMedia, type: 'manga', id: '4'},
+      {...defaultMedia, type: 'videogame', id: '5'},
+      {...defaultMedia, type: 'vinyl', id: '6'},
+    ];
+
+    const {container} = render(
+      <Library medias={tenMedias} handleOnClick={handleOnClick}></Library>
+    );
+    expect(container.querySelectorAll('.box').length).toEqual(6);
+    expect(container.querySelectorAll('.box-preview').length).toEqual(1);
+  });
+
+  it('should have 2 BoxPreview for 9 boxes (one for 4 boxes)', () => {
+    const tenMedias: Media[] = [
+      {...defaultMedia, type: 'boardgame', id: '1'},
+      {...defaultMedia, type: 'book', id: '2'},
+      {...defaultMedia, type: 'comics', id: '3'},
+      {...defaultMedia, type: 'manga', id: '4'},
+      {...defaultMedia, type: 'videogame', id: '5'},
+      {...defaultMedia, type: 'vinyl', id: '6'},
+      {...defaultMedia, type: 'vinyl', id: '7'},
+      {...defaultMedia, type: 'vinyl', id: '8'},
+      {...defaultMedia, type: 'vinyl', id: '9'},
+      {...defaultMedia, type: 'vinyl', id: '10'},
+      {...defaultMedia, type: 'vinyl', id: '11'},
+      {...defaultMedia, type: 'vinyl', id: '12'},
+      {...defaultMedia, type: 'vinyl', id: '13'},
+      {...defaultMedia, type: 'vinyl', id: '14'},
+      {...defaultMedia, type: 'vinyl', id: '15'},
+      {...defaultMedia, type: 'vinyl', id: '16'},
+      {...defaultMedia, type: 'vinyl', id: '17'},
+      {...defaultMedia, type: 'vinyl', id: '18'},
+      {...defaultMedia, type: 'vinyl', id: '19'},
+      {...defaultMedia, type: 'vinyl', id: '20'},
+      {...defaultMedia, type: 'vinyl', id: '21'},
+    ];
+
+    const {container} = render(
+      <Library medias={tenMedias} handleOnClick={handleOnClick}></Library>
+    );
+    expect(container.querySelectorAll('.box').length).toEqual(9);
+    expect(container.querySelectorAll('.box-preview').length).toEqual(2);
   });
 });

@@ -1,4 +1,4 @@
-import {render} from '@testing-library/react';
+import {fireEvent, render, waitFor} from '@testing-library/react';
 import {Media} from '../../interfaces/Media';
 import Item from './Item';
 import React from 'react';
@@ -19,8 +19,8 @@ describe('Item component', () => {
     userUID: '123',
   };
 
-  const handleOnClick = () => null;
-  const handleOnHover = () => null;
+  const handleOnClick = jest.fn();
+  const handleOnHover = jest.fn();
 
   it('should display media title and have media type as class', () => {
     const {getByRole, container} = render(
@@ -35,5 +35,34 @@ describe('Item component', () => {
     expect(container.querySelectorAll('.item').length).toEqual(1);
     expect(container.querySelectorAll(`.item--${defaultMedia.type}`).length).toEqual(1);
     expect(container.querySelectorAll(`.item--${defaultMedia.type}--${1}`).length).toEqual(1);
+  });
+
+  it('should call the handleOnHover function when hovering the item', async () => {
+    const {getByRole} = render(
+      <Item
+        media={defaultMedia}
+        key={defaultMedia.id}
+        index={1}
+        handleOnClick={handleOnClick}
+        handleOnHover={handleOnHover}></Item>
+    );
+
+    fireEvent.mouseOver(getByRole('heading', {name: defaultMedia.title}));
+    await waitFor(() => expect(handleOnHover).toHaveBeenCalled());
+    await waitFor(() => expect(handleOnClick).toHaveBeenCalledTimes(0));
+  });
+
+  it('should call the handleOnClick function when hovering the item', async () => {
+    const {getByRole} = render(
+      <Item
+        media={defaultMedia}
+        key={defaultMedia.id}
+        index={1}
+        handleOnClick={handleOnClick}
+        handleOnHover={handleOnHover}></Item>
+    );
+
+    fireEvent.click(getByRole('heading', {name: defaultMedia.title}));
+    await waitFor(() => expect(handleOnClick).toHaveBeenCalled());
   });
 });

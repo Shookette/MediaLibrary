@@ -1,9 +1,17 @@
 .library {
     background-color: var(--color-library-bg);
     background-image: var(--texture-library);
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: center;
-    padding: 20px;
+    max-width: 800px;
+
+    &_searchbar {
+        margin: 10px 0 0 20px;
+        width: 300px;
+    }
+
+    &_content {
+        display: flex;
+        flex-wrap: wrap-reverse;
+        gap: 20px;
+        padding: 20px;
+    }
 }

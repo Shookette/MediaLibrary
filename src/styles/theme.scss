@@ -26,7 +26,14 @@
     --font-regular: #{$font-regular};
     --font-bold: #{$font-bold};
     --font-size-base: #{$font-size-base};
+    --box-square-size-small: 150px;
     --box-square-size: 200px;
+    --box-square-translatez: 100px;
+    --box-square-inverted-translatez: -100px;
+    --box-square-inverted-translatez-small: -75px;
+    --box-square-translatez-small: 75px;
+    --item-max-height: 180px;
+    --item-max-height-small: 150px;
     --shadow-color: #{$color-black};
 }
 
@@ -54,7 +61,22 @@ body {
     font-family: var(--font-family);
     font-size: var(--font-size-base);
     line-height: 1.2;
-    min-height: 100vh;
+}
+
+html,
+body,
+#root,
+#root>div {
+    height: 100%;
+}
+
+.layout {
+    display: flex;
+    flex-direction: column;
+    
+    &_wrapper {
+        flex: 1 1 auto;
+    }
 }
 
 button,

@@ -4,10 +4,15 @@
     background-color: var(--color-box-bg);
     display: flex;
     flex-direction: column;
-    height: var(--box-square-size);
+    height: var(--box-square-size-small);
     overflow: hidden;
     position: relative;
-    width: var(--box-square-size);
+    width: var(--box-square-size-small);
+
+    @include medium {
+        height: var(--box-square-size);
+        width: var(--box-square-size);
+    }
 
     &_image {
         border: 15px solid var(--color-library-side-bg);
@@ -31,15 +36,13 @@
 
         align-items: center;
         background-color: var(--color-semi-transparent);
-        border-bottom-left-radius: 5px;
-        border-bottom-right-radius: 5px;
         display: flex;
-        height: 100px;
+        height: 200px;
         justify-content: center;
-        left: 5px;
-        padding: 5px;
+        left: 30px;
         position: absolute;
-        top: 0;
+        top: -50px;
+        transform: rotate(225deg);
         width: 30px;
         writing-mode: vertical-lr;
     }

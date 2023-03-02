@@ -54,4 +54,44 @@ describe('Box Component', () => {
     expect(container.querySelectorAll('.box').length).toEqual(1);
     expect(container.querySelectorAll('.item').length).toEqual(5);
   });
+
+  it('should have an item filler when the medias length is lower than the maxBoxSize variable', () => {
+    const box: BoxType = {
+      type: 'book',
+      medias: [
+        {...defaultMedia, id: '1'},
+        {...defaultMedia, id: '2'},
+        {...defaultMedia, id: '3'},
+        {...defaultMedia, id: '4'},
+        {...defaultMedia, id: '5'},
+      ],
+    };
+
+    const {container} = render(
+      <Box
+        box={box}
+        handleOnClick={handleOnClick}
+        maxBoxSize={6}
+        handleOnHover={handleOnHover}></Box>
+    );
+    expect(container.querySelector('.item-filler')).toBeTruthy();
+  });
+
+  it('should not have an item filler when the medias length is higher than the maxBoxSize variable by default is 4', () => {
+    const box: BoxType = {
+      type: 'book',
+      medias: [
+        {...defaultMedia, id: '1'},
+        {...defaultMedia, id: '2'},
+        {...defaultMedia, id: '3'},
+        {...defaultMedia, id: '4'},
+        {...defaultMedia, id: '5'},
+      ],
+    };
+
+    const {container} = render(
+      <Box box={box} handleOnClick={handleOnClick} handleOnHover={handleOnHover}></Box>
+    );
+    expect(container.querySelector('.item-filler')).toBeFalsy();
+  });
 });

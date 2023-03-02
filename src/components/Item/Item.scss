@@ -60,19 +60,32 @@
     }
 
     &--book {  
-        height: 150px;
-        width: 20px;
+        height: 100px;
+        width: 15px;
+
+        @include medium {
+            height: 150px;
+            width: 20px;
+        }
 
         &--2 {
-            left: 62px;
+            left: 50px;
             position: absolute;
             transform: rotate(-10deg);
+
+            @include medium {
+                left: 62px;
+            }
         }
 
         &--3 {
             position: absolute;
-            right: 42px;
+            right: 35px;
             transform: rotate(10deg);
+
+            @include medium {
+                right: 42px;
+            }
         }
 
         &--4 {
@@ -83,71 +96,137 @@
     }
 
     &--comics {  
-        height: 150px;
-        width: 20px;
+        height: 100px;
+        width: 15px;
+
+        @include medium {
+            height: 150px;
+            width: 20px;
+        }
 
         &--0 {
-            width: 40px;
+            width: 35px;
+
+            @include medium {
+                width: 40px;
+            }
         }
 
         &--3 {
-            width: 15px;
+            width: 10px;
+
+            @include medium {
+                width: 15px;
+            }
         }
 
         &--4 {
-            width: 30px;
+            width: 25px;
+
+            @include medium {
+                width: 30px;
+            }
         }
     }
 
     &--manga {  
-        height: 100px;
-        width: 25px;
+        height: 75px;
+        width: 20px;
+
+        @include medium {
+            height: 100px;
+            width: 25px;
+        }
 
         &--0 {
-            height: 120px;
-            width: 30px;
+            height: 100px;
+            width: 25px;
+
+            @include medium {
+                height: 120px;
+                width: 30px;
+            }
         }
 
         &--3 {
-            height: 80px;
-            width: 15px;
+            height: 70px;
+            width: 10px;
+
+            @include medium {
+                height: 80px;
+                width: 15px;
+            }
         }
 
         &--4 {
-            height: 150px;
-            width: 40px;
+            height: 120px;
+            width: 35px;
+
+            @include medium {
+                height: 150px;
+                width: 40px;
+            }
         }
     }
 
     &--videogame {  
         border-radius: 5px;
-        height: 100px;
-        width: 20px;
+        height: 70px;
+        width: 15px;
+
+        @include medium {
+            height: 100px;
+            width: 20px;
+        }
 
         &--4 {
-            height: 20px;
-            width: 100px;
+            height: 15px;
+            width: 70px;
+
+            @include medium {
+                height: 20px;
+                width: 100px;
+            }
         }
     }
 
     &--boardgame {  
-        height: 30px;
+        height: 20px;
         margin-bottom: 0;
         margin-left: 10px;
-        width: 170px;
+        width: 125px;
+
+        @include medium {
+            height: 30px;
+            width: 170px;
+        }
 
         &--1 {
-            height: 20px;
-            width: 60px;
+            height: 15px;
+            width: 50px;
+
+            @include medium {
+                height: 20px;
+                width: 60px;
+            }
         }
 
         &--3 {
-            height: 40px;
-            width: 180px;
+            height: 35px;
+            width: 140px;
+
+            @include medium {
+                height: 40px;
+                width: 180px;
+            }
         }
 
         &--4 {
-            width: 100px;
+            width: 80px;
+
+            @include medium {
+                width: 100px;
+            }
         }
     }
 
@@ -162,8 +241,12 @@
     }
 
     &--vinyl {  
-        height: 170px;
+        height: 120px;
         width: 10px;
+
+        @include medium {
+            height: 170px;
+        }
 
         &--2,
         &--4 {

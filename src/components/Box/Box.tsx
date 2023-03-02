@@ -7,11 +7,12 @@ import ItemFiller from '../ItemFiller/ItemFiller';
 
 type BoxProps = {
   box: BoxType;
+  maxBoxSize?: number;
   handleOnClick: (media: Media) => void;
   handleOnHover: (media: Media) => void;
 };
 
-const Box: FC<BoxProps> = ({box, handleOnClick, handleOnHover}) => {
+const Box: FC<BoxProps> = ({box, maxBoxSize = 4, handleOnClick, handleOnHover}) => {
   const className: string[] = ['box', `box--${box.type}`];
 
   const fillerRandom = useMemo(() => Math.floor(Math.random() * 7), []);
@@ -28,7 +29,9 @@ const Box: FC<BoxProps> = ({box, handleOnClick, handleOnHover}) => {
               handleOnHover={handleOnHover}
             />
           ))}
-          {box.medias.length < 5 && <ItemFiller index={fillerRandom} />}
+          {box.medias.length < maxBoxSize && (
+            <ItemFiller key={`filler-${fillerRandom}`} index={fillerRandom} />
+          )}
         </div>
         <div className="box_cube_face box_cube_face--back"></div>
         <div className="box_cube_face box_cube_face--right"></div>

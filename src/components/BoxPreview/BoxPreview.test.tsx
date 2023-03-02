@@ -37,4 +37,9 @@ describe('BoxPreview Component', () => {
     const {getByRole} = render(<BoxPreview media={defaultMedia} />);
     expect(getByRole('heading', {name: /owned/i})).toBeTruthy();
   });
+
+  it('should not display the media status when media is not pass to props', () => {
+    const {queryByRole} = render(<BoxPreview media={null} />);
+    expect(queryByRole('heading', {name: /owned/i})).toBeFalsy();
+  });
 });

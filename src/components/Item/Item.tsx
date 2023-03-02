@@ -14,6 +14,7 @@ const Item: FC<ItemProps> = ({media, index, handleOnClick, handleOnHover}) => {
 
   return (
     <article
+      id={media.id}
       className={className.join(' ')}
       onClick={() => handleOnClick(media)}
       onMouseOver={() => handleOnHover(media)}>
