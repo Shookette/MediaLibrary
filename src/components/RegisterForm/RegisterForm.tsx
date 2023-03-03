@@ -19,12 +19,16 @@ const RegisterForm: FC<RegisterForm> = ({handleOnSubmit}) => {
         Email
       </label>
       <input className="form_input" id="email" {...register('email', {required: true})} />
-      <span className="form_input--error">{errors.email && 'Email is required'}</span>
+      <span role="alert" className="form_input--error">
+        {errors.email && 'Email is required'}
+      </span>
       <label className="form_label" htmlFor="username">
         Username
       </label>
       <input className="form_input" id="username" {...register('username', {required: true})} />
-      <span className="form_input--error">{errors.username && 'Username is required'}</span>
+      <span role="alert" className="form_input--error">
+        {errors.username && 'Username is required'}
+      </span>
       <label className="form_label" htmlFor="password">
         Password
       </label>
@@ -34,7 +38,9 @@ const RegisterForm: FC<RegisterForm> = ({handleOnSubmit}) => {
         type="password"
         {...register('password', {required: true})}
       />
-      <span className="form_input--error">{errors.password && 'Password is required'}</span>
+      <span role="alert" className="form_input--error">
+        {errors.password && 'Password is required'}
+      </span>
       <input className="form_submit" type="submit" />
     </form>
   );

@@ -19,7 +19,9 @@ const LoginForm: FC<LoginForm> = ({handleOnSubmit}) => {
         Email
       </label>
       <input className="form_input" id="email" {...register('email', {required: true})} />
-      <span className="form_input--error">{errors.email && 'Email is required'}</span>
+      <span role="alert" className="form_input--error">
+        {errors.email && 'Email is required'}
+      </span>
       <label className="form_label" htmlFor="password">
         Password
       </label>
@@ -29,7 +31,9 @@ const LoginForm: FC<LoginForm> = ({handleOnSubmit}) => {
         type="password"
         {...register('password', {required: true})}
       />
-      <span className="form_input--error">{errors.password && 'Password is required'}</span>
+      <span role="alert" className="form_input--error">
+        {errors.password && 'Password is required'}
+      </span>
       <input className="form_submit" type="submit" />
     </form>
   );

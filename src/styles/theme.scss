@@ -26,6 +26,9 @@
     --font-regular: #{$font-regular};
     --font-bold: #{$font-bold};
     --font-size-base: #{$font-size-base};
+    --border-radius: #{$border-radius};
+    --border-radius-big: #{$border-radius--big};
+    --border-radius-bigger: #{$border-radius--bigger};
     --box-square-size-small: 150px;
     --box-square-size: 200px;
     --box-square-translatez: 100px;
@@ -34,7 +37,15 @@
     --box-square-translatez-small: 75px;
     --item-max-height: 180px;
     --item-max-height-small: 150px;
-    --shadow-color: #{$color-black};
+    --shadow-color: #{$color-brown-dark};
+    --preview-box-bg-color: #{$color-brown-dark};
+    --preview-box-bg-texture: url('https://www.transparenttextures.com/patterns/french-stucco.png');
+    --preview-box-x: 100px;
+    --preview-box-x-small: 50px;
+    --preview-box-y: 300px;
+    --preview-box-y-small: 200px;
+    --preview-box-z: 200px;
+    --preview-box-z-small: 150px;
 }
 
 [data-theme='light'] {
@@ -52,7 +63,6 @@
     --color-text-input: #{$color-white};
     --color-transparent: #{$color-white-transparent};
     --color-semi-transparent: #{$color-white-semi-transparent};
-
 }
 
 body {
@@ -115,7 +125,7 @@ h2 {
 
     &_submit {
         background-color: var(--color-primary);
-        border-radius: 5px;
+        border-radius: var(--border-radius);
         color: var(--color-text-button);
         cursor: pointer;
         margin-top: 50px;
@@ -126,7 +136,7 @@ h2 {
     &_input,
     &_textarea {
         background-color: var(--color-bg-input);
-        border-radius: 5px;
+        border-radius: var(--border-radius);
         color: var(--color-text-input);
         min-height: 30px;
         padding: 0 10px;
