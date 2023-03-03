@@ -2,6 +2,8 @@
 
 .box {
     background-color: var(--color-box-bg);
+    border: 10px solid var(--color-library-bg);
+    box-sizing: content-box;
     height: var(--box-square-size-small);
     perspective: 400px;
     width: var(--box-square-size-small);
@@ -75,7 +77,6 @@
             }
 
             &--top {
-                background: var(--color-title);
                 transform: rotateX(90deg) translateZ(var(--box-square-translatez-small));
 
                 @include medium {
@@ -84,7 +85,7 @@
             }
 
             &--bottom {
-                background: var(--color-title);
+                background: var(--color-library-bg);
                 transform: rotateX(-90deg) translateZ(var(--box-square-translatez-small));
 
                 @include medium {
@@ -95,8 +96,6 @@
     }
 
     &--boardgame {
-        display: flex;
-
         .item-filler {
             margin-bottom: 0;
             margin-left: 10px;

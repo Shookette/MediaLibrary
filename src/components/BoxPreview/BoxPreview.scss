@@ -2,6 +2,8 @@
 
 .box-preview {
     background-color: var(--color-box-bg);
+    border: 10px solid var(--color-library-bg);
+    box-sizing: content-box;
     display: flex;
     flex-direction: column;
     height: var(--box-square-size-small);
@@ -15,7 +17,6 @@
     }
 
     &_image {
-        border: 15px solid var(--color-library-side-bg);
         height: 100%;
         object-fit: cover;
         width: auto;
