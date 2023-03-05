@@ -1,11 +1,13 @@
-import React, {FC, ReactElement} from 'react';
+import React, {FC, ReactElement, lazy} from 'react';
 import {Navigate, Route, Routes} from 'react-router-dom';
-import MediaNew from './container/MediaNew/MediaNew';
-import MediaList from './container/MediaList/MediaList';
+const MediaNew = lazy(() => import('./container/MediaNew/MediaNew'));
+const MediaList = lazy(() => import('./container/MediaList/MediaList'));
+const MediaDetail = lazy(() => import('./container/MediaDetail/MediaDetail'));
+const MediaEdit = lazy(() => import('./container/MediaEdit/MediaEdit'));
+const LoginOrRegisterContainer = lazy(
+  () => import('./container/LoginOrRegisterContainer/LoginOrRegisterContainer')
+);
 import Layout from './components/Layout';
-import MediaDetail from './container/MediaDetail/MediaDetail';
-import MediaEdit from './container/MediaEdit/MediaEdit';
-import LoginOrRegisterContainer from './container/LoginOrRegisterContainer/LoginOrRegisterContainer';
 import {useUserContext} from './hooks/UserContext';
 import useTheme from './hooks/UseTheme';
 
