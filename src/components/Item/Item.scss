@@ -4,36 +4,54 @@
 @for $i from 1 through 5 {
     .item--book:nth-child(#{$i}) {
         @include random-background();
+
+        background-image: var(--item-bg-texture);
+
     }
 }
 
 @for $i from 1 through 5 {
     .item--comics:nth-child(#{$i}) {
         @include random-background();
+
+        background-image: var(--item-bg-texture);
+
     }
 }
 
 @for $i from 1 through 5 {
     .item--manga:nth-child(#{$i}) {
         @include random-background();
+
+        background-image: var(--item-bg-texture);
+
     }
 }
 
 @for $i from 1 through 5 {
     .item--videogame:nth-child(#{$i}) {
         @include random-background();
+
+        background-image: var(--item-bg-texture);
+
     }
 }
 
 @for $i from 1 through 5 {
     .item--boardgame:nth-child(#{$i}) {
         @include random-background();
+
+        background-image: var(--item-bg-texture);
+
     }
 }
 
 @for $i from 1 through 5 {
     .item--vinyl:nth-child(#{$i}) {
         @include random-background();
+
+        background-image: var(--item-bg-texture);
+
     }
 }
     

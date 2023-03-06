@@ -1,9 +1,15 @@
+@use '../../styles/variables' as *;
+    
 .add-media {
     display: flex;
     flex-direction: column;
     margin: auto;
     max-width: 380px;
     padding: 10px;
+
+    @include medium {
+        max-width: 525px;
+    }
 
     &_title {
         text-align: center;

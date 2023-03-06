@@ -14,7 +14,6 @@
 
         @include medium {
             flex-direction: row;
-            margin-left: 100px;
             margin-top: auto;
         }
     }
@@ -40,7 +39,7 @@
             @include title-with-shadow();
 
             background-color: var(--preview-box-bg-color);
-            background-image: var(--preview-box-bg-texture);
+            background-image: var(--item-bg-texture);
             position: absolute;
             text-align: center;
             text-overflow: ellipsis;
@@ -86,7 +85,7 @@
                 transform: rotateY(90deg) translateZ(-125px);
 
                 @include medium {
-                    transform: rotateY(90deg) translateZ(-100px);
+                    transform: rotateY(90deg) translateZ(-125px);
                 }              
             }
 
