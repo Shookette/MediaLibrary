@@ -1,4 +1,4 @@
-import React, {FC, ReactElement, lazy} from 'react';
+import React, {FC, ReactElement, Suspense, lazy} from 'react';
 import {Navigate, Route, Routes} from 'react-router-dom';
 const MediaNew = lazy(() => import('./container/MediaNew/MediaNew'));
 const MediaList = lazy(() => import('./container/MediaList/MediaList'));
@@ -18,7 +18,8 @@ const ProtectedRoute: FC<ProtectedRouteProps> = ({children}) => {
     return <Navigate to="/login" replace />;
   }
 
-  return children;
+  // @TODO add loading full screen ?
+  return <Suspense fallback={<p>Loading ...</p>}>{children}</Suspense>;
 };
 
 const App: FC = () => {
