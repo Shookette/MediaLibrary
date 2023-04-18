@@ -69,6 +69,19 @@ const MediaForm: FC<MediaFormProps> = ({media, handleOnSubmit}) => {
           {...register('image')}
           onFocus={() => setShowFaceClass('show-right')}
         />
+        <label className="form_label" htmlFor="type">
+          Media Type
+        </label>
+        <select className="form_input" id="type" {...register('type', {required: true})}>
+          {typeOptions.map((typeOption) => (
+            <option key={typeOption} value={typeOption}>
+              {typeOption}
+            </option>
+          ))}
+        </select>
+        <span role="alert" className="form_input--error">
+          {errors.type && 'Type is required'}
+        </span>
         <label className="form_label" htmlFor="status">
           Status
         </label>
@@ -83,19 +96,19 @@ const MediaForm: FC<MediaFormProps> = ({media, handleOnSubmit}) => {
             </option>
           ))}
         </select>
-        <label className="form_label" htmlFor="type">
-          Media Type
-        </label>
-        <select className="form_input" id="type" {...register('type', {required: true})}>
-          {typeOptions.map((typeOption) => (
-            <option key={typeOption} value={typeOption}>
-              {typeOption}
-            </option>
-          ))}
-        </select>
-        <span role="alert" className="form_input--error">
-          {errors.type && 'Title is required'}
-        </span>
+        {data?.status === 'lend' && (
+          <>
+            <label className="form_label" htmlFor="lendTo">
+              Lend to
+            </label>
+            <input
+              className="form_input"
+              id="lendTo"
+              {...register('lendTo')}
+              onFocus={() => setShowFaceClass('show-right')}
+            />
+          </>
+        )}
         <input className="form_submit" type="submit" />
       </form>
       <div className="media-form_object">
@@ -106,6 +119,7 @@ const MediaForm: FC<MediaFormProps> = ({media, handleOnSubmit}) => {
           <div className="preview_face preview_face--right">
             <img className="preview_image" alt="media image" src={data?.image} />
             <span className="preview_status">{data?.status}</span>
+            {data?.status === 'lend' && <span className="preview_lend-to">{data?.lendTo}</span>}
           </div>
           <div className="preview_face preview_face--left">
             <p className="preview_description">{data?.description}</p>

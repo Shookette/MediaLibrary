@@ -14,9 +14,10 @@ const BoxPreview: FC<BoxPreviewProps> = ({media}) => {
       )}
       <h3 className="box-preview_title">{media?.title}</h3>
       {media?.status && (
-        <h3 className={`box-preview_status box-preview_status--${media?.status}`}>
-          {media?.status}
-        </h3>
+        <h4 className={`box-preview_status box-preview_status--${media?.status}`}>
+          <span>{media?.status}</span>
+          {media?.lendTo && <span>{media?.lendTo}</span>}
+        </h4>
       )}
     </article>
   );

@@ -42,9 +42,10 @@
         justify-content: center;
         left: 30px;
         position: absolute;
-        top: -50px;
+        top: -65px;
         transform: rotate(225deg);
         width: 30px;
         writing-mode: vertical-lr;
+        flex-direction: column-reverse;
     }
 }

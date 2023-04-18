@@ -73,6 +73,18 @@ describe('MediaForm Component', () => {
     );
   });
 
+  it('should not have lendTo input by default', () => {
+    render(<MediaForm handleOnSubmit={mockHandleOnSubmit} />);
+    expect(screen.queryByRole('textbox', {name: /Lend to/i})).toBeNull();
+  });
+
+  it('should have lendTo input when status is set to lend', () => {
+    render(<MediaForm handleOnSubmit={mockHandleOnSubmit} />);
+    fireEvent.change(screen.getByRole('combobox', {name: /Status/i}), {target: {value: 'lend'}});
+
+    expect(screen.getByRole('textbox', {name: /Lend to/i})).toBeTruthy();
+  });
+
   it('should call onSubmit function when clicking on submit button', async () => {
     render(<MediaForm media={defaultMedia} handleOnSubmit={mockHandleOnSubmit} />);
 

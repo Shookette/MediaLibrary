@@ -8,6 +8,7 @@ export type Media = {
   release?: string;
   image?: string;
   status: MediaStatus;
+  lendTo?: string;
   comment?: string;
   type: MediaType;
   userUID: string;

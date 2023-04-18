@@ -18,6 +18,7 @@ const mediaDefault: Media = {
   status: 'owned',
   image: 'https://m.media-amazon.com/images/I/81eN2lF9MmL.jpg',
   release: '',
+  lendTo: '',
   description: `Necromancy, space action, and dark humor collide in this wildly creative new series from the creator of Dorohedoro!
   Zaha Sanko's body has great and terrible powers--they say that possessing his bones will grant you any wish, even the desire to become ruler of the universe.
   But Sanko is still a teenage dude with his own life, and he isn't about to let every monstrous lowlife in the galaxy rip him limb from limb.
