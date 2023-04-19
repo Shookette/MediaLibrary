@@ -16,7 +16,7 @@ const MediaForm: FC<MediaFormProps> = ({media, handleOnSubmit}) => {
     formState: {errors},
   } = useForm<Media>({defaultValues: media});
 
-  const [data, setData] = useState<Media | undefined>();
+  const [data, setData] = useState<Media | undefined>(media);
   const [showFaceClass, setShowFaceClass] = useState('');
   const typeOptions = ['book', 'videogame', 'boardgame', 'vinyl', 'manga', 'comics'];
   const statusOptions = ['owned', 'lend', 'borrowed'];
@@ -118,8 +118,11 @@ const MediaForm: FC<MediaFormProps> = ({media, handleOnSubmit}) => {
           </div>
           <div className="preview_face preview_face--right">
             <img className="preview_image" alt="media image" src={data?.image} />
-            <span className="preview_status">{data?.status}</span>
-            {data?.status === 'lend' && <span className="preview_lend-to">{data?.lendTo}</span>}
+            <div className="preview_status">
+              <span>{data?.status}</span>
+              <span>{data?.lendTo}</span>
+            </div>
+            {data?.status === 'lend' && <span className="preview_lend-to"></span>}
           </div>
           <div className="preview_face preview_face--left">
             <p className="preview_description">{data?.description}</p>
