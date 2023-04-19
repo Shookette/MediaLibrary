@@ -42,7 +42,7 @@ He and his skeletal buddy Avakian will use their dark powers to fend off any mur
   });
 
   it('should have a media and show title with edit form', async () => {
-    const {getByRole} = render(
+    const {getByRole, getAllByRole} = render(
       <WithFirestore>
         <UserProvider>
           <MemoryRouter initialEntries={['/123/update']}>
@@ -55,7 +55,8 @@ He and his skeletal buddy Avakian will use their dark powers to fend off any mur
     );
 
     await waitFor(async () => {
-      expect(getByRole('heading', {name: defaultMedia.title})).toBeTruthy();
+      expect(getAllByRole('heading', {name: defaultMedia.title})).toBeTruthy();
+      expect(getAllByRole('heading', {name: defaultMedia.title}).length).toEqual(2);
       expect(getByRole('textbox', {name: /Title/i})).toBeTruthy();
       expect(spyGetMediaById).toHaveBeenCalled();
     });
