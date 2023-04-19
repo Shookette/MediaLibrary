@@ -72,6 +72,7 @@ describe('Box Component', () => {
         box={box}
         handleOnClick={handleOnClick}
         maxBoxSize={6}
+        showFiller
         handleOnHover={handleOnHover}></Box>
     );
     expect(container.querySelector('.item-filler')).toBeTruthy();

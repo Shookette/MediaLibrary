@@ -29,7 +29,12 @@ const Library: FC<LibraryProps> = ({medias, handleOnClick}) => {
 
           return (
             <Fragment key={`${box.type}-${index}`}>
-              <Box box={box} handleOnClick={handleOnClick} handleOnHover={handleOnHover} />
+              <Box
+                box={box}
+                handleOnClick={handleOnClick}
+                handleOnHover={handleOnHover}
+                showFiller={index % 3 === 0}
+              />
               {boxPreview}
             </Fragment>
           );
