@@ -1,12 +1,23 @@
-import {renderHook} from '@testing-library/react';
+import {act, renderHook} from '@testing-library/react';
 import useTheme from './UseTheme';
 
 describe('UseTheme custom hook', () => {
   it('should have light as theme by default', () => {
-    renderHook(() => useTheme());
+    const {result} = renderHook(() => useTheme());
     const bodyTheme = document.body.getAttribute('data-theme');
 
-    expect(bodyTheme).toEqual('light');
+    expect(bodyTheme).toEqual('dark');
+    expect(result.current.theme).toBe('dark');
+  });
+
+  it('should have light theme when calling invertTheme function with default value', () => {
+    const {result} = renderHook(() => useTheme());
+
+    act(() => {
+      result.current.invertTheme();
+    });
+
+    expect(result.current.theme).toBe('light');
   });
 
   it('should have dark as theme when prefers-color-scheme is set as dark', () => {

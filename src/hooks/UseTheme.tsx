@@ -1,14 +1,22 @@
-import {useEffect} from 'react';
+import {useEffect, useState} from 'react';
+
+type ThemeType = 'dark' | 'light';
 
 const useTheme = () => {
-  const defaultTheme =
-    window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
-      ? 'dark'
-      : 'light';
+  const [theme, setTheme] = useState<ThemeType>('dark');
 
   useEffect(() => {
-    document.body.setAttribute('data-theme', defaultTheme);
-  }, [defaultTheme]);
+    document.body.setAttribute('data-theme', theme);
+  }, [theme]);
+
+  const invertTheme = () => {
+    setTheme(theme === 'dark' ? 'light' : 'dark');
+  };
+
+  return {
+    theme,
+    invertTheme,
+  };
 };
 
 export default useTheme;
