@@ -4,6 +4,7 @@ import * as repository from '../../repository/MediaRepository';
 import {Media} from '../../interfaces/Media';
 import MediaDetail from './MediaDetail';
 import {Route, Routes} from 'react-router-dom';
+import * as messages from '../../translations/fr.json';
 
 const mockedUsedNavigate = jest.fn();
 
@@ -49,8 +50,8 @@ He and his skeletal buddy Avakian will use their dark powers to fend off any mur
 
     await waitFor(() => {
       expect(getByRole('heading', {name: defaultMedia.title})).toBeTruthy();
-      expect(getByRole('button', {name: /Delete Media/i})).toBeTruthy();
-      expect(getByRole('button', {name: /Update Media/i})).toBeTruthy();
+      expect(getByRole('button', {name: messages['action.media.delete']})).toBeTruthy();
+      expect(getByRole('button', {name: messages['action.media.update']})).toBeTruthy();
       expect(spyGetMediaById).toHaveBeenCalled();
     });
   });
@@ -64,7 +65,7 @@ He and his skeletal buddy Avakian will use their dark powers to fend off any mur
     );
 
     await waitFor(async () => {
-      fireEvent.click(getByRole('button', {name: /Delete Media/i}));
+      fireEvent.click(getByRole('button', {name: messages['action.media.delete']}));
       waitFor(() => {
         expect(spyDeleteMedia).toHaveBeenCalled();
         expect(mockedUsedNavigate).toHaveBeenCalledWith('/');
@@ -76,7 +77,7 @@ He and his skeletal buddy Avakian will use their dark powers to fend off any mur
     const {getByRole} = render(<MediaDetail />);
 
     await waitFor(async () => {
-      fireEvent.click(getByRole('button', {name: /Update Media/i}));
+      fireEvent.click(getByRole('button', {name: messages['action.media.update']}));
       waitFor(() => {
         expect(mockedUsedNavigate).toHaveBeenCalledWith(`/${defaultMedia.id}/update`);
       });

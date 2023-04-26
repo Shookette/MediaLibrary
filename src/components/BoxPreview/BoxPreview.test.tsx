@@ -2,6 +2,7 @@ import {Media} from '../../interfaces/Media';
 import React from 'react';
 import BoxPreview from './BoxPreview';
 import {render, screen} from '../../test-utils';
+import * as messages from '../../translations/fr.json';
 
 describe('BoxPreview Component', () => {
   const defaultMedia: Media = {
@@ -35,11 +36,11 @@ describe('BoxPreview Component', () => {
 
   it('should display the media status owned', () => {
     const {getByRole} = render(<BoxPreview media={defaultMedia} />);
-    expect(getByRole('heading', {name: /owned/i})).toBeTruthy();
+    expect(getByRole('heading', {name: messages['owned']})).toBeTruthy();
   });
 
   it('should not display the media status when media is not pass to props', () => {
     const {queryByRole} = render(<BoxPreview media={null} />);
-    expect(queryByRole('heading', {name: /owned/i})).toBeFalsy();
+    expect(queryByRole('heading', {name: messages['owned']})).toBeFalsy();
   });
 });

@@ -41,7 +41,7 @@ const MediaDetail = () => {
           src={media?.image}
         />
         <p className="media-detail_description">{media?.description}</p>
-        <p className="media-detail_status">{formatMessage({id: media?.status})}</p>
+        <p className="media-detail_status">{media?.status && formatMessage({id: media?.status})}</p>
       </div>
 
       <div className="media-detail_actions">

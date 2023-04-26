@@ -4,6 +4,7 @@ import {Route, Routes} from 'react-router-dom';
 import * as repository from '../../repository/MediaRepository';
 import MediaEdit from './MediaEdit';
 import {Media} from '../../interfaces/Media';
+import * as messages from '../../translations/fr.json';
 
 const mockedUsedNavigate = jest.fn();
 
@@ -50,7 +51,7 @@ He and his skeletal buddy Avakian will use their dark powers to fend off any mur
     await waitFor(async () => {
       expect(getAllByRole('heading', {name: defaultMedia.title})).toBeTruthy();
       expect(getAllByRole('heading', {name: defaultMedia.title}).length).toEqual(2);
-      expect(getByRole('textbox', {name: /Title/i})).toBeTruthy();
+      expect(getByRole('textbox', {name: messages['media.title']})).toBeTruthy();
       expect(spyGetMediaById).toHaveBeenCalled();
     });
   });
@@ -66,7 +67,7 @@ He and his skeletal buddy Avakian will use their dark powers to fend off any mur
     );
 
     await waitFor(async () => {
-      fireEvent.submit(getByRole('button', {name: /Submit/i}));
+      fireEvent.submit(getByRole('button', {name: messages['submit']}));
       await waitFor(async () => {
         expect(spySetMedia).toHaveBeenCalled();
         expect(mockedUsedNavigate).toHaveBeenCalledWith('/');
@@ -85,7 +86,7 @@ He and his skeletal buddy Avakian will use their dark powers to fend off any mur
     );
 
     await waitFor(async () => {
-      expect(getByText(/No media found/i)).toBeTruthy();
+      expect(getByText(messages['media.missing'])).toBeTruthy();
     });
   });
 });

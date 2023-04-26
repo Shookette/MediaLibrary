@@ -1,6 +1,7 @@
 import {screen, render, fireEvent} from '../../test-utils';
 import React from 'react';
 import Header from './Header';
+import * as messages from '../../translations/fr.json';
 
 describe('Header Component', () => {
   it('should have a title', () => {
@@ -10,8 +11,8 @@ describe('Header Component', () => {
 
   it('should have two links', () => {
     render(<Header />);
-    expect(screen.getByRole('link', {name: /Media list/i})).toBeTruthy();
-    expect(screen.getByRole('link', {name: /Add New Media/i})).toBeTruthy();
+    expect(screen.getByRole('link', {name: messages['link.list']})).toBeTruthy();
+    expect(screen.getByRole('link', {name: messages['link.add']})).toBeTruthy();
   });
 
   it('should have logout action', () => {

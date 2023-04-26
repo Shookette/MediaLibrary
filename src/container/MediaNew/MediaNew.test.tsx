@@ -2,6 +2,7 @@ import {render, fireEvent, waitFor} from '../../test-utils';
 import React from 'react';
 import MediaNew from './MediaNew';
 import * as MediaRepository from '../../repository/MediaRepository';
+import * as messages from '../../translations/fr.json';
 
 const mockedUsedNavigate = jest.fn();
 
@@ -19,18 +20,18 @@ describe('MediaNew Component', () => {
   it('should have all input without data', () => {
     const {getByRole} = render(<MediaNew />);
 
-    expect(getByRole('heading', {name: /Add new media/i})).toBeTruthy();
+    expect(getByRole('heading', {name: messages['media.new.title']})).toBeTruthy();
   });
 
   it('should save the media when submitting the form', async () => {
     const {getByRole} = render(<MediaNew />);
 
-    fireEvent.change(getByRole('textbox', {name: /Title/i}), {
+    fireEvent.change(getByRole('textbox', {name: messages['media.title']}), {
       target: {value: 'new title'},
     });
 
     await waitFor(async () => {
-      fireEvent.submit(getByRole('button', {name: /Submit/i}));
+      fireEvent.submit(getByRole('button', {name: messages['submit']}));
       await waitFor(async () => {
         expect(spySetMedia).toHaveBeenCalled();
         expect(mockedUsedNavigate).toHaveBeenCalledWith('/');

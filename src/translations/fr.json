@@ -26,7 +26,7 @@
   "media.type": "Type du média",
   "media.type.error": "Le type est manquant",
   "media.status": "Statut du média",
-  "media.lendTo": "Prêté à ",
+  "media.lendTo": "Prêté à",
   "media.missing": "Aucun média trouvé",
   "media.new.title": "Nouveau média",
   "header.title": "Media Library",
