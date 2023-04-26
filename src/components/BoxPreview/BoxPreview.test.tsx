@@ -1,7 +1,7 @@
 import {Media} from '../../interfaces/Media';
 import React from 'react';
 import BoxPreview from './BoxPreview';
-import {render, screen} from '@testing-library/react';
+import {render, screen} from '../../test-utils';
 
 describe('BoxPreview Component', () => {
   const defaultMedia: Media = {

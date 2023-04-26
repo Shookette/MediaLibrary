@@ -1,8 +1,6 @@
-import {render, waitFor, fireEvent} from '@testing-library/react';
+import {render, waitFor, fireEvent} from '../../test-utils';
 import React from 'react';
-import UserProvider from '../../hooks/UserContext';
-import WithFirestore from '../../components/WithFirestore';
-import {MemoryRouter, Route, Routes} from 'react-router-dom';
+import {Route, Routes} from 'react-router-dom';
 import * as repository from '../../repository/MediaRepository';
 import MediaEdit from './MediaEdit';
 import {Media} from '../../interfaces/Media';
@@ -43,15 +41,10 @@ He and his skeletal buddy Avakian will use their dark powers to fend off any mur
 
   it('should have a media and show title with edit form', async () => {
     const {getByRole, getAllByRole} = render(
-      <WithFirestore>
-        <UserProvider>
-          <MemoryRouter initialEntries={['/123/update']}>
-            <Routes>
-              <Route path="/:mediaId/update" element={<MediaEdit />}></Route>
-            </Routes>
-          </MemoryRouter>
-        </UserProvider>
-      </WithFirestore>
+      <Routes>
+        <Route path="/:mediaId/update" element={<MediaEdit />}></Route>
+      </Routes>,
+      ['/123/update']
     );
 
     await waitFor(async () => {
@@ -64,17 +57,12 @@ He and his skeletal buddy Avakian will use their dark powers to fend off any mur
 
   it('should call setMedia function when sending the edit form', async () => {
     const {getByRole} = render(
-      <WithFirestore>
-        <UserProvider>
-          <MemoryRouter initialEntries={['/123/update']}>
-            <Routes>
-              <Route path="/" element={<MediaEdit />}>
-                <Route path=":mediaId/update" element={<MediaEdit />}></Route>
-              </Route>
-            </Routes>
-          </MemoryRouter>
-        </UserProvider>
-      </WithFirestore>
+      <Routes>
+        <Route path="/" element={<MediaEdit />}>
+          <Route path=":mediaId/update" element={<MediaEdit />}></Route>
+        </Route>
+      </Routes>,
+      ['/123/update']
     );
 
     await waitFor(async () => {
@@ -88,17 +76,12 @@ He and his skeletal buddy Avakian will use their dark powers to fend off any mur
 
   it('shouldnt have a media and show No Content text', async () => {
     const {getByText} = render(
-      <WithFirestore>
-        <UserProvider>
-          <MemoryRouter initialEntries={['/123/update']}>
-            <Routes>
-              <Route path="/">
-                <Route path=":mediaId/update" element={<MediaEdit />}></Route>
-              </Route>
-            </Routes>
-          </MemoryRouter>
-        </UserProvider>
-      </WithFirestore>
+      <Routes>
+        <Route path="/">
+          <Route path=":mediaId/update" element={<MediaEdit />}></Route>
+        </Route>
+      </Routes>,
+      ['/123/update']
     );
 
     await waitFor(async () => {

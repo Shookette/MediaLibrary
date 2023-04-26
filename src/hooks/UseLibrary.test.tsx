@@ -1,4 +1,4 @@
-import {act, renderHook} from '@testing-library/react';
+import {act, renderHook} from '../test-utils';
 import useLibrary from './UseLibrary';
 import {Media} from '../interfaces/Media';
 import {ChangeEvent} from 'react';

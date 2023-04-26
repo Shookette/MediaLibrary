@@ -1,8 +1,5 @@
-import {render, fireEvent, waitFor} from '@testing-library/react';
+import {render, fireEvent, waitFor} from '../../test-utils';
 import React from 'react';
-import UserProvider from '../../hooks/UserContext';
-import WithFirestore from '../../components/WithFirestore';
-import {BrowserRouter} from 'react-router-dom';
 import MediaNew from './MediaNew';
 import * as MediaRepository from '../../repository/MediaRepository';
 
@@ -20,29 +17,13 @@ describe('MediaNew Component', () => {
   });
 
   it('should have all input without data', () => {
-    const {getByRole} = render(
-      <WithFirestore>
-        <UserProvider>
-          <BrowserRouter>
-            <MediaNew />
-          </BrowserRouter>
-        </UserProvider>
-      </WithFirestore>
-    );
+    const {getByRole} = render(<MediaNew />);
 
     expect(getByRole('heading', {name: /Add new media/i})).toBeTruthy();
   });
 
   it('should save the media when submitting the form', async () => {
-    const {getByRole} = render(
-      <WithFirestore>
-        <UserProvider>
-          <BrowserRouter>
-            <MediaNew />
-          </BrowserRouter>
-        </UserProvider>
-      </WithFirestore>
-    );
+    const {getByRole} = render(<MediaNew />);
 
     fireEvent.change(getByRole('textbox', {name: /Title/i}), {
       target: {value: 'new title'},

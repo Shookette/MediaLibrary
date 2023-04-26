@@ -1,21 +1,10 @@
-import {screen, render, fireEvent} from '@testing-library/react';
+import {screen, render, fireEvent} from '../../test-utils';
 import React from 'react';
 import LoginOrRegisterContainer from './LoginOrRegisterContainer';
-import UserProvider from '../../hooks/UserContext';
-import WithFirestore from '../../components/WithFirestore';
-import {BrowserRouter} from 'react-router-dom';
 
 describe('LoginOrRegister Component', () => {
   it('should have all input without data', () => {
-    render(
-      <WithFirestore>
-        <UserProvider>
-          <BrowserRouter>
-            <LoginOrRegisterContainer />
-          </BrowserRouter>
-        </UserProvider>
-      </WithFirestore>
-    );
+    render(<LoginOrRegisterContainer />);
 
     expect(screen.getByRole('heading', {name: /Login/i})).toBeTruthy();
     expect(screen.getByRole('textbox', {name: /Email/i})).toBeTruthy();
@@ -25,15 +14,7 @@ describe('LoginOrRegister Component', () => {
   });
 
   it('should change the form to register form when clicking on register button', () => {
-    render(
-      <WithFirestore>
-        <UserProvider>
-          <BrowserRouter>
-            <LoginOrRegisterContainer />
-          </BrowserRouter>
-        </UserProvider>
-      </WithFirestore>
-    );
+    render(<LoginOrRegisterContainer />);
 
     fireEvent.click(screen.getByRole('button', {name: /Register/i}));
 

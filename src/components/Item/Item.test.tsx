@@ -1,4 +1,4 @@
-import {fireEvent, render, waitFor} from '@testing-library/react';
+import {fireEvent, render, waitFor} from '../../test-utils';
 import {Media} from '../../interfaces/Media';
 import Item from './Item';
 import React from 'react';

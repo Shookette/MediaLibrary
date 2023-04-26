@@ -1,11 +1,9 @@
-import {render, waitFor, fireEvent} from '@testing-library/react';
+import {render, waitFor, fireEvent} from '../../test-utils';
 import React from 'react';
-import UserProvider from '../../hooks/UserContext';
-import WithFirestore from '../../components/WithFirestore';
 import * as repository from '../../repository/MediaRepository';
 import {Media} from '../../interfaces/Media';
 import MediaDetail from './MediaDetail';
-import {MemoryRouter, Route, Routes} from 'react-router-dom';
+import {Route, Routes} from 'react-router-dom';
 
 const mockedUsedNavigate = jest.fn();
 
@@ -43,15 +41,10 @@ He and his skeletal buddy Avakian will use their dark powers to fend off any mur
 
   it('should have a media and show media title and actions button', async () => {
     const {getByRole} = render(
-      <WithFirestore>
-        <UserProvider>
-          <MemoryRouter initialEntries={['/123']}>
-            <Routes>
-              <Route path="/:mediaId" element={<MediaDetail />}></Route>
-            </Routes>
-          </MemoryRouter>
-        </UserProvider>
-      </WithFirestore>
+      <Routes>
+        <Route path="/:mediaId" element={<MediaDetail />}></Route>
+      </Routes>,
+      ['/123']
     );
 
     await waitFor(() => {
@@ -64,15 +57,10 @@ He and his skeletal buddy Avakian will use their dark powers to fend off any mur
 
   it('should delete media when clicking on delete button', async () => {
     const {getByRole} = render(
-      <WithFirestore>
-        <UserProvider>
-          <MemoryRouter initialEntries={['/123']}>
-            <Routes>
-              <Route path="/:mediaId" element={<MediaDetail />}></Route>
-            </Routes>
-          </MemoryRouter>
-        </UserProvider>
-      </WithFirestore>
+      <Routes>
+        <Route path="/:mediaId" element={<MediaDetail />}></Route>
+      </Routes>,
+      ['/123']
     );
 
     await waitFor(async () => {
@@ -85,17 +73,7 @@ He and his skeletal buddy Avakian will use their dark powers to fend off any mur
   });
 
   it('should redirect to update page when click on Update Media button', async () => {
-    const {getByRole} = render(
-      <WithFirestore>
-        <UserProvider>
-          <MemoryRouter initialEntries={['/123']}>
-            <Routes>
-              <Route path="/:mediaId" element={<MediaDetail />}></Route>
-            </Routes>
-          </MemoryRouter>
-        </UserProvider>
-      </WithFirestore>
-    );
+    const {getByRole} = render(<MediaDetail />);
 
     await waitFor(async () => {
       fireEvent.click(getByRole('button', {name: /Update Media/i}));

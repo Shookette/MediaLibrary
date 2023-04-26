@@ -1,4 +1,4 @@
-import {render} from '@testing-library/react';
+import {render} from '../../test-utils';
 import Library from './Library';
 import React from 'react';
 import {Media} from '../../interfaces/Media';

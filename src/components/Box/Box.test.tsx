@@ -1,4 +1,4 @@
-import {render} from '@testing-library/react';
+import {render} from '../../test-utils';
 import {BoxType} from '../../interfaces/Box';
 import Box from './Box';
 import React from 'react';

@@ -1,4 +1,4 @@
-import {screen, render, fireEvent, waitFor} from '@testing-library/react';
+import {screen, render, fireEvent, waitFor} from '../../test-utils';
 import React from 'react';
 import {Media} from '../../interfaces/Media';
 import MediaForm from './MediaForm';

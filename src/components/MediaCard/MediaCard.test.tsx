@@ -1,4 +1,4 @@
-import {screen, render} from '@testing-library/react';
+import {screen, render} from '../../test-utils';
 import React from 'react';
 import MediaCard from './MediaCard';
 import {Media} from '../../interfaces/Media';

@@ -1,10 +1,7 @@
-import {render, waitFor, fireEvent} from '@testing-library/react';
+import {render, waitFor, fireEvent} from '../../test-utils';
 import React from 'react';
-import UserProvider from '../../hooks/UserContext';
-import WithFirestore from '../../components/WithFirestore';
 import * as repository from '../../repository/MediaRepository';
 import {Media} from '../../interfaces/Media';
-import {MemoryRouter, Route, Routes} from 'react-router-dom';
 import MediaList from './MediaList';
 
 const mockedUsedNavigate = jest.fn();
@@ -41,17 +38,7 @@ He and his skeletal buddy Avakian will use their dark powers to fend off any mur
   });
 
   it('should have two media showed', async () => {
-    const {getAllByText} = render(
-      <WithFirestore>
-        <UserProvider>
-          <MemoryRouter initialEntries={['/']}>
-            <Routes>
-              <Route path="/" element={<MediaList />}></Route>
-            </Routes>
-          </MemoryRouter>
-        </UserProvider>
-      </WithFirestore>
-    );
+    const {getAllByText} = render(<MediaList />);
 
     await waitFor(() => {
       expect(spyGetMedias).toHaveBeenCalled();
@@ -60,17 +47,7 @@ He and his skeletal buddy Avakian will use their dark powers to fend off any mur
   });
 
   it('should redirect to media detail on click on a media card', async () => {
-    const {findByText} = render(
-      <WithFirestore>
-        <UserProvider>
-          <MemoryRouter initialEntries={['/']}>
-            <Routes>
-              <Route path="/" element={<MediaList />}></Route>
-            </Routes>
-          </MemoryRouter>
-        </UserProvider>
-      </WithFirestore>
-    );
+    const {findByText} = render(<MediaList />);
 
     await waitFor(async () => {
       fireEvent.click(await findByText('Dai Dark'));
