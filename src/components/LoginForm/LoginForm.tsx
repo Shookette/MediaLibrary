@@ -1,6 +1,7 @@
 import React, {FC} from 'react';
 import {SubmitHandler, useForm} from 'react-hook-form';
 import {FormLogin} from '../../interfaces/FormLogin';
+import {useIntl} from 'react-intl';
 
 type LoginForm = {
   handleOnSubmit: SubmitHandler<FormLogin>;
@@ -12,18 +13,19 @@ const LoginForm: FC<LoginForm> = ({handleOnSubmit}) => {
     handleSubmit,
     formState: {errors},
   } = useForm<FormLogin>();
+  const {formatMessage} = useIntl();
 
   return (
     <form className="form" onSubmit={handleSubmit(handleOnSubmit)}>
       <label className="form_label" htmlFor="email">
-        Email
+        {formatMessage({id: 'account.email'})}
       </label>
       <input className="form_input" id="email" {...register('email', {required: true})} />
       <span role="alert" className="form_input--error">
-        {errors.email && 'Email is required'}
+        {errors.email && formatMessage({id: 'account.email.error'})}
       </span>
       <label className="form_label" htmlFor="password">
-        Password
+        {formatMessage({id: 'account.password'})}
       </label>
       <input
         className="form_input"
@@ -32,9 +34,9 @@ const LoginForm: FC<LoginForm> = ({handleOnSubmit}) => {
         {...register('password', {required: true})}
       />
       <span role="alert" className="form_input--error">
-        {errors.password && 'Password is required'}
+        {errors.password && formatMessage({id: 'account.password.error'})}
       </span>
-      <input className="form_submit" type="submit" />
+      <input className="form_submit" type="submit" value={formatMessage({id: 'submit'})} />
     </form>
   );
 };

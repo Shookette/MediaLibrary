@@ -8,9 +8,12 @@ import {FormRegister} from '../../interfaces/FormRegister';
 import LoginForm from '../../components/LoginForm/LoginForm';
 import RegisterForm from '../../components/RegisterForm/RegisterForm';
 import './LoginOrRegisterContainer.scss';
+import {useIntl} from 'react-intl';
 
 const LoginOrRegisterContainer = () => {
   const {login, register, user} = useUserContext();
+  const {formatMessage} = useIntl();
+
   const [isRegisterMode, setIsRegisterMode] = useState(false);
   const navigate = useNavigate();
 
@@ -33,7 +36,11 @@ const LoginOrRegisterContainer = () => {
   return (
     <article className="login">
       <div className="login_content">
-        <h1 className="login_title">{!isRegisterMode ? 'Login' : 'Register'}</h1>
+        <h1 className="login_title">
+          {!isRegisterMode
+            ? formatMessage({id: 'login.title'})
+            : formatMessage({id: 'register.title'})}
+        </h1>
         {isRegisterMode ? (
           <RegisterForm handleOnSubmit={registerWithEmailAndPassword} />
         ) : (
@@ -44,7 +51,11 @@ const LoginOrRegisterContainer = () => {
             type="button"
             displayType="secondary"
             handleOnClick={() => setIsRegisterMode(!isRegisterMode)}>
-            <span>{isRegisterMode ? 'Login' : 'Register'}</span>
+            <span>
+              {isRegisterMode
+                ? formatMessage({id: 'login.title'})
+                : formatMessage({id: 'register.title'})}
+            </span>
           </Button>
         </div>
       </div>

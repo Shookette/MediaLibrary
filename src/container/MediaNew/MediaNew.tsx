@@ -7,8 +7,11 @@ import {useNavigate} from 'react-router-dom';
 import {v4 as uuidv4} from 'uuid';
 import MediaForm from '../../components/MediaForm/MediaForm';
 import {useUserContext} from '../../hooks/UserContext';
+import {useIntl} from 'react-intl';
 
 const MediaNew = () => {
+  const {formatMessage} = useIntl();
+
   const navigate = useNavigate();
   const {user} = useUserContext();
   const onSubmit: SubmitHandler<Media> = async (media) => {
@@ -21,7 +24,7 @@ const MediaNew = () => {
 
   return (
     <article className="add-media">
-      <h2 className="add-media_title">Add new media</h2>
+      <h2 className="add-media_title">{formatMessage({id: 'media.new.title'})}</h2>
       <MediaForm handleOnSubmit={onSubmit} />
     </article>
   );

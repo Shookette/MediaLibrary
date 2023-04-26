@@ -5,8 +5,11 @@ import './MediaEdit.scss';
 import * as repository from '../../repository/MediaRepository';
 import {useNavigate, useParams} from 'react-router-dom';
 import MediaForm from '../../components/MediaForm/MediaForm';
+import {useIntl} from 'react-intl';
 
 const MediaEdit = () => {
+  const {formatMessage} = useIntl();
+
   const navigate = useNavigate();
   const [media, setMedia] = useState<Media | null>(null);
   const {mediaId} = useParams();
@@ -31,7 +34,7 @@ const MediaEdit = () => {
     </article>
   ) : (
     <article className="media-edit">
-      <span className="medit-edit_no-content">No media found</span>
+      <span className="medit-edit_no-content">{formatMessage({id: 'media.missing'})}</span>
     </article>
   );
 };

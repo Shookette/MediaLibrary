@@ -4,8 +4,11 @@ import {deleteMedia, getMediaByID} from '../../repository/MediaRepository';
 import {useNavigate, useParams} from 'react-router-dom';
 import Button from '../../components/Button/Button';
 import './MediaDetail.scss';
+import {useIntl} from 'react-intl';
 
 const MediaDetail = () => {
+  const {formatMessage} = useIntl();
+
   const [media, setMedia] = useState<Media | null>(null);
   const {mediaId} = useParams();
   const navigate = useNavigate();
@@ -32,9 +35,13 @@ const MediaDetail = () => {
     <article className="media-detail">
       <h2 className="media-detail_title">{media?.title}</h2>
       <div className="media-detail_content">
-        <img className="media-detail_image" alt={`${media?.title} cover`} src={media?.image} />
+        <img
+          className="media-detail_image"
+          alt={`${formatMessage({id: 'media.cover.alt'})}${media?.title}`}
+          src={media?.image}
+        />
         <p className="media-detail_description">{media?.description}</p>
-        <p className="media-detail_status">{media?.status}</p>
+        <p className="media-detail_status">{formatMessage({id: media?.status})}</p>
       </div>
 
       <div className="media-detail_actions">
@@ -42,10 +49,10 @@ const MediaDetail = () => {
           type="button"
           displayType="secondary"
           handleOnClick={deleteMediaAndRedirectToListing}>
-          Delete Media
+          {formatMessage({id: 'action.media.delete'})}
         </Button>
         <Button type="button" displayType="primary" handleOnClick={redirectToUpdateMedia}>
-          Update Media
+          {formatMessage({id: 'action.media.update'})}
         </Button>
       </div>
     </article>

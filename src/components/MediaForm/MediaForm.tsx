@@ -2,6 +2,7 @@ import React, {FC, useEffect, useState} from 'react';
 import {Media} from '../../interfaces/Media';
 import {SubmitHandler, useForm} from 'react-hook-form';
 import './MediaForm.scss';
+import {useIntl} from 'react-intl';
 
 type MediaFormProps = {
   media?: Media;
@@ -15,6 +16,7 @@ const MediaForm: FC<MediaFormProps> = ({media, handleOnSubmit}) => {
     watch,
     formState: {errors},
   } = useForm<Media>({defaultValues: media});
+  const {formatMessage} = useIntl();
 
   const [data, setData] = useState<Media | undefined>(media);
   const [showFaceClass, setShowFaceClass] = useState('');
@@ -30,7 +32,7 @@ const MediaForm: FC<MediaFormProps> = ({media, handleOnSubmit}) => {
     <div className="media-form">
       <form className="form" onSubmit={handleSubmit(handleOnSubmit)}>
         <label className="form_label" htmlFor="title">
-          Title
+          {formatMessage({id: 'media.title'})}
         </label>
         <input
           autoFocus
@@ -40,10 +42,10 @@ const MediaForm: FC<MediaFormProps> = ({media, handleOnSubmit}) => {
           {...register('title', {required: true})}
         />
         <span role="alert" className="form_input--error">
-          {errors.title && 'Title is required'}
+          {errors.title && formatMessage({id: 'media.title.error'})}
         </span>
         <label className="form_label" htmlFor="description">
-          Description
+          {formatMessage({id: 'media.description'})}
         </label>
         <textarea
           onFocus={() => setShowFaceClass('show-left')}
@@ -52,7 +54,7 @@ const MediaForm: FC<MediaFormProps> = ({media, handleOnSubmit}) => {
           {...register('description')}
         />
         <label className="form_label" htmlFor="release">
-          Release Date
+          {formatMessage({id: 'media.release'})}
         </label>
         <input
           className="form_input"
@@ -61,7 +63,7 @@ const MediaForm: FC<MediaFormProps> = ({media, handleOnSubmit}) => {
           {...register('release')}
         />
         <label className="form_label" htmlFor="image">
-          Image URL
+          {formatMessage({id: 'media.image.url'})}
         </label>
         <input
           className="form_input"
@@ -70,20 +72,20 @@ const MediaForm: FC<MediaFormProps> = ({media, handleOnSubmit}) => {
           onFocus={() => setShowFaceClass('show-right')}
         />
         <label className="form_label" htmlFor="type">
-          Media Type
+          {formatMessage({id: 'media.type'})}
         </label>
         <select className="form_input" id="type" {...register('type', {required: true})}>
           {typeOptions.map((typeOption) => (
             <option key={typeOption} value={typeOption}>
-              {typeOption}
+              {formatMessage({id: typeOption})}
             </option>
           ))}
         </select>
         <span role="alert" className="form_input--error">
-          {errors.type && 'Type is required'}
+          {errors.type && formatMessage({id: 'media.type.error'})}
         </span>
         <label className="form_label" htmlFor="status">
-          Status
+          {formatMessage({id: 'media.status'})}
         </label>
         <select
           className="form_input"
@@ -92,14 +94,14 @@ const MediaForm: FC<MediaFormProps> = ({media, handleOnSubmit}) => {
           {...register('status', {required: true})}>
           {statusOptions.map((statusOption) => (
             <option key={statusOption} value={statusOption}>
-              {statusOption}
+              {formatMessage({id: statusOption})}
             </option>
           ))}
         </select>
         {data?.status === 'lend' && (
           <>
             <label className="form_label" htmlFor="lendTo">
-              Lend to
+              {formatMessage({id: 'media.lendTo'})}
             </label>
             <input
               className="form_input"
@@ -109,7 +111,7 @@ const MediaForm: FC<MediaFormProps> = ({media, handleOnSubmit}) => {
             />
           </>
         )}
-        <input className="form_submit" type="submit" />
+        <input className="form_submit" type="submit" value={formatMessage({id: 'submit'})} />
       </form>
       <div className="media-form_object">
         <div className={`preview ${showFaceClass}`}>
@@ -117,9 +119,9 @@ const MediaForm: FC<MediaFormProps> = ({media, handleOnSubmit}) => {
             <h2 className="preview_title">{data?.title}</h2>
           </div>
           <div className="preview_face preview_face--right">
-            <img className="preview_image" alt="media image" src={data?.image} />
+            {data?.image && <img className="preview_image" alt="media image" src={data?.image} />}
             <div className="preview_status">
-              <span>{data?.status}</span>
+              <span>{data?.status && formatMessage({id: data?.status})}</span>
               <span>{data?.lendTo}</span>
             </div>
             {data?.status === 'lend' && <span className="preview_lend-to"></span>}
