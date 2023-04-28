@@ -4,9 +4,12 @@ const MediaNew = lazy(() => import('./container/MediaNew/MediaNew'));
 const MediaList = lazy(() => import('./container/MediaList/MediaList'));
 const MediaDetail = lazy(() => import('./container/MediaDetail/MediaDetail'));
 const MediaEdit = lazy(() => import('./container/MediaEdit/MediaEdit'));
-const LoginOrRegisterContainer = lazy(
-  () => import('./container/LoginOrRegisterContainer/LoginOrRegisterContainer')
+const LoginContainer = lazy(() => import('./container/LoginContainer/LoginContainer'));
+const ResetPasswordContainer = lazy(
+  () => import('./container/ResetPasswordContainer/ResetPasswordContainer')
 );
+const RegisterContainer = lazy(() => import('./container/RegisterContainer/RegisterContainer'));
+
 import Layout from './components/Layout';
 import {useUserContext} from './hooks/UserContext';
 import useTheme from './hooks/UseTheme';
@@ -61,7 +64,9 @@ const App: FC = () => {
           }
         />
       </Route>
-      <Route path="/login" element={<LoginOrRegisterContainer />} />
+      <Route path="/login" element={<LoginContainer />} />
+      <Route path="/register" element={<RegisterContainer />} />
+      <Route path="/reset-password" element={<ResetPasswordContainer />} />
     </Routes>
   );
 };

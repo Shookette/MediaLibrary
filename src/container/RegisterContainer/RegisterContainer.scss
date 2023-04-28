@@ -1,4 +1,6 @@
-.login {
+@use '../../styles/variables' as *;
+
+.register {
     align-items: center;
     display: flex;
     flex-direction: column;
@@ -18,12 +20,17 @@
         border-radius: 15px;
         margin: auto;
         padding: 10px;
-        width: 70%;
+        width: 90%;
+
+        @include medium {
+            width: 70%;
+        }
     }
 
     &_actions {
         border-top: 1px solid var(--color-reverse);
         display: flex;
+        flex-direction: column;
         justify-content: center;
     }
 }

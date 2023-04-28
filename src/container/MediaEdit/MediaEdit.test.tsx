@@ -40,6 +40,10 @@ He and his skeletal buddy Avakian will use their dark powers to fend off any mur
     spySetMedia = jest.spyOn(repository, 'setMedia').mockReturnValue(Promise.resolve());
   });
 
+  afterEach(() => {
+    jest.clearAllMocks();
+  });
+
   it('should have a media and show title with edit form', async () => {
     const {getByRole, getAllByRole} = render(
       <Routes>

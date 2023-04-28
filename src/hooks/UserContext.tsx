@@ -67,7 +67,9 @@ const UserProvider: FC<UserProviderProps> = ({children}) => {
   };
 
   const resetPassword = (email: string) => {
-    return sendPasswordResetEmail(auth, email).then(() => console.log('reset email send'));
+    return sendPasswordResetEmail(auth, email)
+      .then(() => console.log('reset email send'))
+      .catch((error) => console.error(error));
   };
 
   const updateUser = (user: User) => {

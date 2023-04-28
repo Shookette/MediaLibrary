@@ -26,13 +26,14 @@
   "media.type": "Type du média",
   "media.type.error": "Le type est manquant",
   "media.status": "Statut du média",
-  "media.lendTo": "Prêté à ",
+  "media.lendTo": "Prêté à",
   "media.missing": "Aucun média trouvé",
   "media.new.title": "Nouveau média",
   "header.title": "Media Library",
   "search.placeholder": "Rechercher...",
   "login.title": "Connexion",
   "register.title": "Inscription",
+  "reset-password.title": "Mot de passe oublié ?",
   "action.media.delete": "Supprimer le media",
   "action.media.update": "Mettre à jour le media"
 }

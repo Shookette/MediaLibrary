@@ -17,6 +17,10 @@ describe('MediaNew Component', () => {
     spySetMedia = jest.spyOn(MediaRepository, 'setMedia').mockReturnValue(Promise.resolve());
   });
 
+  afterEach(() => {
+    jest.clearAllMocks();
+  });
+
   it('should have all input without data', () => {
     const {getByRole} = render(<MediaNew />);
 

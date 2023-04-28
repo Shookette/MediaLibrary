@@ -37,6 +37,10 @@ He and his skeletal buddy Avakian will use their dark powers to fend off any mur
       );
   });
 
+  afterEach(() => {
+    jest.clearAllMocks();
+  });
+
   it('should have two media showed', async () => {
     const {getAllByText} = render(<MediaList />);
 

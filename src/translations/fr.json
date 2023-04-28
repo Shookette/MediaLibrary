@@ -33,6 +33,7 @@
   "search.placeholder": "Rechercher...",
   "login.title": "Connexion",
   "register.title": "Inscription",
+  "reset-password.title": "Mot de passe oublié ?",
   "action.media.delete": "Supprimer le media",
   "action.media.update": "Mettre à jour le media"
 }

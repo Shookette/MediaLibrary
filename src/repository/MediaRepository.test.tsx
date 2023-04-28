@@ -2,8 +2,6 @@ import {getMediaByID, getMedias} from './MediaRepository';
 import {Media} from '../interfaces/Media';
 import initFirebase from '../firebaseLoader';
 
-const mockedGetDoc = jest.fn();
-
 jest.mock('firebase/firestore', () => ({
   ...jest.requireActual('firebase/firestore'),
   getDocs: () => [
@@ -31,6 +29,10 @@ He and his skeletal buddy Avakian will use their dark powers to fend off any mur
 describe('Media Repository', () => {
   beforeEach(() => {
     initFirebase();
+  });
+
+  afterEach(() => {
+    jest.clearAllMocks();
   });
 
   it('should return a media when calling getMediaById', async () => {
