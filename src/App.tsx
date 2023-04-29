@@ -64,9 +64,30 @@ const App: FC = () => {
           }
         />
       </Route>
-      <Route path="/login" element={<LoginContainer />} />
-      <Route path="/register" element={<RegisterContainer />} />
-      <Route path="/reset-password" element={<ResetPasswordContainer />} />
+      <Route
+        path="/login"
+        element={
+          <Suspense fallback={<p>Loading ...</p>}>
+            <LoginContainer />
+          </Suspense>
+        }
+      />
+      <Route
+        path="/register"
+        element={
+          <Suspense fallback={<p>Loading ...</p>}>
+            <RegisterContainer />
+          </Suspense>
+        }
+      />
+      <Route
+        path="/reset-password"
+        element={
+          <Suspense fallback={<p>Loading ...</p>}>
+            <ResetPasswordContainer />
+          </Suspense>
+        }
+      />
     </Routes>
   );
 };
