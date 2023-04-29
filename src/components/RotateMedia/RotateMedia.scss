@@ -1,0 +1,146 @@
+@use '../../styles/variables' as *;
+
+.rotate-media {
+  height: var(--preview-box-y-small);
+  position: relative;
+  //transform: translateZ(-50px);
+  transform-style: preserve-3d;
+  animation: spin 10s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+  width: var(--preview-box-x-small);
+
+  @include medium {
+    height: var(--preview-box-y);
+    width: var(--preview-box-x);
+  }
+
+  &_face {
+    @include title-with-shadow();
+
+    background-color: var(--preview-box-bg-color);
+    background-image: var(--item-bg-texture);
+    position: absolute;
+    text-align: center;
+    text-overflow: ellipsis;
+    writing-mode: vertical-rl;
+
+    &--right,
+    &--left {
+      height: var(--preview-box-y-small);
+      left: 100px;
+      width: var(--preview-box-z-small);
+      writing-mode: horizontal-tb;
+
+      @include medium {
+        height: var(--preview-box-y);
+        width: var(--preview-box-z);
+      }
+    }
+
+    &--front {
+      align-items: center;
+      border-left: 2px solid var(--color-library-back-bg);
+      border-right: 2px solid var(--color-library-back-bg);
+      display: flex;
+      font-weight: var(--font-bold);
+      height: var(--preview-box-y-small);
+      justify-content: center;
+      padding: 10px;
+      transform: rotateY(0deg) translateZ(75px);
+      width: var(--preview-box-x-small);
+
+      @include medium {
+        height: var(--preview-box-y);
+        transform: rotateY(0deg) translateZ(100px);
+        width: var(--preview-box-x);
+      }
+    }
+
+    &--back {
+      display: flex;
+      height: var(--preview-box-y-small);
+      transform: rotateY(0deg) translateZ(-75px);
+      width: var(--preview-box-x-small);
+      background-color: #fae1a3;
+      background-image: url("https://www.transparenttextures.com/patterns/crisp-paper-ruffles.png");
+
+      @include medium {
+        height: var(--preview-box-y);
+        transform: rotateY(0deg) translateZ(-100px);
+        width: var(--preview-box-x);
+      }
+    }
+
+    &--right {
+      border-bottom-right-radius: var(--border-radius);
+      border-left: 2px solid var(--color-library-back-bg);
+      border-top-right-radius: var(--border-radius);
+      overflow: hidden;
+      transform: rotateY(90deg) translateZ(-125px);
+
+      @include medium {
+        transform: rotateY(90deg) translateZ(-125px);
+      }
+    }
+
+    &--left {
+      border-bottom-left-radius: var(--border-radius);
+      border-right: 2px solid var(--color-library-back-bg);
+      border-top-left-radius: var(--border-radius);
+      display: flex;
+      flex-direction: column;
+      font-size: 1rem;
+      justify-content: space-between;
+      padding: 10px;
+      transform: rotateY(-90deg) translateZ(175px);
+
+      @include medium {
+        transform: rotateY(-90deg) translateZ(200px);
+      }
+    }
+  }
+
+  &_description {
+    overflow: hidden;
+    white-space: pre-wrap;
+  }
+
+  &_release {
+    margin-top: 10px;
+  }
+
+  &_image {
+    border-bottom-right-radius: var(--border-radius);
+    border-top-right-radius: var(--border-radius);
+    height: 100%;
+    object-fit: cover;
+    width: var(--preview-box-z-small);
+
+    @include medium {
+      width: var(--preview-box-z);
+    }
+  }
+
+  &_status {
+    align-items: center;
+    background-color: var(--color-semi-transparent);
+    display: flex;
+    font-size: 1.1rem;
+    height: 200px;
+    justify-content: center;
+    left: 30px;
+    position: absolute;
+    top: -65px;
+    transform: rotate(225deg);
+    width: 30px;
+    writing-mode: vertical-lr;
+    flex-direction: column-reverse;
+  }
+}
+
+
+@-webkit-keyframes spin {
+  0% {transform: rotateY(0deg);}
+  100% {transform: rotateY(360deg);}
+}

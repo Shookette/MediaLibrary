@@ -45,7 +45,7 @@ He and his skeletal buddy Avakian will use their dark powers to fend off any mur
   });
 
   it('should have a media and show media title and actions button', async () => {
-    const {getByRole} = render(
+    const {getByRole, getAllByRole} = render(
       <Routes>
         <Route path="/:mediaId" element={<MediaDetail />}></Route>
       </Routes>,
@@ -53,7 +53,8 @@ He and his skeletal buddy Avakian will use their dark powers to fend off any mur
     );
 
     await waitFor(() => {
-      expect(getByRole('heading', {name: defaultMedia.title})).toBeTruthy();
+      expect(getAllByRole('heading', {name: defaultMedia.title})).toBeTruthy();
+      expect(getAllByRole('heading', {name: defaultMedia.title}).length).toEqual(2);
       expect(getByRole('button', {name: messages['action.media.delete']})).toBeTruthy();
       expect(getByRole('button', {name: messages['action.media.update']})).toBeTruthy();
       expect(spyGetMediaById).toHaveBeenCalled();
