@@ -14,6 +14,7 @@ const MediaForm: FC<MediaFormProps> = ({media, handleOnSubmit}) => {
     register,
     handleSubmit,
     watch,
+    setValue,
     formState: {errors},
   } = useForm<Media>({defaultValues: media});
   const {formatMessage} = useIntl();
@@ -91,7 +92,7 @@ const MediaForm: FC<MediaFormProps> = ({media, handleOnSubmit}) => {
           className="form_input"
           onFocus={() => setShowFaceClass('show-right')}
           id="status"
-          {...register('status', {required: true})}>
+          {...register('status', {required: true, onChange: () => setValue('lendTo', '')})}>
           {statusOptions.map((statusOption) => (
             <option key={statusOption} value={statusOption}>
               {formatMessage({id: statusOption})}

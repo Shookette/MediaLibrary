@@ -107,4 +107,33 @@ describe('MediaForm Component', () => {
       expect(mockHandleOnSubmit).toHaveBeenCalled();
     });
   });
+
+  it('should remove lendTo parameter when switching the media status', () => {
+    render(<MediaForm handleOnSubmit={mockHandleOnSubmit} />);
+    fireEvent.change(screen.getByRole('combobox', {name: messages['media.status']}), {
+      target: {value: 'lend'},
+    });
+
+    expect(screen.getByRole('textbox', {name: messages['media.lendTo']})).toBeTruthy();
+
+    fireEvent.change(screen.getByRole('textbox', {name: messages['media.lendTo']}), {
+      target: {value: 'Kuzco'},
+    });
+
+    expect(
+      (screen.getByRole('textbox', {name: messages['media.lendTo']}) as HTMLInputElement).value
+    ).toEqual('Kuzco');
+
+    fireEvent.change(screen.getByRole('combobox', {name: messages['media.status']}), {
+      target: {value: 'owned'},
+    });
+
+    fireEvent.change(screen.getByRole('combobox', {name: messages['media.status']}), {
+      target: {value: 'lend'},
+    });
+
+    expect(
+      (screen.getByRole('textbox', {name: messages['media.lendTo']}) as HTMLInputElement).value
+    ).toEqual('');
+  });
 });
