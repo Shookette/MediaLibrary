@@ -24,13 +24,13 @@ describe('MediaNew Component', () => {
   it('should have all input without data', () => {
     const {getByRole} = render(<MediaNew />);
 
-    expect(getByRole('heading', {name: messages['media.new.title']})).toBeTruthy();
+    expect(getByRole('heading', {name: messages['media_new_title']})).toBeTruthy();
   });
 
   it('should save the media when submitting the form', async () => {
     const {getByRole} = render(<MediaNew />);
 
-    fireEvent.change(getByRole('textbox', {name: messages['media.title']}), {
+    fireEvent.change(getByRole('textbox', {name: messages['media_title']}), {
       target: {value: 'new title'},
     });
 

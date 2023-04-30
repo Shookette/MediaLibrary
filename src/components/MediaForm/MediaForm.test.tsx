@@ -24,18 +24,18 @@ describe('MediaForm Component', () => {
 
   it('should have all input without data', () => {
     render(<MediaForm handleOnSubmit={mockHandleOnSubmit} />);
-    expect(screen.getByRole('textbox', {name: messages['media.title']})).toBeTruthy();
-    expect(screen.getByRole('textbox', {name: messages['media.description']})).toBeTruthy();
-    expect(screen.getByRole('textbox', {name: messages['media.release']})).toBeTruthy();
-    expect(screen.getByRole('textbox', {name: messages['media.image.url']})).toBeTruthy();
-    expect(screen.getByRole('combobox', {name: messages['media.type']})).toBeTruthy();
-    expect(screen.getByRole('combobox', {name: messages['media.status']})).toBeTruthy();
+    expect(screen.getByRole('textbox', {name: messages['media_title']})).toBeTruthy();
+    expect(screen.getByRole('textbox', {name: messages['media_description']})).toBeTruthy();
+    expect(screen.getByRole('textbox', {name: messages['media_release']})).toBeTruthy();
+    expect(screen.getByRole('textbox', {name: messages['media_image_url']})).toBeTruthy();
+    expect(screen.getByRole('combobox', {name: messages['media_type']})).toBeTruthy();
+    expect(screen.getByRole('combobox', {name: messages['media_status']})).toBeTruthy();
     expect(screen.getByRole('button', {name: messages['submit']})).toBeTruthy();
   });
 
   it('should have all media type as option', () => {
     render(<MediaForm handleOnSubmit={mockHandleOnSubmit} />);
-    expect(screen.getByRole('combobox', {name: messages['media.type']})).toBeTruthy();
+    expect(screen.getByRole('combobox', {name: messages['media_type']})).toBeTruthy();
     expect(screen.getByRole('option', {name: messages['book']})).toBeTruthy();
     expect(screen.getByRole('option', {name: messages['videogame']})).toBeTruthy();
     expect(screen.getByRole('option', {name: messages['boardgame']})).toBeTruthy();
@@ -46,7 +46,7 @@ describe('MediaForm Component', () => {
 
   it('should have all media status as option', () => {
     render(<MediaForm handleOnSubmit={mockHandleOnSubmit} />);
-    expect(screen.getByRole('combobox', {name: messages['media.status']})).toBeTruthy();
+    expect(screen.getByRole('combobox', {name: messages['media_status']})).toBeTruthy();
     expect(screen.getByRole('option', {name: messages['owned']})).toBeTruthy();
     expect(screen.getByRole('option', {name: messages['lend']})).toBeTruthy();
     expect(screen.getByRole('option', {name: messages['borrowed']})).toBeTruthy();
@@ -55,52 +55,52 @@ describe('MediaForm Component', () => {
   it('should have all input with data', () => {
     render(<MediaForm media={defaultMedia} handleOnSubmit={mockHandleOnSubmit} />);
     expect(
-      (screen.getByRole('textbox', {name: messages['media.title']}) as HTMLInputElement).value
+      (screen.getByRole('textbox', {name: messages['media_title']}) as HTMLInputElement).value
     ).toEqual(defaultMedia.title);
 
     expect(
-      (screen.getByRole('textbox', {name: messages['media.description']}) as HTMLInputElement).value
+      (screen.getByRole('textbox', {name: messages['media_description']}) as HTMLInputElement).value
     ).toEqual(defaultMedia.description);
     expect(
-      (screen.getByRole('textbox', {name: messages['media.release']}) as HTMLInputElement).value
+      (screen.getByRole('textbox', {name: messages['media_release']}) as HTMLInputElement).value
     ).toEqual(defaultMedia.release);
     expect(
-      (screen.getByRole('textbox', {name: messages['media.image.url']}) as HTMLInputElement).value
+      (screen.getByRole('textbox', {name: messages['media_image_url']}) as HTMLInputElement).value
     ).toEqual(defaultMedia.image);
 
     expect(
-      (screen.getByRole('combobox', {name: messages['media.status']}) as HTMLInputElement).value
+      (screen.getByRole('combobox', {name: messages['media_status']}) as HTMLInputElement).value
     ).toEqual(defaultMedia.status);
 
     expect(
-      (screen.getByRole('combobox', {name: messages['media.type']}) as HTMLInputElement).value
+      (screen.getByRole('combobox', {name: messages['media_type']}) as HTMLInputElement).value
     ).toEqual(defaultMedia.type);
   });
 
   it('should not have lendTo input by default', () => {
     render(<MediaForm handleOnSubmit={mockHandleOnSubmit} />);
-    expect(screen.queryByRole('textbox', {name: messages['media.lendTo']})).toBeNull();
+    expect(screen.queryByRole('textbox', {name: messages['media_lendTo']})).toBeNull();
   });
 
   it('should have lendTo input when status is set to lend', () => {
     render(<MediaForm handleOnSubmit={mockHandleOnSubmit} />);
-    fireEvent.change(screen.getByRole('combobox', {name: messages['media.status']}), {
+    fireEvent.change(screen.getByRole('combobox', {name: messages['media_status']}), {
       target: {value: 'lend'},
     });
 
-    expect(screen.getByRole('textbox', {name: messages['media.lendTo']})).toBeTruthy();
+    expect(screen.getByRole('textbox', {name: messages['media_lendTo']})).toBeTruthy();
   });
 
   it('should call onSubmit function when clicking on submit button', async () => {
     render(<MediaForm media={defaultMedia} handleOnSubmit={mockHandleOnSubmit} />);
 
-    fireEvent.change(screen.getByRole('textbox', {name: messages['media.title']}), {
+    fireEvent.change(screen.getByRole('textbox', {name: messages['media_title']}), {
       target: {value: 'new title'},
     });
     fireEvent.submit(screen.getByRole('button', {name: messages['submit']}));
 
     expect(
-      (screen.getByRole('textbox', {name: messages['media.title']}) as HTMLInputElement).value
+      (screen.getByRole('textbox', {name: messages['media_title']}) as HTMLInputElement).value
     ).toEqual('new title');
 
     await waitFor(() => {
@@ -110,30 +110,30 @@ describe('MediaForm Component', () => {
 
   it('should remove lendTo parameter when switching the media status', () => {
     render(<MediaForm handleOnSubmit={mockHandleOnSubmit} />);
-    fireEvent.change(screen.getByRole('combobox', {name: messages['media.status']}), {
+    fireEvent.change(screen.getByRole('combobox', {name: messages['media_status']}), {
       target: {value: 'lend'},
     });
 
-    expect(screen.getByRole('textbox', {name: messages['media.lendTo']})).toBeTruthy();
+    expect(screen.getByRole('textbox', {name: messages['media_lendTo']})).toBeTruthy();
 
-    fireEvent.change(screen.getByRole('textbox', {name: messages['media.lendTo']}), {
+    fireEvent.change(screen.getByRole('textbox', {name: messages['media_lendTo']}), {
       target: {value: 'Kuzco'},
     });
 
     expect(
-      (screen.getByRole('textbox', {name: messages['media.lendTo']}) as HTMLInputElement).value
+      (screen.getByRole('textbox', {name: messages['media_lendTo']}) as HTMLInputElement).value
     ).toEqual('Kuzco');
 
-    fireEvent.change(screen.getByRole('combobox', {name: messages['media.status']}), {
+    fireEvent.change(screen.getByRole('combobox', {name: messages['media_status']}), {
       target: {value: 'owned'},
     });
 
-    fireEvent.change(screen.getByRole('combobox', {name: messages['media.status']}), {
+    fireEvent.change(screen.getByRole('combobox', {name: messages['media_status']}), {
       target: {value: 'lend'},
     });
 
     expect(
-      (screen.getByRole('textbox', {name: messages['media.lendTo']}) as HTMLInputElement).value
+      (screen.getByRole('textbox', {name: messages['media_lendTo']}) as HTMLInputElement).value
     ).toEqual('');
   });
 });

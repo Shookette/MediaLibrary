@@ -19,11 +19,11 @@ const ResetPasswordForm: FC<ResetPasswordForm> = ({handleOnSubmit}) => {
   return (
     <form className="form" onSubmit={handleSubmit(handleOnSubmit)}>
       <label className="form_label" htmlFor="email">
-        {formatMessage({id: 'account.email'})}
+        {formatMessage({id: 'account_email'})}
       </label>
       <input className="form_input" id="email" {...register('email', {required: true})} />
       <span role="alert" className="form_input--error">
-        {errors.email && formatMessage({id: 'account.email.error'})}
+        {errors.email && formatMessage({id: 'account_email_error'})}
       </span>
       <input className="form_submit" type="submit" value={formatMessage({id: 'submit'})} />
     </form>

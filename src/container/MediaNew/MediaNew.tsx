@@ -24,7 +24,7 @@ const MediaNew = () => {
 
   return (
     <article className="add-media">
-      <h2 className="add-media_title">{formatMessage({id: 'media.new.title'})}</h2>
+      <h2 className="add-media_title">{formatMessage({id: 'media_new_title'})}</h2>
       <MediaForm handleOnSubmit={onSubmit} />
     </article>
   );

@@ -1,5 +1,4 @@
-import React from 'react';
-import {ComponentStory, ComponentMeta} from '@storybook/react';
+import {Meta} from '@storybook/react';
 import {Media} from '../../interfaces/Media';
 import MediaCard from './MediaCard';
 
@@ -7,10 +6,7 @@ import MediaCard from './MediaCard';
 export default {
   title: 'Component/MediaCard',
   component: MediaCard,
-} as ComponentMeta<typeof MediaCard>;
-
-// More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
-const Template: ComponentStory<typeof MediaCard> = (args) => <MediaCard {...args} />;
+} as Meta<typeof MediaCard>;
 
 const mediaDefault: Media = {
   id: '1234',
@@ -27,8 +23,8 @@ const mediaDefault: Media = {
   userUID: '123',
 };
 
-export const Default = Template.bind({});
-// More on args: https://storybook.js.org/docs/react/writing-stories/args
-Default.args = {
-  media: mediaDefault,
+export const Default = {
+  args: {
+    media: mediaDefault,
+  },
 };

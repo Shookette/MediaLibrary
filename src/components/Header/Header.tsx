@@ -23,7 +23,7 @@ const Header = () => {
   return (
     <header className="header">
       <section className="header_high-bar">
-        <h1 className="header_title">{formatMessage({id: 'header.title'})}</h1>
+        <h1 className="header_title">{formatMessage({id: 'header_title'})}</h1>
         <div className="header_actions">
           {renderSwitchTheme()}
           <MdLogout role="button" title="logout" onClick={logout} />
@@ -31,10 +31,10 @@ const Header = () => {
       </section>
       <nav className="header_navbar">
         <NavLink to="/" className="header_navbar_item">
-          {formatMessage({id: 'link.list'})}
+          {formatMessage({id: 'link_list'})}
         </NavLink>
         <NavLink to="/add" className="header_navbar_item">
-          {formatMessage({id: 'link.add'})}
+          {formatMessage({id: 'link_add'})}
         </NavLink>
       </nav>
     </header>

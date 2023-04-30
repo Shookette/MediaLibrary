@@ -35,7 +35,7 @@ const MediaForm: FC<MediaFormProps> = ({media, handleOnSubmit}) => {
     <div className="media-form">
       <form className="form" onSubmit={handleSubmit(handleOnSubmit)}>
         <label className="form_label" htmlFor="title">
-          {formatMessage({id: 'media.title'})}
+          {formatMessage({id: 'media_title'})}
         </label>
         <input
           autoFocus
@@ -45,10 +45,10 @@ const MediaForm: FC<MediaFormProps> = ({media, handleOnSubmit}) => {
           {...register('title', {required: true})}
         />
         <span role="alert" className="form_input--error">
-          {errors.title && formatMessage({id: 'media.title.error'})}
+          {errors.title && formatMessage({id: 'media_title_error'})}
         </span>
         <label className="form_label" htmlFor="description">
-          {formatMessage({id: 'media.description'})}
+          {formatMessage({id: 'media_description'})}
         </label>
         <textarea
           onFocus={() => setShowFaceClass('left')}
@@ -57,7 +57,7 @@ const MediaForm: FC<MediaFormProps> = ({media, handleOnSubmit}) => {
           {...register('description')}
         />
         <label className="form_label" htmlFor="release">
-          {formatMessage({id: 'media.release'})}
+          {formatMessage({id: 'media_release'})}
         </label>
         <input
           className="form_input"
@@ -66,7 +66,7 @@ const MediaForm: FC<MediaFormProps> = ({media, handleOnSubmit}) => {
           {...register('release')}
         />
         <label className="form_label" htmlFor="image">
-          {formatMessage({id: 'media.image.url'})}
+          {formatMessage({id: 'media_image_url'})}
         </label>
         <input
           className="form_input"
@@ -75,7 +75,7 @@ const MediaForm: FC<MediaFormProps> = ({media, handleOnSubmit}) => {
           onFocus={() => setShowFaceClass('right')}
         />
         <label className="form_label" htmlFor="type">
-          {formatMessage({id: 'media.type'})}
+          {formatMessage({id: 'media_type'})}
         </label>
         <select className="form_input" id="type" {...register('type', {required: true})}>
           {typeOptions.map((typeOption) => (
@@ -85,10 +85,10 @@ const MediaForm: FC<MediaFormProps> = ({media, handleOnSubmit}) => {
           ))}
         </select>
         <span role="alert" className="form_input--error">
-          {errors.type && formatMessage({id: 'media.type.error'})}
+          {errors.type && formatMessage({id: 'media_type_error'})}
         </span>
         <label className="form_label" htmlFor="status">
-          {formatMessage({id: 'media.status'})}
+          {formatMessage({id: 'media_status'})}
         </label>
         <select
           className="form_input"
@@ -104,7 +104,7 @@ const MediaForm: FC<MediaFormProps> = ({media, handleOnSubmit}) => {
         {data?.status === 'lend' && (
           <>
             <label className="form_label" htmlFor="lendTo">
-              {formatMessage({id: 'media.lendTo'})}
+              {formatMessage({id: 'media_lendTo'})}
             </label>
             <input
               className="form_input"

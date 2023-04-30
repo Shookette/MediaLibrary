@@ -18,21 +18,21 @@ const RegisterForm: FC<RegisterForm> = ({handleOnSubmit}) => {
   return (
     <form className="form" onSubmit={handleSubmit(handleOnSubmit)}>
       <label className="form_label" htmlFor="email">
-        {formatMessage({id: 'account.email'})}
+        {formatMessage({id: 'account_email'})}
       </label>
       <input className="form_input" id="email" {...register('email', {required: true})} />
       <span role="alert" className="form_input--error">
-        {errors.email && formatMessage({id: 'account.email.error'})}
+        {errors.email && formatMessage({id: 'account_email_error'})}
       </span>
       <label className="form_label" htmlFor="username">
-        {formatMessage({id: 'account.username'})}
+        {formatMessage({id: 'account_username'})}
       </label>
       <input className="form_input" id="username" {...register('username', {required: true})} />
       <span role="alert" className="form_input--error">
-        {errors.username && formatMessage({id: 'account.username.error'})}
+        {errors.username && formatMessage({id: 'account_username_error'})}
       </span>
       <label className="form_label" htmlFor="password">
-        {formatMessage({id: 'account.password'})}
+        {formatMessage({id: 'account_password'})}
       </label>
       <input
         className="form_input"
@@ -41,7 +41,7 @@ const RegisterForm: FC<RegisterForm> = ({handleOnSubmit}) => {
         {...register('password', {required: true})}
       />
       <span role="alert" className="form_input--error">
-        {errors.password && formatMessage({id: 'account.password.error'})}
+        {errors.password && formatMessage({id: 'account_password_error'})}
       </span>
       <input className="form_submit" type="submit" value={formatMessage({id: 'submit'})} />
     </form>

@@ -17,17 +17,17 @@ describe('Reset Password Component', () => {
   it('should have all input without data', () => {
     render(<ResetPasswordContainer />);
 
-    expect(screen.getByRole('heading', {name: messages['reset-password.title']})).toBeTruthy();
-    expect(screen.getByRole('textbox', {name: messages['account.email']})).toBeTruthy();
+    expect(screen.getByRole('heading', {name: messages['reset-password_title']})).toBeTruthy();
+    expect(screen.getByRole('textbox', {name: messages['account_email']})).toBeTruthy();
     expect(screen.getByRole('button', {name: messages['submit']})).toBeTruthy();
-    expect(screen.getByRole('button', {name: messages['login.title']})).toBeTruthy();
-    expect(screen.getByRole('button', {name: messages['register.title']})).toBeTruthy();
+    expect(screen.getByRole('button', {name: messages['login_title']})).toBeTruthy();
+    expect(screen.getByRole('button', {name: messages['register_title']})).toBeTruthy();
   });
 
   it('should change the form to login form when clicking on login button', () => {
     render(<ResetPasswordContainer />);
 
-    fireEvent.click(screen.getByRole('button', {name: messages['login.title']}));
+    fireEvent.click(screen.getByRole('button', {name: messages['login_title']}));
 
     expect(mockedNavigate).toHaveBeenCalledTimes(1);
     expect(mockedNavigate).toHaveBeenCalledWith('/login');
@@ -36,7 +36,7 @@ describe('Reset Password Component', () => {
   it('should redirect to register page when clicking on register button', () => {
     render(<ResetPasswordContainer />);
 
-    fireEvent.click(screen.getByRole('button', {name: messages['register.title']}));
+    fireEvent.click(screen.getByRole('button', {name: messages['register_title']}));
 
     expect(mockedNavigate).toHaveBeenCalledTimes(1);
     expect(mockedNavigate).toHaveBeenCalledWith('/register');

@@ -55,8 +55,8 @@ He and his skeletal buddy Avakian will use their dark powers to fend off any mur
     await waitFor(() => {
       expect(getAllByRole('heading', {name: defaultMedia.title})).toBeTruthy();
       expect(getAllByRole('heading', {name: defaultMedia.title}).length).toEqual(2);
-      expect(getByRole('button', {name: messages['action.media.delete']})).toBeTruthy();
-      expect(getByRole('button', {name: messages['action.media.update']})).toBeTruthy();
+      expect(getByRole('button', {name: messages['action_media_delete']})).toBeTruthy();
+      expect(getByRole('button', {name: messages['action_media_update']})).toBeTruthy();
       expect(spyGetMediaById).toHaveBeenCalled();
     });
   });
@@ -70,7 +70,7 @@ He and his skeletal buddy Avakian will use their dark powers to fend off any mur
     );
 
     await waitFor(async () => {
-      fireEvent.click(getByRole('button', {name: messages['action.media.delete']}));
+      fireEvent.click(getByRole('button', {name: messages['action_media_delete']}));
       waitFor(() => {
         expect(spyDeleteMedia).toHaveBeenCalled();
         expect(mockedUsedNavigate).toHaveBeenCalledWith('/');
@@ -82,7 +82,7 @@ He and his skeletal buddy Avakian will use their dark powers to fend off any mur
     const {getByRole} = render(<MediaDetail />);
 
     await waitFor(async () => {
-      fireEvent.click(getByRole('button', {name: messages['action.media.update']}));
+      fireEvent.click(getByRole('button', {name: messages['action_media_update']}));
       waitFor(() => {
         expect(mockedUsedNavigate).toHaveBeenCalledWith(`/${defaultMedia.id}/update`);
       });

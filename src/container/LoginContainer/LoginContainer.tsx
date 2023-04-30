@@ -29,17 +29,17 @@ const LoginContainer = () => {
   return (
     <article className="login">
       <div className="login_content">
-        <h1 className="login_title">{formatMessage({id: 'login.title'})}</h1>
+        <h1 className="login_title">{formatMessage({id: 'login_title'})}</h1>
         <LoginForm handleOnSubmit={loginWithEmailAndPassword} />
         <div className="login_actions">
           <Button type="button" displayType="secondary" handleOnClick={() => navigate('/register')}>
-            <span>{formatMessage({id: 'register.title'})}</span>
+            <span>{formatMessage({id: 'register_title'})}</span>
           </Button>
           <Button
             type="button"
             displayType="tertiary"
             handleOnClick={() => navigate('/reset-password')}>
-            <span>{formatMessage({id: 'reset-password.title'})}</span>
+            <span>{formatMessage({id: 'reset-password_title'})}</span>
           </Button>
         </div>
       </div>

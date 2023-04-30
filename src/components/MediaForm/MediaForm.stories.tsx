@@ -1,5 +1,4 @@
-import React from 'react';
-import {ComponentStory, ComponentMeta} from '@storybook/react';
+import {Meta} from '@storybook/react';
 import {Media} from '../../interfaces/Media';
 import MediaForm from './MediaForm';
 import {SubmitHandler} from 'react-hook-form';
@@ -7,9 +6,7 @@ import {SubmitHandler} from 'react-hook-form';
 export default {
   title: 'Component/MediaForm',
   component: MediaForm,
-} as ComponentMeta<typeof MediaForm>;
-
-const Template: ComponentStory<typeof MediaForm> = (args) => <MediaForm {...args} />;
+} as Meta<typeof MediaForm>;
 
 const mediaDefault: Media = {
   id: '1234',
@@ -31,13 +28,15 @@ const onSubmit: SubmitHandler<Media> = (media) => {
   console.log('onSubmit::media::', media);
 };
 
-export const New = Template.bind({});
-New.args = {
-  handleOnSubmit: onSubmit,
+export const New = {
+  args: {
+    handleOnSubmit: onSubmit,
+  },
 };
 
-export const Update = Template.bind({});
-Update.args = {
-  handleOnSubmit: onSubmit,
-  media: mediaDefault,
+export const Update = {
+  args: {
+    handleOnSubmit: onSubmit,
+    media: mediaDefault,
+  },
 };

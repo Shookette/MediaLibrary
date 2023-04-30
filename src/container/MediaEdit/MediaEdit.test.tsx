@@ -55,7 +55,7 @@ He and his skeletal buddy Avakian will use their dark powers to fend off any mur
     await waitFor(async () => {
       expect(getAllByRole('heading', {name: defaultMedia.title})).toBeTruthy();
       expect(getAllByRole('heading', {name: defaultMedia.title}).length).toEqual(2);
-      expect(getByRole('textbox', {name: messages['media.title']})).toBeTruthy();
+      expect(getByRole('textbox', {name: messages['media_title']})).toBeTruthy();
       expect(spyGetMediaById).toHaveBeenCalled();
     });
   });
@@ -90,7 +90,7 @@ He and his skeletal buddy Avakian will use their dark powers to fend off any mur
     );
 
     await waitFor(async () => {
-      expect(getByText(messages['media.missing'])).toBeTruthy();
+      expect(getByText(messages['media_missing'])).toBeTruthy();
     });
   });
 });

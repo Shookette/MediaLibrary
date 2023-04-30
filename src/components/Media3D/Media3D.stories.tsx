@@ -1,12 +1,11 @@
-import React from 'react';
-import {ComponentStory, ComponentMeta} from '@storybook/react';
+import {Meta} from '@storybook/react';
 import Media3D from './Media3D';
 import {Media} from '../../interfaces/Media';
 
 export default {
   title: 'Component/Media3D',
   component: Media3D,
-} as ComponentMeta<typeof Media3D>;
+} as Meta<typeof Media3D>;
 
 const mediaDefault: Media = {
   id: '1234',
@@ -24,9 +23,8 @@ const mediaDefault: Media = {
   userUID: '123',
 };
 
-const Template: ComponentStory<typeof Media3D> = (args) => <Media3D {...args} />;
-
-export const Default = Template.bind({});
-Default.args = {
-  media: mediaDefault,
+export const Default = {
+  args: {
+    media: mediaDefault,
+  },
 };

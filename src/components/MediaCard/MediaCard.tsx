@@ -18,7 +18,7 @@ const MediaCard: FC<MediaCardProps> = ({media, handleOnClick}) => {
       {media.image && (
         <img
           className="media-card_image"
-          alt={`${formatMessage({id: 'media.cover.alt'})}${media.title}`}
+          alt={`${formatMessage({id: 'media_cover_alt'})}${media.title}`}
           src={media.image}
         />
       )}

@@ -1,12 +1,11 @@
-import React from 'react';
-import {ComponentStory, ComponentMeta} from '@storybook/react';
+import {Meta} from '@storybook/react';
 import BoxPreview from './BoxPreview';
 import {Media} from '../../interfaces/Media';
 
 export default {
   title: 'Component/BoxPreview',
   component: BoxPreview,
-} as ComponentMeta<typeof BoxPreview>;
+} as Meta<typeof BoxPreview>;
 
 const mediaDefault: Media = {
   id: '1234',
@@ -24,12 +23,12 @@ const mediaDefault: Media = {
   userUID: '123',
 };
 
-const Template: ComponentStory<typeof BoxPreview> = (args) => <BoxPreview {...args} />;
+export const WithoutMedia = {
+  args: {},
+};
 
-export const WithoutMedia = Template.bind({});
-WithoutMedia.args = {};
-
-export const WithMedia = Template.bind({});
-WithMedia.args = {
-  media: mediaDefault,
+export const WithMedia = {
+  args: {
+    media: mediaDefault,
+  },
 };

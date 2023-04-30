@@ -34,7 +34,7 @@ const MediaEdit = () => {
     </article>
   ) : (
     <article className="media-edit">
-      <span className="medit-edit_no-content">{formatMessage({id: 'media.missing'})}</span>
+      <span className="medit-edit_no-content">{formatMessage({id: 'media_missing'})}</span>
     </article>
   );
 };

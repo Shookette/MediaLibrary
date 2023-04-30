@@ -11,8 +11,8 @@ describe('Header Component', () => {
 
   it('should have two links', () => {
     render(<Header />);
-    expect(screen.getByRole('link', {name: messages['link.list']})).toBeTruthy();
-    expect(screen.getByRole('link', {name: messages['link.add']})).toBeTruthy();
+    expect(screen.getByRole('link', {name: messages['link_list']})).toBeTruthy();
+    expect(screen.getByRole('link', {name: messages['link_add']})).toBeTruthy();
   });
 
   it('should have logout action', () => {

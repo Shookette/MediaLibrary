@@ -27,17 +27,17 @@ const RegisterContainer = () => {
   return (
     <article className="register">
       <div className="register_content">
-        <h1 className="register_title">{formatMessage({id: 'register.title'})}</h1>
+        <h1 className="register_title">{formatMessage({id: 'register_title'})}</h1>
         <RegisterForm handleOnSubmit={registerWithEmailAndPassword} />
         <div className="register_actions">
           <Button type="button" displayType="secondary" handleOnClick={() => navigate('/login')}>
-            <span>{formatMessage({id: 'login.title'})}</span>
+            <span>{formatMessage({id: 'login_title'})}</span>
           </Button>
           <Button
             type="button"
             displayType="tertiary"
             handleOnClick={() => navigate('/reset-password')}>
-            <span>{formatMessage({id: 'reset-password.title'})}</span>
+            <span>{formatMessage({id: 'reset-password_title'})}</span>
           </Button>
         </div>
       </div>

@@ -45,10 +45,10 @@ const MediaDetail = () => {
           type="button"
           displayType="secondary"
           handleOnClick={deleteMediaAndRedirectToListing}>
-          {formatMessage({id: 'action.media.delete'})}
+          {formatMessage({id: 'action_media_delete'})}
         </Button>
         <Button type="button" displayType="primary" handleOnClick={redirectToUpdateMedia}>
-          {formatMessage({id: 'action.media.update'})}
+          {formatMessage({id: 'action_media_update'})}
         </Button>
       </div>
     </article>
