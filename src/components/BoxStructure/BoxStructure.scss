@@ -1,0 +1,97 @@
+@use '../../styles/variables' as *;
+
+.box-structure {
+    background-color: var(--color-box-bg);
+    border: 10px solid var(--color-library-bg);
+    box-sizing: content-box;
+    height: var(--box-square-size-small);
+    perspective: 400px;
+    width: var(--box-square-size-small);
+
+    @include medium {
+        height: var(--box-square-size);
+        perspective: 700px;
+        width: var(--box-square-size);
+    }
+
+    &_cube {
+        height: var(--box-square-size-small);
+        position: relative;
+        transform: translateZ(var(--box-square-inverted-translatez-small));
+        transform-style: preserve-3d;
+        width: var(--box-square-size-small);
+
+        @include medium {
+            height: var(--box-square-size);
+            transform: translateZ(var(--box-square-inverted-translatez));
+            width: var(--box-square-size);
+        }
+
+        &_face {
+            background: var(--color-library-side-bg);
+            background-image: var(--texture-library);
+            height: var(--box-square-size-small);
+            position: absolute;
+            width: var(--box-square-size-small);
+
+            @include medium {
+                height: var(--box-square-size);
+                width: var(--box-square-size);
+            }
+
+            &--front {
+                align-items: flex-end;
+                background: none;
+                display: flex;
+                transform: rotateY(0deg) translateZ(var(--box-square-translatez-small));
+
+                @include medium {
+                    transform: rotateY(0deg) translateZ(var(--box-square-translatez)); 
+                }
+            }
+
+            &--right { 
+                transform: rotateY(90deg) translateZ(var(--box-square-translatez-small));
+
+                @include medium {
+                    transform: rotateY(90deg) translateZ(var(--box-square-translatez)); 
+                }
+            }
+
+            &--back { 
+                background: var(--color-library-back-bg);
+                background-image: var(--texture-library);
+                transform: rotateY(180deg) translateZ(var(--box-square-translatez-small));
+
+                @include medium {
+                    transform: rotateY(180deg) translateZ(var(--box-square-translatez)); 
+                }
+            }
+
+            &--left { 
+                transform: rotateY(-90deg) translateZ(var(--box-square-translatez-small));
+
+                @include medium {
+                    transform: rotateY(-90deg) translateZ(var(--box-square-translatez)); 
+                }
+            }
+
+            &--top {
+                transform: rotateX(90deg) translateZ(var(--box-square-translatez-small));
+
+                @include medium {
+                    transform: rotateX(90deg) translateZ(var(--box-square-translatez)); 
+                }
+            }
+
+            &--bottom {
+                background: var(--color-library-bg);
+                transform: rotateX(-90deg) translateZ(var(--box-square-translatez-small));
+
+                @include medium {
+                    transform: rotateX(-90deg) translateZ(var(--box-square-translatez)); 
+                }
+            }
+        }
+    }
+}

@@ -1,51 +1,53 @@
 @use '../../styles/variables' as *;
 
 .box-preview {
-    background-color: var(--color-box-bg);
-    border: 10px solid var(--color-library-bg);
-    box-sizing: content-box;
-    display: flex;
-    flex-direction: column;
-    height: var(--box-square-size-small);
-    overflow: hidden;
-    position: relative;
-    width: var(--box-square-size-small);
-
-    @include medium {
-        height: var(--box-square-size);
-        width: var(--box-square-size);
-    }
-
-    &_image {
-        height: 100%;
-        object-fit: cover;
-        width: auto;
-    }
-
-    &_title {
-        @include title-with-shadow();
-
-        bottom: 5px;
-        padding: 5px;
-        position: absolute;
-        text-align: center;
-        width: 100%;
-    }
-
-    &_status {
-        @include title-with-shadow();
-
-        align-items: center;
-        background-color: var(--color-semi-transparent);
+    &_content {
+        background-color: var(--color-box-bg);
+        border: 10px solid var(--color-library-bg);
+        box-sizing: content-box;
         display: flex;
-        height: 200px;
-        justify-content: center;
-        left: 30px;
-        position: absolute;
-        top: -65px;
-        transform: rotate(225deg);
-        width: 30px;
-        writing-mode: vertical-lr;
-        flex-direction: column-reverse;
+        flex-direction: column;
+        height: var(--box-square-size-small);
+        overflow: hidden;
+        position: relative;
+        width: var(--box-square-size-small);
+
+        @include medium {
+            height: var(--box-square-size);
+            width: var(--box-square-size);
+        }
+
+        &_image {
+            height: 100%;
+            object-fit: cover;
+            width: auto;
+        }
+
+        &_title {
+            @include title-with-shadow();
+
+            bottom: 5px;
+            padding: 5px;
+            position: absolute;
+            text-align: center;
+            width: 100%;
+        }
+
+        &_status {
+            @include title-with-shadow();
+
+            align-items: center;
+            background-color: var(--color-semi-transparent);
+            display: flex;
+            height: 200px;
+            justify-content: center;
+            left: 30px;
+            position: absolute;
+            top: -65px;
+            transform: rotate(225deg);
+            width: 30px;
+            writing-mode: vertical-lr;
+            flex-direction: column-reverse;
+        }
     }
 }

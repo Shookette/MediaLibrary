@@ -24,7 +24,7 @@ const Library: FC<LibraryProps> = ({medias, handleOnClick}) => {
         {boxes.map((box, index) => {
           let boxPreview = null;
           if (index % 4 === 0 && index !== 0) {
-            boxPreview = <BoxPreview media={hoverMedia} key={`boxpreview-${index}`} />;
+            boxPreview = <BoxPreview media={hoverMedia} key={`box-preview-${index}`} />;
           }
 
           return (

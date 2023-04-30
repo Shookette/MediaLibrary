@@ -4,6 +4,7 @@ import './Box.scss';
 import Item from '../Item/Item';
 import {Media} from '../../interfaces/Media';
 import ItemFiller from '../ItemFiller/ItemFiller';
+import BoxStructure from '../BoxStructure/BoxStructure';
 
 type BoxProps = {
   box: BoxType;
@@ -20,33 +21,24 @@ const Box: FC<BoxProps> = ({
   handleOnHover,
   showFiller = false,
 }) => {
-  const className: string[] = ['box', `box--${box.type}`];
-
   const fillerRandom = useMemo(() => Math.floor(Math.random() * 5), []);
   return (
-    <section className={className.join(' ')}>
-      <div className="box_cube">
-        <div className="box_cube_face box_cube_face--front">
-          {box.medias.map((media, index) => (
-            <Item
-              media={media}
-              index={index}
-              key={media.id}
-              handleOnClick={handleOnClick}
-              handleOnHover={handleOnHover}
-            />
-          ))}
-          {box.medias.length < maxBoxSize && showFiller && (
-            <ItemFiller key={`filler-${fillerRandom}`} index={fillerRandom} />
-          )}
-        </div>
-        <div className="box_cube_face box_cube_face--back"></div>
-        <div className="box_cube_face box_cube_face--right"></div>
-        <div className="box_cube_face box_cube_face--left"></div>
-        <div className="box_cube_face box_cube_face--top"></div>
-        <div className="box_cube_face box_cube_face--bottom"></div>
+    <BoxStructure>
+      <div className={`box box--${box.type}`}>
+        {box.medias.map((media, index) => (
+          <Item
+            media={media}
+            index={index}
+            key={media.id}
+            handleOnClick={handleOnClick}
+            handleOnHover={handleOnHover}
+          />
+        ))}
+        {box.medias.length < maxBoxSize && showFiller && (
+          <ItemFiller key={`filler-${fillerRandom}`} index={fillerRandom} />
+        )}
       </div>
-    </section>
+    </BoxStructure>
   );
 };
 
