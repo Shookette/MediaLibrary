@@ -17,6 +17,7 @@ const Item: FC<ItemProps> = ({media, index, handleOnClick, handleOnHover}) => {
       id={media.id}
       className={className.join(' ')}
       onClick={() => handleOnClick(media)}
+      onTouchStart={() => handleOnHover(media)}
       onMouseOver={() => handleOnHover(media)}>
       <h2 className="item_title">{media.title}</h2>
     </article>
