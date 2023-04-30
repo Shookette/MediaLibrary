@@ -5,8 +5,7 @@
     .item--book:nth-child(#{$i}) {
         @include random-background();
 
-        background-image: var(--item-bg-texture);
-
+        background-image: var(--book-cover-bg-texture);
     }
 }
 
@@ -14,8 +13,7 @@
     .item--comics:nth-child(#{$i}) {
         @include random-background();
 
-        background-image: var(--item-bg-texture);
-
+        background-image: var(--book-cover-bg-texture);
     }
 }
 
@@ -23,8 +21,7 @@
     .item--manga:nth-child(#{$i}) {
         @include random-background();
 
-        background-image: var(--item-bg-texture);
-
+        background-image: var(--book-cover-bg-texture);
     }
 }
 
@@ -32,8 +29,7 @@
     .item--videogame:nth-child(#{$i}) {
         @include random-background();
 
-        background-image: var(--item-bg-texture);
-
+        background-image: var(--book-cover-bg-texture);
     }
 }
 
@@ -41,8 +37,7 @@
     .item--boardgame:nth-child(#{$i}) {
         @include random-background();
 
-        background-image: var(--item-bg-texture);
-
+        background-image: var(--book-cover-bg-texture);
     }
 }
 
@@ -50,8 +45,7 @@
     .item--vinyl:nth-child(#{$i}) {
         @include random-background();
 
-        background-image: var(--item-bg-texture);
-
+        background-image: var(--book-cover-bg-texture);
     }
 }
     

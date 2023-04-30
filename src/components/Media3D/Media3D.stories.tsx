@@ -1,12 +1,12 @@
 import React from 'react';
 import {ComponentStory, ComponentMeta} from '@storybook/react';
-import RotateMedia from './RotateMedia';
+import Media3D from './Media3D';
 import {Media} from '../../interfaces/Media';
 
 export default {
-  title: 'Component/RotateMedia',
-  component: RotateMedia,
-} as ComponentMeta<typeof RotateMedia>;
+  title: 'Component/Media3D',
+  component: Media3D,
+} as ComponentMeta<typeof Media3D>;
 
 const mediaDefault: Media = {
   id: '1234',
@@ -24,7 +24,7 @@ const mediaDefault: Media = {
   userUID: '123',
 };
 
-const Template: ComponentStory<typeof RotateMedia> = (args) => <RotateMedia {...args} />;
+const Template: ComponentStory<typeof Media3D> = (args) => <Media3D {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {

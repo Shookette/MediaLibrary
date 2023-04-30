@@ -20,6 +20,7 @@
     --color-library-side-bg: #{$color-grey};
     --color-library-back-bg: #{$color-grey-dark};
     --color-box-bg: #{$color-white};
+    --color-paper-bg: #{$color-peach-yellow};
     --texture-library: url('https://www.transparenttextures.com/patterns/diamond-upholstery.png');
     --font-family: #{$font-family};
     --font-light: #{$font-light};
@@ -37,7 +38,8 @@
     --box-square-translatez-small: 75px;
     --item-max-height: 180px;
     --item-max-height-small: 150px;
-    --item-bg-texture: url('https://www.transparenttextures.com/patterns/french-stucco.png');
+    --book-cover-bg-texture: url('https://www.transparenttextures.com/patterns/french-stucco.png');
+    --book-paper-bg-texture: url('https://www.transparenttextures.com/patterns/crisp-paper-ruffles.png');
     --shadow-color: #{$color-brown-dark};
     --preview-box-bg-color: #{$color-brown-dark};
     --preview-box-x: 75px;

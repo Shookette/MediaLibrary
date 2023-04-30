@@ -3,6 +3,8 @@ import {Media} from '../../interfaces/Media';
 import {SubmitHandler, useForm} from 'react-hook-form';
 import './MediaForm.scss';
 import {useIntl} from 'react-intl';
+import Media3D from '../Media3D/Media3D';
+import {Media3DFace} from '../../interfaces/Media3D';
 
 type MediaFormProps = {
   media?: Media;
@@ -20,7 +22,7 @@ const MediaForm: FC<MediaFormProps> = ({media, handleOnSubmit}) => {
   const {formatMessage} = useIntl();
 
   const [data, setData] = useState<Media | undefined>(media);
-  const [showFaceClass, setShowFaceClass] = useState('');
+  const [showFaceClass, setShowFaceClass] = useState<Media3DFace | undefined>(undefined);
   const typeOptions = ['book', 'videogame', 'boardgame', 'vinyl', 'manga', 'comics'];
   const statusOptions = ['owned', 'lend', 'borrowed'];
 
@@ -38,7 +40,7 @@ const MediaForm: FC<MediaFormProps> = ({media, handleOnSubmit}) => {
         <input
           autoFocus
           className="form_input"
-          onFocus={() => setShowFaceClass('show-front')}
+          onFocus={() => setShowFaceClass('front')}
           id="title"
           {...register('title', {required: true})}
         />
@@ -49,7 +51,7 @@ const MediaForm: FC<MediaFormProps> = ({media, handleOnSubmit}) => {
           {formatMessage({id: 'media.description'})}
         </label>
         <textarea
-          onFocus={() => setShowFaceClass('show-left')}
+          onFocus={() => setShowFaceClass('left')}
           className="form_textarea"
           id="description"
           {...register('description')}
@@ -59,7 +61,7 @@ const MediaForm: FC<MediaFormProps> = ({media, handleOnSubmit}) => {
         </label>
         <input
           className="form_input"
-          onFocus={() => setShowFaceClass('show-left')}
+          onFocus={() => setShowFaceClass('left')}
           id="release"
           {...register('release')}
         />
@@ -70,7 +72,7 @@ const MediaForm: FC<MediaFormProps> = ({media, handleOnSubmit}) => {
           className="form_input"
           id="image"
           {...register('image')}
-          onFocus={() => setShowFaceClass('show-right')}
+          onFocus={() => setShowFaceClass('right')}
         />
         <label className="form_label" htmlFor="type">
           {formatMessage({id: 'media.type'})}
@@ -90,7 +92,7 @@ const MediaForm: FC<MediaFormProps> = ({media, handleOnSubmit}) => {
         </label>
         <select
           className="form_input"
-          onFocus={() => setShowFaceClass('show-right')}
+          onFocus={() => setShowFaceClass('right')}
           id="status"
           {...register('status', {required: true, onChange: () => setValue('lendTo', '')})}>
           {statusOptions.map((statusOption) => (
@@ -108,30 +110,14 @@ const MediaForm: FC<MediaFormProps> = ({media, handleOnSubmit}) => {
               className="form_input"
               id="lendTo"
               {...register('lendTo')}
-              onFocus={() => setShowFaceClass('show-right')}
+              onFocus={() => setShowFaceClass('right')}
             />
           </>
         )}
         <input className="form_submit" type="submit" value={formatMessage({id: 'submit'})} />
       </form>
       <div className="media-form_object">
-        <div className={`preview ${showFaceClass}`}>
-          <div className="preview_face preview_face--front">
-            <h2 className="preview_title">{data?.title}</h2>
-          </div>
-          <div className="preview_face preview_face--right">
-            {data?.image && <img className="preview_image" alt="media image" src={data?.image} />}
-            <div className="preview_status">
-              <span>{data?.status && formatMessage({id: data?.status})}</span>
-              <span>{data?.lendTo}</span>
-            </div>
-            {data?.status === 'lend' && <span className="preview_lend-to"></span>}
-          </div>
-          <div className="preview_face preview_face--left">
-            <p className="preview_description">{data?.description}</p>
-            <span className="preview_release">{data?.release}</span>
-          </div>
-        </div>
+        <Media3D media={data as Media} mode="transform" face={showFaceClass} />
       </div>
     </div>
   );

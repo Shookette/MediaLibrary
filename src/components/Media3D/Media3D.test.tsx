@@ -1,7 +1,7 @@
 import {render} from '../../test-utils';
 import React from 'react';
 import {Media} from '../../interfaces/Media';
-import RotateMedia from './RotateMedia';
+import Media3D from './Media3D';
 
 describe('MediaDetail Component', () => {
   const defaultMedia: Media = {
@@ -20,7 +20,7 @@ He and his skeletal buddy Avakian will use their dark powers to fend off any mur
   };
 
   it('should have a media and show media title, media description, media ', async () => {
-    const {getByRole, findByText} = render(<RotateMedia media={defaultMedia} />);
+    const {getByRole, findByText} = render(<Media3D media={defaultMedia} />);
 
     expect(getByRole('heading', {name: defaultMedia.title})).toBeTruthy();
     expect(getByRole('img', {name: /media image/i})).toBeTruthy();

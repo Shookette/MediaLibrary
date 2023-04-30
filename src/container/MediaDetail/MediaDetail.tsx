@@ -5,7 +5,7 @@ import {useNavigate, useParams} from 'react-router-dom';
 import Button from '../../components/Button/Button';
 import './MediaDetail.scss';
 import {useIntl} from 'react-intl';
-import RotateMedia from '../../components/RotateMedia/RotateMedia';
+import Media3D from '../../components/Media3D/Media3D';
 
 const MediaDetail = () => {
   const {formatMessage} = useIntl();
@@ -35,7 +35,7 @@ const MediaDetail = () => {
   return (
     <article className="media-detail">
       <h2 className="media-detail_title">{media?.title}</h2>
-      <RotateMedia media={media ?? ({} as Media)} />
+      <Media3D media={media ?? ({} as Media)} mode="rotate" />
       <div className="media-detail_content">
         <p className="media-detail_description">{media?.description}</p>
       </div>

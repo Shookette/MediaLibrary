@@ -1,13 +1,9 @@
 @use '../../styles/variables' as *;
 
-.rotate-media {
+.media-3d {
   height: var(--preview-box-y-small);
   position: relative;
-  //transform: translateZ(-50px);
   transform-style: preserve-3d;
-  animation: spin 10s;
-  animation-iteration-count: infinite;
-  animation-timing-function: linear;
   width: var(--preview-box-x-small);
 
   @include medium {
@@ -15,11 +11,26 @@
     width: var(--preview-box-x);
   }
 
+  &--rotate {
+    animation: spin 10s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+  }
+
+  &--transform {
+    transition: transform 1s;
+  }
+
+  &.show-front { transform: rotateY(0deg); }
+  &.show-right { transform: rotateY(-90deg); }
+  &.show-left { transform: rotateY(90deg); }
+
+
   &_face {
     @include title-with-shadow();
 
     background-color: var(--preview-box-bg-color);
-    background-image: var(--item-bg-texture);
+    background-image: var(--book-cover-bg-texture);
     position: absolute;
     text-align: center;
     text-overflow: ellipsis;
@@ -62,8 +73,8 @@
       height: var(--preview-box-y-small);
       transform: rotateY(0deg) translateZ(-75px);
       width: var(--preview-box-x-small);
-      background-color: #fae1a3;
-      background-image: url("https://www.transparenttextures.com/patterns/crisp-paper-ruffles.png");
+      background-color: var(--color-paper-bg);
+      background-image: var(--book-paper-bg-texture);
 
       @include medium {
         height: var(--preview-box-y);
@@ -141,6 +152,6 @@
 
 
 @-webkit-keyframes spin {
-  0% {transform: rotateY(0deg);}
-  100% {transform: rotateY(360deg);}
+  0% {transform: rotateY(360deg);}
+  100% {transform: rotateY(0deg);}
 }
