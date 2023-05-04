@@ -22,7 +22,11 @@ const MediaDetail = () => {
 
   const deleteMediaAndRedirectToListing = () => {
     if (media) {
-      deleteMedia(media.id).finally(() => navigate('/'));
+      deleteMedia(media.id)
+        .catch((error) => {
+          formatMessage({id: 'media_delete_error'}, {error: error.message});
+        })
+        .finally(() => navigate('/'));
     }
   };
 

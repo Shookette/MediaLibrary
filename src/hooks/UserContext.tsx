@@ -12,6 +12,8 @@ import {
   updateCurrentUser,
   updateProfile,
 } from 'firebase/auth';
+import {toast} from 'react-toastify';
+import {useIntl} from 'react-intl';
 
 type UserProvider = {
   user: User | null;
@@ -33,6 +35,7 @@ const UserContext = createContext<UserProvider | null>(null);
 const UserProvider: FC<UserProviderProps> = ({children}) => {
   const [user, setUser] = useState<User | null>(null);
   const auth = getAuth();
+  const {formatMessage} = useIntl();
 
   useEffect(() => {
     // @TODO add session storage ? handle better reconnect for user
@@ -50,7 +53,7 @@ const UserProvider: FC<UserProviderProps> = ({children}) => {
         setUser(user);
       })
       .catch((error) => {
-        console.error(error);
+        toast.error(formatMessage({id: 'login_error'}, {error: error.message}));
       });
   };
 
@@ -59,21 +62,30 @@ const UserProvider: FC<UserProviderProps> = ({children}) => {
       .then((userCredential) => {
         const user = userCredential.user;
         updateProfile(user, {displayName: userName});
-        sendEmailVerification(userCredential.user);
+        sendEmailVerification(userCredential.user).then(() => {
+          toast.success(formatMessage({id: 'register_success'}));
+        });
       })
       .catch((error) => {
-        console.error(error);
+        toast.error(formatMessage({id: 'register_error'}, {error: error.message}));
       });
   };
 
-  const resetPassword = (email: string) => {
+  const resetPassword = (email: string): Promise<void> => {
     return sendPasswordResetEmail(auth, email)
-      .then(() => console.log('reset email send'))
-      .catch((error) => console.error(error));
+      .then(() => {
+        toast.success(formatMessage({id: 'reset-password_success'}));
+      })
+      .catch((error) => {
+        console.log(error);
+        toast.error(formatMessage({id: 'reset-password_error'}, {error: error.message}));
+      });
   };
 
   const updateUser = (user: User) => {
-    return updateCurrentUser(auth, user).then(() => console.log('update done'));
+    return updateCurrentUser(auth, user).then(() => {
+      toast.success(formatMessage({id: 'user-update_success'}));
+    });
   };
 
   const logout = () => {

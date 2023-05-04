@@ -8,6 +8,7 @@ import {v4 as uuidv4} from 'uuid';
 import MediaForm from '../../components/MediaForm/MediaForm';
 import {useUserContext} from '../../hooks/UserContext';
 import {useIntl} from 'react-intl';
+import {toast} from 'react-toastify';
 
 const MediaNew = () => {
   const {formatMessage} = useIntl();
@@ -18,8 +19,13 @@ const MediaNew = () => {
     media.id = uuidv4();
     media.userUID = user?.uid ?? '';
     setMedia(media)
-      .then(() => navigate('/'))
-      .catch((error: unknown) => console.error(error));
+      .then(() => {
+        toast(formatMessage({id: 'media_new_success'}));
+        navigate('/');
+      })
+      .catch((error) => {
+        toast(formatMessage({id: 'media_new_error'}, {error: error.messages}));
+      });
   };
 
   return (

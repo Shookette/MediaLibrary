@@ -1,4 +1,4 @@
-import React, {ChangeEvent, useEffect, useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {Media} from '../../interfaces/Media';
 import './MediaList.scss';
 

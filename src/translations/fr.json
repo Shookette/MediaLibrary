@@ -35,5 +35,13 @@
   "register_title": "Inscription",
   "reset-password_title": "Mot de passe oublié ?",
   "action_media_delete": "Supprimer le media",
-  "action_media_update": "Mettre à jour le media"
+  "action_media_update": "Mettre à jour le media",
+  "login_error": "Une erreur est survenue lors de la connexion : {error}",
+  "register_success": "Inscription réaliser, veuiller confirmer votre inscription via l'email envoyé",
+  "register_error": "Une erreur est survenue lors de l'inscription : {error}",
+  "reset-password_success": "Un email pour réinitialiser votre mot de passe a été envoyé",
+  "reset-password_error": "Une erreur est survenue lors de la réinitialisastion de votre mot de passe : {error}",
+  "media_new_success": "Média créé avec succés",
+  "media_new_error": "Une erreur est survenue lors de la création du média : {error}",
+  "media_error_error": "Une erreur est survenue lors de la suppression du média : {error}"
 }

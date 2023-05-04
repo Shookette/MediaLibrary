@@ -8,6 +8,8 @@ import UserProvider from './hooks/UserContext';
 import {IntlProvider} from 'react-intl';
 import messages_en from './translations/en.json';
 import messages_fr from './translations/fr.json';
+import {ToastContainer} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 type translations = {
   en: Record<keyof typeof messages_en, string>;
@@ -32,6 +34,16 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
         <UserProvider>
           <BrowserRouter>
             <App />
+            <ToastContainer
+              position="bottom-center"
+              autoClose={5000}
+              newestOnTop
+              closeOnClick
+              pauseOnFocusLoss
+              draggable
+              pauseOnHover
+              theme="colored"
+            />
           </BrowserRouter>
         </UserProvider>
       </WithFirestore>
