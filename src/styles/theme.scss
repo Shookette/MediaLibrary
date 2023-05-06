@@ -78,7 +78,7 @@ body {
 html,
 body,
 #root,
-#root>div {
+#root>div:not(.Toastify) {
     height: 100%;
 }
 
