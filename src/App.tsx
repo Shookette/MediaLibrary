@@ -13,6 +13,7 @@ const RegisterContainer = lazy(() => import('./container/RegisterContainer/Regis
 import Layout from './components/Layout';
 import {useUserContext} from './hooks/UserContext';
 import useTheme from './hooks/UseTheme';
+import Loader from './components/Loader/Loader';
 
 type ProtectedRouteProps = {children: ReactElement};
 const ProtectedRoute: FC<ProtectedRouteProps> = ({children}) => {
@@ -22,7 +23,7 @@ const ProtectedRoute: FC<ProtectedRouteProps> = ({children}) => {
   }
 
   // @TODO add loading full screen ?
-  return <Suspense fallback={<p>Loading ...</p>}>{children}</Suspense>;
+  return <Suspense fallback={<Loader />}>{children}</Suspense>;
 };
 
 const App: FC = () => {
@@ -67,7 +68,7 @@ const App: FC = () => {
       <Route
         path="/login"
         element={
-          <Suspense fallback={<p>Loading ...</p>}>
+          <Suspense fallback={<Loader />}>
             <LoginContainer />
           </Suspense>
         }
@@ -75,7 +76,7 @@ const App: FC = () => {
       <Route
         path="/register"
         element={
-          <Suspense fallback={<p>Loading ...</p>}>
+          <Suspense fallback={<Loader />}>
             <RegisterContainer />
           </Suspense>
         }
@@ -83,7 +84,7 @@ const App: FC = () => {
       <Route
         path="/reset-password"
         element={
-          <Suspense fallback={<p>Loading ...</p>}>
+          <Suspense fallback={<Loader />}>
             <ResetPasswordContainer />
           </Suspense>
         }
