@@ -12,7 +12,7 @@ const manifestForPlugin: Partial<VitePWAOptions> = {
     globPatterns: ['**/*'],
   },
   manifest: {
-    theme_color: 'black',
+    theme_color: '#000000',
     name: 'Media Library',
     short_name: 'ML',
     description: 'Etagère de média',
@@ -35,11 +35,13 @@ const manifestForPlugin: Partial<VitePWAOptions> = {
         'src': '/manifest-icon-192.maskable.png',
         'sizes': '192x192',
         'type': 'image/png',
+        'purpose': 'any maskable',
       },
       {
         'src': '/manifest-icon-512.maskable.png',
         'sizes': '512x512',
         'type': 'image/png',
+        'purpose': 'any maskable',
       },
     ],
   },
