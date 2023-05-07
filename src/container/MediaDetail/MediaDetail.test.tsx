@@ -14,7 +14,7 @@ vi.mock('react-router-dom', async () => {
 
   return {...actual, useNavigate: () => mockedUsedNavigate};
 });
-
+('');
 describe('MediaDetail Component', () => {
   const defaultMedia: Media = {
     id: '1234',

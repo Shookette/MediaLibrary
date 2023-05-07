@@ -4,6 +4,7 @@ import MediaNew from './MediaNew';
 import * as MediaRepository from '../../repository/MediaRepository';
 import * as messages from '../../translations/fr.json';
 import {MockInstance, vi} from 'vitest';
+import {Html5Qrcode} from 'html5-qrcode';
 
 const mockedUsedNavigate = vi.fn();
 
@@ -15,8 +16,10 @@ vi.mock('react-router-dom', async () => {
 
 describe('MediaNew Component', () => {
   let spySetMedia: MockInstance;
+
   beforeEach(() => {
     spySetMedia = vi.spyOn(MediaRepository, 'setMedia').mockReturnValue(Promise.resolve());
+    vi.spyOn(Html5Qrcode, 'getCameras').mockReturnValue(Promise.resolve([]));
   });
 
   afterEach(() => {

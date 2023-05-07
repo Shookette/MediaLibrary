@@ -2,8 +2,18 @@ import {render, fireEvent} from '../../test-utils';
 import React from 'react';
 import * as messages from '../../translations/fr.json';
 import QRCodeReader from './QRCodeReader';
+import {vi} from 'vitest';
+import {Html5Qrcode} from 'html5-qrcode';
 
 describe('QRCodeReader test', () => {
+  beforeEach(() => {
+    vi.spyOn(Html5Qrcode, 'getCameras').mockReturnValue(Promise.resolve([]));
+  });
+
+  afterEach(() => {
+    vi.restoreAllMocks();
+  });
+
   it('should show only label and icon by default', () => {
     const {getByRole, getByTitle} = render(
       <QRCodeReader
