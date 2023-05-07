@@ -4,7 +4,7 @@ import {VitePWA, VitePWAOptions} from 'vite-plugin-pwa';
 
 const manifestForPlugin: Partial<VitePWAOptions> = {
   registerType: 'autoUpdate',
-  includeAssets: ['**/*', 'vite.svg'],
+  includeAssets: ['**/*'],
   devOptions: {
     enabled: true,
   },
@@ -20,6 +20,28 @@ const manifestForPlugin: Partial<VitePWAOptions> = {
     scope: '/',
     start_url: '/',
     orientation: 'portrait',
+    icons: [
+      {
+        'src': '/icon-192x192.png',
+        'sizes': '192x192',
+        'type': 'image/png',
+      },
+      {
+        'src': '/apple-icon-180.png',
+        'sizes': '180x180',
+        'type': 'image/png',
+      },
+      {
+        'src': '/manifest-icon-192.maskable.png',
+        'sizes': '192x192',
+        'type': 'image/png',
+      },
+      {
+        'src': '/manifest-icon-512.maskable.png',
+        'sizes': '512x512',
+        'type': 'image/png',
+      },
+    ],
   },
 };
 
