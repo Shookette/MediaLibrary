@@ -18,9 +18,9 @@ const MediaForm: FC<MediaFormProps> = ({media, handleOnSubmit}) => {
     watch,
     setValue,
     formState: {errors},
+    reset,
   } = useForm<Media>({defaultValues: media});
   const {formatMessage} = useIntl();
-
   const [data, setData] = useState<Media | undefined>(media);
   const [showFaceClass, setShowFaceClass] = useState<Media3DFace | undefined>(undefined);
   const typeOptions = ['book', 'videogame', 'boardgame', 'vinyl', 'manga', 'comics'];
@@ -30,6 +30,10 @@ const MediaForm: FC<MediaFormProps> = ({media, handleOnSubmit}) => {
     const {unsubscribe} = watch((value) => setData(value as Media));
     return () => unsubscribe();
   }, [watch]);
+
+  useEffect(() => {
+    reset(media);
+  }, [media]);
 
   return (
     <div className="media-form">

@@ -1,5 +1,6 @@
 import {act, renderHook} from '../test-utils';
 import useTheme from './UseTheme';
+import {vi} from 'vitest';
 
 describe('UseTheme custom hook', () => {
   it('should have light as theme by default', () => {
@@ -24,15 +25,15 @@ describe('UseTheme custom hook', () => {
     // (prefers-color-scheme: dark) to return true
     Object.defineProperty(window, 'matchMedia', {
       writable: true,
-      value: jest.fn().mockImplementation((query) => ({
+      value: vi.fn().mockImplementation((query) => ({
         matches: true,
         media: query,
         onchange: null,
-        addListener: jest.fn(), // deprecated
-        removeListener: jest.fn(), // deprecated
-        addEventListener: jest.fn(),
-        removeEventListener: jest.fn(),
-        dispatchEvent: jest.fn(),
+        addListener: vi.fn(), // deprecated
+        removeListener: vi.fn(), // deprecated
+        addEventListener: vi.fn(),
+        removeEventListener: vi.fn(),
+        dispatchEvent: vi.fn(),
       })),
     });
 

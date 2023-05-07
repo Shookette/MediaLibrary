@@ -2,6 +2,7 @@ import {fireEvent, render, waitFor} from '../../test-utils';
 import {Media} from '../../interfaces/Media';
 import Item from './Item';
 import React from 'react';
+import {vi} from 'vitest';
 
 describe('Item component', () => {
   const defaultMedia: Media = {
@@ -19,8 +20,8 @@ describe('Item component', () => {
     userUID: '123',
   };
 
-  const handleOnClick = jest.fn();
-  const handleOnHover = jest.fn();
+  const handleOnClick = vi.fn();
+  const handleOnHover = vi.fn();
 
   it('should display media title and have media type as class', () => {
     const {getByRole, container} = render(

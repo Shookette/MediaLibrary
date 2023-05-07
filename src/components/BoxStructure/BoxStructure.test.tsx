@@ -2,7 +2,6 @@ import {Media} from '../../interfaces/Media';
 import React from 'react';
 import {render} from '../../test-utils';
 import BoxStructure from './BoxStructure';
-import '@testing-library/jest-dom/extend-expect';
 
 describe('BoxStructure Component', () => {
   const defaultMedia: Media = {
@@ -22,6 +21,8 @@ describe('BoxStructure Component', () => {
 
   it('should render empty box when no children is passed', () => {
     const {container} = render(<BoxStructure />);
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
     expect(container.querySelector('.box-structure_cube_face--front')).toBeEmptyDOMElement();
   });
 

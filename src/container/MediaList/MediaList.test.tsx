@@ -3,13 +3,15 @@ import React from 'react';
 import * as repository from '../../repository/MediaRepository';
 import {Media} from '../../interfaces/Media';
 import MediaList from './MediaList';
+import {MockInstance, vi} from 'vitest';
 
-const mockedUsedNavigate = jest.fn();
+const mockedUsedNavigate = vi.fn();
 
-jest.mock('react-router-dom', () => ({
-  ...jest.requireActual('react-router-dom'),
-  useNavigate: () => mockedUsedNavigate,
-}));
+vi.mock('react-router-dom', async () => {
+  const actual: object = await vi.importActual('react-router-dom');
+
+  return {...actual, useNavigate: () => mockedUsedNavigate};
+});
 
 describe('MediaList Component', () => {
   const defaultMedia: Media = {
@@ -27,10 +29,10 @@ He and his skeletal buddy Avakian will use their dark powers to fend off any mur
     userUID: '123',
   };
 
-  let spyGetMedias: jest.SpyInstance;
+  let spyGetMedias: MockInstance;
 
   beforeEach(() => {
-    spyGetMedias = jest
+    spyGetMedias = vi
       .spyOn(repository, 'getMedias')
       .mockReturnValue(
         Promise.resolve([defaultMedia, {...defaultMedia, id: '5678', title: 'Dai Dark 2'}])
@@ -38,7 +40,7 @@ He and his skeletal buddy Avakian will use their dark powers to fend off any mur
   });
 
   afterEach(() => {
-    jest.clearAllMocks();
+    vi.restoreAllMocks();
   });
 
   it('should have two media showed', async () => {

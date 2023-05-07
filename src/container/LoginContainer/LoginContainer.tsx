@@ -39,7 +39,7 @@ const LoginContainer = () => {
             type="button"
             displayType="tertiary"
             handleOnClick={() => navigate('/reset-password')}>
-            <span>{formatMessage({id: 'reset-password_title'})}</span>
+            <span>{formatMessage({id: 'reset_password_title'})}</span>
           </Button>
         </div>
       </div>

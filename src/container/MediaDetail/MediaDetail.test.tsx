@@ -5,13 +5,15 @@ import {Media} from '../../interfaces/Media';
 import MediaDetail from './MediaDetail';
 import {Route, Routes} from 'react-router-dom';
 import * as messages from '../../translations/fr.json';
+import {MockInstance, vi} from 'vitest';
 
-const mockedUsedNavigate = jest.fn();
+const mockedUsedNavigate = vi.fn();
 
-jest.mock('react-router-dom', () => ({
-  ...jest.requireActual('react-router-dom'),
-  useNavigate: () => mockedUsedNavigate,
-}));
+vi.mock('react-router-dom', async () => {
+  const actual: object = await vi.importActual('react-router-dom');
+
+  return {...actual, useNavigate: () => mockedUsedNavigate};
+});
 
 describe('MediaDetail Component', () => {
   const defaultMedia: Media = {
@@ -29,19 +31,19 @@ He and his skeletal buddy Avakian will use their dark powers to fend off any mur
     userUID: '123',
   };
 
-  let spyGetMediaById: jest.SpyInstance;
-  let spyDeleteMedia: jest.SpyInstance;
+  let spyGetMediaById: MockInstance;
+  let spyDeleteMedia: MockInstance;
 
   beforeEach(() => {
-    spyGetMediaById = jest
+    spyGetMediaById = vi
       .spyOn(repository, 'getMediaByID')
       .mockReturnValue(Promise.resolve(defaultMedia));
 
-    spyDeleteMedia = jest.spyOn(repository, 'deleteMedia').mockReturnValue(Promise.resolve());
+    spyDeleteMedia = vi.spyOn(repository, 'deleteMedia').mockReturnValue(Promise.resolve());
   });
 
   afterEach(() => {
-    jest.clearAllMocks();
+    vi.restoreAllMocks();
   });
 
   it('should have a media and show media title and actions button', async () => {

@@ -31,13 +31,13 @@ const RegisterContainer = () => {
         <RegisterForm handleOnSubmit={registerWithEmailAndPassword} />
         <div className="register_actions">
           <Button type="button" displayType="secondary" handleOnClick={() => navigate('/login')}>
-            <span>{formatMessage({id: 'login_title'})}</span>
+            {formatMessage({id: 'login_title'})}
           </Button>
           <Button
             type="button"
             displayType="tertiary"
             handleOnClick={() => navigate('/reset-password')}>
-            <span>{formatMessage({id: 'reset-password_title'})}</span>
+            {formatMessage({id: 'reset_password_title'})}
           </Button>
         </div>
       </div>

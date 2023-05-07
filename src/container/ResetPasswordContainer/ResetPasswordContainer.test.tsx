@@ -2,22 +2,27 @@ import {screen, render, fireEvent} from '../../test-utils';
 import React from 'react';
 import * as messages from '../../translations/fr.json';
 import ResetPasswordContainer from './ResetPasswordContainer';
+import {vi} from 'vitest';
 
-const mockedNavigate = jest.fn();
+const mockedNavigate = vi.fn();
 
-jest.mock('react-router-dom', () => ({
-  ...jest.requireActual('react-router-dom'),
-  useNavigate: () => mockedNavigate,
-}));
+vi.mock('react-router-dom', async () => {
+  const actual: object = await vi.importActual('react-router-dom');
+
+  return {
+    ...actual,
+    useNavigate: () => mockedNavigate,
+  };
+});
 describe('Reset Password Component', () => {
   afterEach(() => {
-    jest.clearAllMocks();
+    vi.restoreAllMocks();
   });
 
   it('should have all input without data', () => {
     render(<ResetPasswordContainer />);
 
-    expect(screen.getByRole('heading', {name: messages['reset-password_title']})).toBeTruthy();
+    expect(screen.getByRole('heading', {name: messages['reset_password_title']})).toBeTruthy();
     expect(screen.getByRole('textbox', {name: messages['account_email']})).toBeTruthy();
     expect(screen.getByRole('button', {name: messages['submit']})).toBeTruthy();
     expect(screen.getByRole('button', {name: messages['login_title']})).toBeTruthy();

@@ -1,6 +1,7 @@
 import {screen, render, fireEvent} from '../../test-utils';
 import React from 'react';
 import Button from './Button';
+import {vi} from 'vitest';
 
 describe('Button Component', () => {
   it('should render with a label as children with primary display type', () => {
@@ -53,7 +54,7 @@ describe('Button Component', () => {
   });
 
   it('should trigger handleFunction on Click', () => {
-    const mockHandleOnClick = jest.fn();
+    const mockHandleOnClick = vi.fn();
     render(
       <Button displayType="secondary" type="button" handleOnClick={mockHandleOnClick}>
         label

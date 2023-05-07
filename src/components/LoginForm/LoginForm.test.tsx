@@ -2,9 +2,10 @@ import {screen, render, fireEvent, waitFor} from '../../test-utils';
 import React from 'react';
 import LoginForm from './LoginForm';
 import * as messages from '../../translations/fr.json';
+import {vi} from 'vitest';
 
 describe('LoginForm Component', () => {
-  const mockHandleOnSubmit = jest.fn();
+  const mockHandleOnSubmit = vi.fn();
 
   it('should have all input without data', () => {
     render(<LoginForm handleOnSubmit={mockHandleOnSubmit} />);

@@ -3,22 +3,24 @@ import React from 'react';
 import MediaNew from './MediaNew';
 import * as MediaRepository from '../../repository/MediaRepository';
 import * as messages from '../../translations/fr.json';
+import {MockInstance, vi} from 'vitest';
 
-const mockedUsedNavigate = jest.fn();
+const mockedUsedNavigate = vi.fn();
 
-jest.mock('react-router-dom', () => ({
-  ...jest.requireActual('react-router-dom'),
-  useNavigate: () => mockedUsedNavigate,
-}));
+vi.mock('react-router-dom', async () => {
+  const actual: object = await vi.importActual('react-router-dom');
+
+  return {...actual, useNavigate: () => mockedUsedNavigate};
+});
 
 describe('MediaNew Component', () => {
-  let spySetMedia: jest.SpyInstance;
+  let spySetMedia: MockInstance;
   beforeEach(() => {
-    spySetMedia = jest.spyOn(MediaRepository, 'setMedia').mockReturnValue(Promise.resolve());
+    spySetMedia = vi.spyOn(MediaRepository, 'setMedia').mockReturnValue(Promise.resolve());
   });
 
   afterEach(() => {
-    jest.clearAllMocks();
+    vi.restoreAllMocks();
   });
 
   it('should have all input without data', () => {

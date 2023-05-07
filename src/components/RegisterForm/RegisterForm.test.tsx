@@ -2,9 +2,10 @@ import {screen, render, fireEvent, waitFor} from '../../test-utils';
 import React from 'react';
 import RegisterForm from './RegisterForm';
 import * as messages from '../../translations/fr.json';
+import {vi} from 'vitest';
 
 describe('RegisterForm Component', () => {
-  const mockHandleOnSubmit = jest.fn();
+  const mockHandleOnSubmit = vi.fn();
 
   it('should have all input without data', () => {
     render(<RegisterForm handleOnSubmit={mockHandleOnSubmit} />);

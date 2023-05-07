@@ -3,6 +3,7 @@ import React from 'react';
 import * as messages from '../../translations/fr.json';
 import {Media} from '../../interfaces/Media';
 import MediaForm from './MediaForm';
+import {vi} from 'vitest';
 
 describe('MediaForm Component', () => {
   const defaultMedia: Media = {
@@ -20,7 +21,7 @@ describe('MediaForm Component', () => {
     userUID: '123',
   };
 
-  const mockHandleOnSubmit = jest.fn();
+  const mockHandleOnSubmit = vi.fn();
 
   it('should have all input without data', () => {
     render(<MediaForm handleOnSubmit={mockHandleOnSubmit} />);

@@ -2,17 +2,22 @@ import {screen, render, fireEvent} from '../../test-utils';
 import React from 'react';
 import LoginContainer from './LoginContainer';
 import * as messages from '../../translations/fr.json';
+import {vi} from 'vitest';
 
-const mockedNavigate = jest.fn();
+const mockedNavigate = vi.fn();
 
-jest.mock('react-router-dom', () => ({
-  ...jest.requireActual('react-router-dom'),
-  useNavigate: () => mockedNavigate,
-}));
+vi.mock('react-router-dom', async () => {
+  const actual: object = await vi.importActual('react-router-dom');
 
-describe('LoginOrRegister Component', () => {
+  return {
+    ...actual,
+    useNavigate: () => mockedNavigate,
+  };
+});
+
+describe('LoginContainer', () => {
   afterEach(() => {
-    jest.clearAllMocks();
+    vi.restoreAllMocks();
   });
 
   it('should have all input without data', () => {
@@ -23,7 +28,7 @@ describe('LoginOrRegister Component', () => {
     expect(screen.getByLabelText(messages['account_password'])).toBeTruthy();
     expect(screen.getByRole('button', {name: messages['submit']})).toBeTruthy();
     expect(screen.getByRole('button', {name: messages['register_title']})).toBeTruthy();
-    expect(screen.getByRole('button', {name: messages['reset-password_title']})).toBeTruthy();
+    expect(screen.getByRole('button', {name: messages['reset_password_title']})).toBeTruthy();
   });
 
   it('should redirect to register page when clicking on register button', () => {
@@ -37,7 +42,7 @@ describe('LoginOrRegister Component', () => {
   it('should redirect to reset password page when clicking on reset password button', () => {
     render(<LoginContainer />);
 
-    fireEvent.click(screen.getByRole('button', {name: messages['reset-password_title']}));
+    fireEvent.click(screen.getByRole('button', {name: messages['reset_password_title']}));
     expect(mockedNavigate).toHaveBeenCalledTimes(1);
     expect(mockedNavigate).toHaveBeenCalledWith('/reset-password');
   });

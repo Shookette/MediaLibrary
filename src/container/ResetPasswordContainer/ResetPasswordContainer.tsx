@@ -21,7 +21,7 @@ const ResetPasswordContainer = () => {
   return (
     <article className="reset-password">
       <div className="reset-password_content">
-        <h1 className="reset-password_title">{formatMessage({id: 'reset-password_title'})}</h1>
+        <h1 className="reset_password_title">{formatMessage({id: 'reset_password_title'})}</h1>
         <ResetPasswordForm handleOnSubmit={resetPasswordWithEmail} />
         <div className="reset-password_actions">
           <Button type="button" displayType="secondary" handleOnClick={() => navigate('/login')}>

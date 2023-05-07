@@ -24,7 +24,7 @@ const AllProviders: FC<AllProvidersType> = ({children, path}) => {
   const language: languageType = 'fr';
 
   return (
-    <IntlProvider locale={navigator.language} messages={messages[language]}>
+    <IntlProvider locale="fr-fr" messages={messages[language]}>
       <WithFirestore>
         <UserProvider>
           <MemoryRouter initialEntries={path}>{children}</MemoryRouter>

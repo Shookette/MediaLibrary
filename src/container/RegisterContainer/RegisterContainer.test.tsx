@@ -2,16 +2,18 @@ import {screen, render, fireEvent} from '../../test-utils';
 import React from 'react';
 import RegisterContainer from './RegisterContainer';
 import * as messages from '../../translations/fr.json';
+import {vi} from 'vitest';
 
-const mockedNavigate = jest.fn();
+const mockedNavigate = vi.fn();
 
-jest.mock('react-router-dom', () => ({
-  ...jest.requireActual('react-router-dom'),
-  useNavigate: () => mockedNavigate,
-}));
+vi.mock('react-router-dom', async () => {
+  const actual: object = await vi.importActual('react-router-dom');
+
+  return {...actual, useNavigate: () => mockedNavigate};
+});
 describe('Register Component', () => {
   afterEach(() => {
-    jest.clearAllMocks();
+    vi.restoreAllMocks();
   });
 
   it('should have all input without data', () => {
@@ -23,7 +25,7 @@ describe('Register Component', () => {
     expect(screen.getByLabelText(messages['account_password'])).toBeTruthy();
     expect(screen.getByRole('button', {name: messages['submit']})).toBeTruthy();
     expect(screen.getByRole('button', {name: messages['login_title']})).toBeTruthy();
-    expect(screen.getByRole('button', {name: messages['reset-password_title']})).toBeTruthy();
+    expect(screen.getByRole('button', {name: messages['reset_password_title']})).toBeTruthy();
   });
 
   it('should change the form to login form when clicking on login button', () => {
@@ -38,7 +40,7 @@ describe('Register Component', () => {
   it('should redirect to reset password page when clicking on reset password button', () => {
     render(<RegisterContainer />);
 
-    fireEvent.click(screen.getByRole('button', {name: messages['reset-password_title']}));
+    fireEvent.click(screen.getByRole('button', {name: messages['reset_password_title']}));
 
     expect(mockedNavigate).toHaveBeenCalledTimes(1);
     expect(mockedNavigate).toHaveBeenCalledWith('/reset-password');

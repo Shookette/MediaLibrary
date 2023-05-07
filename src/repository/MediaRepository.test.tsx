@@ -1,15 +1,20 @@
 import {getMediaByID, getMedias} from './MediaRepository';
 import {Media} from '../interfaces/Media';
 import initFirebase from '../firebaseLoader';
+import {vi} from 'vitest';
 
-jest.mock('firebase/firestore', () => ({
-  ...jest.requireActual('firebase/firestore'),
-  getDocs: () => [
-    {data: () => defaultMedia, exists: () => true},
-    {data: () => ({...defaultMedia, id: '5678', title: 'Test'}), exists: () => true},
-  ],
-  getDoc: () => ({data: () => defaultMedia, exists: () => true}),
-}));
+vi.mock('firebase/firestore', async () => {
+  const actual: object = await vi.importActual('firebase/firestore');
+
+  return {
+    ...actual,
+    getDocs: () => [
+      {data: () => defaultMedia, exists: () => true},
+      {data: () => ({...defaultMedia, id: '5678', title: 'Test'}), exists: () => true},
+    ],
+    getDoc: () => ({data: () => defaultMedia, exists: () => true}),
+  };
+});
 
 const defaultMedia: Media = {
   id: '1234',
@@ -32,7 +37,7 @@ describe('Media Repository', () => {
   });
 
   afterEach(() => {
-    jest.clearAllMocks();
+    vi.restoreAllMocks();
   });
 
   it('should return a media when calling getMediaById', async () => {

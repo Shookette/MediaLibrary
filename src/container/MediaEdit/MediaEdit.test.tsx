@@ -5,13 +5,15 @@ import * as repository from '../../repository/MediaRepository';
 import MediaEdit from './MediaEdit';
 import {Media} from '../../interfaces/Media';
 import * as messages from '../../translations/fr.json';
+import {MockInstance, vi} from 'vitest';
 
-const mockedUsedNavigate = jest.fn();
+const mockedUsedNavigate = vi.fn();
 
-jest.mock('react-router-dom', () => ({
-  ...jest.requireActual('react-router-dom'),
-  useNavigate: () => mockedUsedNavigate,
-}));
+vi.mock('react-router-dom', async () => {
+  const actual: object = await vi.importActual('react-router-dom');
+
+  return {...actual, useNavigate: () => mockedUsedNavigate};
+});
 
 describe('MediaEdit Component', () => {
   const defaultMedia: Media = {
@@ -29,19 +31,19 @@ He and his skeletal buddy Avakian will use their dark powers to fend off any mur
     userUID: '123',
   };
 
-  let spyGetMediaById: jest.SpyInstance;
-  let spySetMedia: jest.SpyInstance;
+  let spyGetMediaById: MockInstance;
+  let spySetMedia: MockInstance;
 
   beforeEach(() => {
-    spyGetMediaById = jest
+    spyGetMediaById = vi
       .spyOn(repository, 'getMediaByID')
       .mockReturnValue(Promise.resolve(defaultMedia));
 
-    spySetMedia = jest.spyOn(repository, 'setMedia').mockReturnValue(Promise.resolve());
+    spySetMedia = vi.spyOn(repository, 'setMedia').mockReturnValue(Promise.resolve());
   });
 
   afterEach(() => {
-    jest.clearAllMocks();
+    vi.restoreAllMocks();
   });
 
   it('should have a media and show title with edit form', async () => {
