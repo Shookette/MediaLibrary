@@ -4,7 +4,7 @@ import MediaForm from './MediaForm';
 import {SubmitHandler} from 'react-hook-form';
 
 export default {
-  title: 'Component/MediaForm',
+  title: 'Component/ListForm',
   component: MediaForm,
 } as Meta<typeof MediaForm>;
 

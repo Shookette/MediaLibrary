@@ -5,7 +5,7 @@ import {Media} from '../../interfaces/Media';
 import MediaForm from './MediaForm';
 import {vi} from 'vitest';
 
-describe('MediaForm Component', () => {
+describe('ListForm Component', () => {
   const defaultMedia: Media = {
     id: '1234',
     title: 'Dai Dark',
